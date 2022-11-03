@@ -1,0 +1,30 @@
+{
+  "name": "worldclass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run copy:assets & npm run compile:js & npm run compile:styles",
+    "copy:assets": "sh bin/copy-assets.sh",
+    "compile:js": "webpack --progress --watch",
+    "compile:styles": "stylus --watch ./front/css/*-page.styl --out ./static/css/."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "stylus": "^0.54.8",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
