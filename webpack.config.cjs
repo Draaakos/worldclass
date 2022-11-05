@@ -24,9 +24,10 @@ const getJSConfig = (env = { mode: 'development' }) => {
       extensions: ['.js', '.jsx'],
       enforceExtension: false,
       modules: [
-        path.resolve(__dirname, 'assets', 'js'),
         path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'assets', 'js', 'ui')
+        path.resolve(__dirname, 'front', 'js'),
+        path.resolve(__dirname, 'front', 'js', 'ui'),
+        path.resolve(__dirname, 'front', 'js', 'services')
       ]
     }
   }

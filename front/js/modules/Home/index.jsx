@@ -1,21 +1,10 @@
+import Login from './components/Login';
+
 const Home = () => {
 
   return(
     <div>
-      <main className="login">
-        <div className="container__all">
-          <div className="container__login-register">
-            <form action="./index.html" className="form__login">
-              <h2>Iniciar Sesión</h2>
-              <input type="text" placeholder="Usuario"/>
-              <input type="password" placeholder="Contraseña"/>
-              <button>Entrar</button>
-            </form>
-          </div>
-        </div>
-      </main>
-
-
+      <Login />
 
       <div className="register">
         <div className="container__register">
