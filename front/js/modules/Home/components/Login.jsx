@@ -12,7 +12,16 @@ const Login = () => {
     const password = passwordRef.current.value;
 
     service.login(username, password)
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+
+        if(response.status) {
+          window.location.assign('/dashboard');
+          return;
+        }
+        
+        alert(response.msg);
+      })
   };
 
   return (

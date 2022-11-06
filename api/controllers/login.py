@@ -10,8 +10,12 @@ class LoginView(View):
 
         try:
             person = self._is_authenticated(data)
+
+            request.session['is_logged'] = 1
+            request.session['person_logged_id'] = person.id
+
             return JsonResponse({
-                "message": "Usuario autenticado correctamente",
+                "msg": "Usuario autenticado correctamente",
                 "status": 1,
                 "user": {
                     "name": person.username,
@@ -20,7 +24,7 @@ class LoginView(View):
             })
         except:
             return JsonResponse({
-                "message": "Hubo un error",
+                "msg": "Usuario y/o contraseña incorrectos",
                 "status": 0
             })
 

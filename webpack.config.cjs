@@ -6,6 +6,7 @@ const getJSConfig = (env = { mode: 'development' }) => {
     mode: 'development',
     entry: {
       home: createAppPath('home'),
+      dashboard: createAppPath('dashboard'),
     },
     output: {
       path: path.join(__dirname, '/static/js'),

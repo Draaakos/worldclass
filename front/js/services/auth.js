@@ -8,6 +8,8 @@ const service = {
     return post(url, payload)
       .then(response => response.json());
   },
+
+  
   register() {
     // aca lo del registro
   }
