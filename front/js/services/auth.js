@@ -9,9 +9,12 @@ const service = {
       .then(response => response.json());
   },
 
-  
-  register() {
-    // aca lo del registro
+  register(username, email, costCenter, password, passwordTwo) {
+    const url = '/api/v1/register'
+    const payload = {username, email, costCenter, password, passwordTwo}
+
+    return post(url, payload)
+      .then(response => response.json())
   }
 }
 
