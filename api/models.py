@@ -13,11 +13,19 @@ class Person(models.Model):
         }
 
 
+class CarModel(models.Model):
+    name = models.CharField(max_length=30)
+
+
+class CarType(models.Model):
+    name = models.CharField(max_length=30)
+
+
 class Car(models.Model):
     patent = models.CharField(max_length=50, unique=True, primary_key=True )
-    car_type = models.CharField(max_length=100) #BRAND
     color = models.CharField(max_length=100)
-    car_model = models.CharField(max_length=100) 
+    car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE, null=False, blank=False)
+    car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
 
     def to_json(self):
         return {
