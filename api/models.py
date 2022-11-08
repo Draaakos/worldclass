@@ -1,6 +1,17 @@
 from django.db import models
 
 
+class CostCenter(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=50, unique=True, primary_key=True)
+
+    def to_json(self):
+        return {
+            'name': self.name,
+            'code': self.code
+        }
+
+
 class Person(models.Model):
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=30)
@@ -26,6 +37,7 @@ class Car(models.Model):
     color = models.CharField(max_length=100)
     car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE, null=False, blank=False)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
+    cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
 
     def to_json(self):
         return {

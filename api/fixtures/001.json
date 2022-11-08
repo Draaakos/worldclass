@@ -26,5 +26,37 @@
         "fields": {
             "name": "Mercedes benz"
         }
+    },
+    {
+        "model": "api.costcenter",
+        "pk": 1,
+        "fields": {
+            "name": "Depto. informatica",
+            "code": "J823JDEC8JR9EJASDI"
+        }
+    },
+    {
+        "model": "api.costcenter",
+        "pk": 2,
+        "fields": {
+            "name": "Depto. logistica",
+            "code": "189EDJD9W8SCADFGDS"
+        }
+    },
+    {
+        "model": "api.costcenter",
+        "pk": 3,
+        "fields": {
+            "name": "Depto. armamento",
+            "code": "192DKASDK12ED11211"
+        }
+    },
+    {
+        "model": "api.costcenter",
+        "pk": 4,
+        "fields": {
+            "name": "Depto. naval",
+            "code": "812EDNASSDHADASAS"
+        }
     }
 ]
