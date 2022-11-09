@@ -9,12 +9,12 @@ class DashboardView(View):
         
         if request.session.get('person_logged_id'):
             return JsonResponse({
-                'status': 1,
+                'status': 200,
                 'personList': self._fetch_dashboard_data()
             })
         else:
             return JsonResponse({
-                'status': 0,
+                'status': 500,
                 'personList': []
             })
         

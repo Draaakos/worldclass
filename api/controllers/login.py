@@ -7,6 +7,7 @@ from api.models import Person
 class LoginView(View):
     def post(self, request):
         data = json.loads(request.body)
+        
         try:
             person = self._is_authenticated(data)
 
@@ -15,7 +16,7 @@ class LoginView(View):
 
             return JsonResponse({
                 "msg": "Usuario autenticado correctamente",
-                "status": 1,
+                "status": 200,
                 "user": {
                     "name": person.username,
                     "email": person.email,
@@ -25,11 +26,10 @@ class LoginView(View):
         except:
             return JsonResponse({
                 "msg": "Usuario y/o contraseña incorrectos",
-                "status": 0
+                "status": 500
             })
 
     def _is_authenticated(self, data):
-
         username = data.get('username')
         password = data.get('password')
 
@@ -40,7 +40,6 @@ class LoginView(View):
 
     def _is_logged(self, request, data):
         person_id = request.session.get('id')
-        print(person_id)
 
         
 

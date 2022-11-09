@@ -58,5 +58,26 @@
             "name": "Depto. naval",
             "code": "812EDNASSDHADASAS"
         }
+    },
+    {
+        "model": "api.persontype",
+        "pk": 1,
+        "fields": {
+            "name": "administrador"
+        }
+    },
+    {
+        "model": "api.persontype",
+        "pk": 2,
+        "fields": {
+            "name": "moderador"
+        }
+    },
+    {
+        "model": "api.persontype",
+        "pk": 3,
+        "fields": {
+            "name": "user"
+        }
     }
 ]

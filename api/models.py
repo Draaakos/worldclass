@@ -3,7 +3,7 @@ from django.db import models
 
 class CostCenter(models.Model):
     name = models.CharField(max_length=100)
-    code = models.CharField(max_length=50, unique=True, primary_key=True)
+    code = models.CharField(max_length=50, unique=True)
 
     def to_json(self):
         return {
@@ -12,14 +12,20 @@ class CostCenter(models.Model):
         }
 
 
+class PersonType(models.Model):
+    name = models.CharField(max_length=70)
+
+
 class Person(models.Model):
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=30)
     email = models.CharField(max_length=100)
+    person_type = models.ForeignKey(PersonType, on_delete=models.CASCADE, null=False, blank=False)
 
     def to_json(self):
         return {
             'username': self.username,
+            'password': self.password,
             'email': self.email
         }
 
@@ -27,9 +33,19 @@ class Person(models.Model):
 class CarModel(models.Model):
     name = models.CharField(max_length=30)
 
+    def to_json(self):
+        return {
+            'name': self.name,
+        }
+
 
 class CarType(models.Model):
     name = models.CharField(max_length=30)
+
+    def to_json(self):
+        return {
+            'name': self.name,
+    }
 
 
 class Car(models.Model):
@@ -50,7 +66,3 @@ class Car(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=130)
-    
-    
-class PersonType(models.Model):
-    name = models.CharField(max_length=50)
