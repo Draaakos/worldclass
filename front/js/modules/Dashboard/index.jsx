@@ -3,6 +3,7 @@ import UserForm from './components/UserForm';
 import service from 'services/dashboard';
 import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
+import Modal from './components/Modal';
 
 
 const Dashboard = () => {
@@ -30,9 +31,12 @@ const Dashboard = () => {
       <div>
         <NavBar />
       </div>
-      {/* <div>
+      <button id='button-open'>
+        abrir modal
+      </button>
+      <Modal>
         <UserForm />
-      </div> */}
+      </Modal>
       <div>Lista de Vehículos:</div>
       <div className='cards-wrapper'>
         {
