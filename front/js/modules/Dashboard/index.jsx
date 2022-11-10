@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import UserForm from './components/UserForm';
 import service from 'services/dashboard';
+import NavBar from './components/NavBar';
 
 const Dashboard = () => {
   const [ dashboardData, setDashboardData ] = useState({ personList: [] });
@@ -18,10 +19,14 @@ const Dashboard = () => {
       })
   }, []);
 
+
   const app = (
+    <><div>
+      <NavBar />
+    </div>
     <div>
       <UserForm />
-    </div>
+    </div></>
   );
 
   return (

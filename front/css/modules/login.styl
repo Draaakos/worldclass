@@ -5,7 +5,6 @@
     text-decoration none
     font-family 'Roboto', sans-serif
 
-
 body 
     background-image url(../images/bg1.jpg)
     background-size cover
@@ -13,51 +12,45 @@ body
     background-attachment fixed
     background-position center center
 
-
-main 
-    width 100%
-    padding 20px
-    margin auto
-    margin-top 100px
-
-.container__all
+.login
     width 100%
     max-width 800px
-    margin auto
     padding 220px
     
-
-.container__login-register form
+.login__form
     background  white
     margin auto
     padding 80px 20px
     border-radius 20px
-
-.form__login
-    color #46A2FD
     text-align center
     margin-bottom 20px
 
+    &__title
+        color #46A2FD
 
-.container__login-register form input 
-    width 100%
-    margin-top 20px
-    padding 10px
-    border none
-    background #F2F2F2
-    font-size 16px
-    outline none
 
-.container__login-register form button 
-    padding 10px 100px
-    margin-top 40px
-    border none
-    font-size 14px
-    background #46A2FD
-    font-weight 600
-    cursor pointer
-    color white
-    outline none
+    &__input
+        width 100%
+        margin-top 20px
+        padding 10px
+        border none
+        background #F2F2F2
+        font-size 16px
+        outline none
+
+    &__btn
+        margin-bottom 0px
+        background #46A2FD
+        color #fff
+        border none
+
+        :hover
+            background #64aff9
+            cursor pointer
+
+
+
+
 
 
 

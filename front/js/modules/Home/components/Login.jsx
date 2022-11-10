@@ -26,16 +26,12 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="container__all">
-        <div className="container__login-register">
-          <form className="form__login" onSubmit={onSubmit}>
-            <h2>Iniciar Sesión</h2>
-            <input ref={usernameRef} type="text" placeholder="Usuario" required />
-            <input ref={passwordRef} type="password" placeholder="Contraseña" required />
-            <input type="submit" value="Entrar" />
-          </form>
-        </div>
-      </div>
+      <form className="login__form" onSubmit={onSubmit}>
+        <h2 className="login__title">Iniciar Sesión</h2>
+        <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
+        <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
+        <input className="login__btn" type="submit" value="Entrar" />
+      </form>
     </div>
   );
 };

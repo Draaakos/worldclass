@@ -1,3 +1,4 @@
+import NavBar from '../modules/Dashboard/components/NavBar.jsx';
 import { post } from './fetchUtils.js';
 
 const service = {
@@ -9,8 +10,8 @@ const service = {
       .then(response => response.json());
   },
 
-  register(username, email, costCenter, password, passwordTwo) {
-    const url = '/api/v1/register'
+  UserForm(username, email, costCenter, password, passwordTwo) {
+    const url = '/api/v1/UserForm'
     const payload = {username, email, costCenter, password, passwordTwo}
 
     return post(url, payload)
