@@ -33,19 +33,9 @@ class Person(models.Model):
 class CarModel(models.Model):
     name = models.CharField(max_length=30)
 
-    def to_json(self):
-        return {
-            'name': self.name,
-        }
-
 
 class CarType(models.Model):
     name = models.CharField(max_length=30)
-
-    def to_json(self):
-        return {
-            'name': self.name,
-    }
 
 
 class Car(models.Model):
@@ -58,9 +48,10 @@ class Car(models.Model):
     def to_json(self):
         return {
             'patent': self.patent,
-            'car_type': self.car_type,
+            'carType': self.car_type.name,
             'color': self.color,
-            'car_model': self.car_model
+            'carModel': self.car_model.name,
+            'costCenter': self.cost_center.name
         }
 
 

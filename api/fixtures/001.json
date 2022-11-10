@@ -1,4 +1,37 @@
-[
+[   
+    {
+        "model": "api.car",
+        "pk": 1,
+        "fields": {
+            "patent": "EJS206",
+            "color": "red",
+            "car_model": 1,
+            "car_type": 1,
+            "cost_center": 1
+        }
+    },
+    {
+        "model": "api.car",
+        "pk": 2,
+        "fields": {
+            "patent": "ASJ245",
+            "color": "blue",
+            "car_model": 2,
+            "car_type": 2,
+            "cost_center": 2
+        }
+    },
+    {
+        "model": "api.car",
+        "pk": 3,
+        "fields": {
+            "patent": "HHH222",
+            "color": "yellow",
+            "car_model": 1,
+            "car_type": 2,
+            "cost_center": 1
+        }
+    },
     {
         "model": "api.carmodel",
         "pk": 1,
