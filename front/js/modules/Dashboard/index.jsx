@@ -8,7 +8,8 @@ const Dashboard = () => {
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
-        if(response.status) {
+        console.log(response)
+        if(response.status == 200) {
           setDashboardData(response);
           return;
         }

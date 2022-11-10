@@ -12,23 +12,25 @@ class RegisterView(View):
             self._add_new_user(data)
             return JsonResponse({
                 'message': 'Usuario creado correctamente',
-                'status': 1
+                'status': 200
             })
         except:
             return JsonResponse({
                 'message': 'Hubo un error',
-                'status': 0
+                'status': 500
             })
 
     def _add_new_user(self, data):
         username = data.get('username')
         password = data.get('password')
         email = data.get('email')
+        person_type = data.get('personType')
 
         person = Person();
         person.username = username.lower()
         person.password = password
         person.email = email
+        person.person_type_id = person_type
         person.save();
 
         return person 
