@@ -39,7 +39,6 @@ const Dashboard = () => {
         <NavBar onActiveModal={() => setIsRegisterModalOn(true)} />
       </div>
 
-      <div>Lista de Vehículos:</div>
       <div className='cards-wrapper'>
       {/* <div>
         <UserForm />
