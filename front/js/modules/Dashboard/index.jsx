@@ -3,12 +3,9 @@ import UserForm from './components/UserForm';
 import service from 'services/dashboard';
 import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
-<<<<<<< HEAD
 import Modal from './components/Modal';
 
-=======
 import UserTable from './components/UserTable';
->>>>>>> ca8d85a (table person and car in front)
 
 const Dashboard = () => {
   const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
@@ -29,14 +26,11 @@ const Dashboard = () => {
       })
   }, []);
 
-<<<<<<< HEAD
   const modal = isRegisterModalOn 
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
     : null;
 
 
-=======
->>>>>>> ca8d85a (table person and car in front)
   const app = (
     <>
       { modal }
@@ -90,6 +84,7 @@ const Dashboard = () => {
                 )
             }
         </div>
+      </div>
     </>
   );
 
