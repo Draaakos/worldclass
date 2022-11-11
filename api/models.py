@@ -15,6 +15,12 @@ class CostCenter(models.Model):
 class PersonType(models.Model):
     name = models.CharField(max_length=70)
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
+
 
 class Person(models.Model):
     username = models.CharField(max_length=50, unique=True)
@@ -25,8 +31,8 @@ class Person(models.Model):
     def to_json(self):
         return {
             'username': self.username,
-            'password': self.password,
-            'email': self.email
+            'email': self.email,
+            'personType': self.person_type.name
         }
 
 

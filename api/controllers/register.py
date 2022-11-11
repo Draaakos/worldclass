@@ -19,7 +19,7 @@ class RegisterView(View):
                 'message': 'Hubo un error',
                 'status': 500
             })
-
+    #ERROR
     def _add_new_user(self, data):
         username = data.get('username')
         password = data.get('password')

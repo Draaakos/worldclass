@@ -1,20 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import service from 'services/formData';
 
-
 const UserForm = () => {
   const [costCenterOptions, setCostCenterOptions] = useState([]);
+  const [personTypeOptions, setPersonTypeOptions] = useState([]);
   const name = useRef(null);
   const email = useRef(null);
   const costCenter = useRef(null);
   const password1 = useRef(null);
   const password2 = useRef(null);
+  const personType = useRef(null);
 
   useEffect(() => {
     service.fetchAllCostCenter()
       .then(response => {
-        setCostCenterOptions(response.data); 
+        setCostCenterOptions(response.data);
       });
+    
+    service.fetchAllPersonTypes()
+      .then(response => {
+        setPersonTypeOptions(response.data)
+      })
   }, []);
   
   const onSubmit = evt => {
@@ -25,28 +31,46 @@ const UserForm = () => {
       return;
     }
 
+    if(personType.current.value === 'Seleccione') {
+      alert("Debes seleccionar un tipo de usuario");
+      return;
+    }
+
     if(password1.current.value !== password2.current.value) {
       alert("las contraseñas deben ser iguales!");
       return;
     }
 
     const payload = {
-      name: name.current.value,
+      username: name.current.value,
       email: email.current.value,
-      constCenter: costCenter.current.value,
-      password: password1.current.value
+      costCenter: costCenter.current.value,
+      password: password1.current.value,
+      personType: personType.current.value
     };
 
-    console.log(payload);
+    service.registerUser(payload)
+      .then(response => console.log(response))
   }
 
-  const selector = (
+  const costCenterSelector = (
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
       { 
         costCenterOptions
           .map((option, index) => 
             <option key={`option-${index}`} value={option.code}>{option.name}</option>) 
+      }
+    </select>
+  );
+
+  const personTypeSelector = (
+    <select className="form-register__input" ref={personType}>
+      <option value={null}>Seleccione</option>
+      { 
+        personTypeOptions
+          .map((option, index) => 
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
       }
     </select>
   );
@@ -59,7 +83,9 @@ const UserForm = () => {
       <label className="form-register__label" >Correo Electronico</label>
       <input className="form-register__input" ref={email} type="email" placeholder="Correo Electronico" required />
       <label className="form-register__label">Centro de Costo</label>
-      {selector}
+      {costCenterSelector}
+      <label className="form-register__label">Tipo de Usuario</label>
+      {personTypeSelector}
       <label className="form-register__label">Contraseña</label>
       <input className="form-register__input" ref={password1} type="password" placeholder="Contraseña" required />
       <label className="form-register__label">Repetir Contraseña</label>
