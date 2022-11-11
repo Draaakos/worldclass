@@ -33,6 +33,17 @@
         }
     },
     {
+        "model": "api.car",
+        "pk": 4,
+        "fields": {
+            "patent": "BFZS43",
+            "color": "verde",
+            "car_model": 1,
+            "car_type": 1,
+            "cost_center": 1
+        }
+    },
+    {
         "model": "api.carmodel",
         "pk": 1,
         "fields": {
@@ -110,7 +121,7 @@
         "model": "api.persontype",
         "pk": 3,
         "fields": {
-            "name": "user"
+            "name": "usuario"
         }
     }
 ]

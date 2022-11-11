@@ -3,8 +3,12 @@ import UserForm from './components/UserForm';
 import service from 'services/dashboard';
 import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
+<<<<<<< HEAD
 import Modal from './components/Modal';
 
+=======
+import UserTable from './components/UserTable';
+>>>>>>> ca8d85a (table person and car in front)
 
 const Dashboard = () => {
   const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
@@ -25,11 +29,14 @@ const Dashboard = () => {
       })
   }, []);
 
+<<<<<<< HEAD
   const modal = isRegisterModalOn 
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
     : null;
 
 
+=======
+>>>>>>> ca8d85a (table person and car in front)
   const app = (
     <>
       { modal }
@@ -40,6 +47,20 @@ const Dashboard = () => {
 
       <div>Lista de Vehículos:</div>
       <div className='cards-wrapper'>
+      {/* <div>
+        <UserForm />
+      </div> */}
+        <div className='cards-wrapper'>
+          <div className='title'>Lista de Vehículos:</div>
+            <div className="table">
+              <div className="content">
+              <div className="content__head">Patente</div>
+              <div className="content__head">Color</div>
+              <div className="content__head">Modelo</div>
+              <div className="content__head">Tipo</div>
+              <div className="content__head">Centro de Costo</div>
+            </div>
+         </div>
         {
           dashboardData.carList.map(car =>
             <CarCard
@@ -53,6 +74,22 @@ const Dashboard = () => {
           )
         }
       </div>
+        <div className="content-wrapper">
+          <div className="title__userTable"> Tabla Usuarios</div>
+            <div className="table__user">
+              <div className="table__user__person">Nombre</div>
+              <div className="table__user__person">Email</div>
+              <div className="table__user__person">Tipo de usuario</div>
+            </div>
+            {
+              dashboardData.personList.map( item =>
+                <UserTable
+                    username={item.username}
+                    email = {item.email} 
+                  />
+                )
+            }
+        </div>
     </>
   );
 

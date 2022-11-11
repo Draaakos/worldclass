@@ -1,27 +1,28 @@
-.cards-wrapper
+.content-wrapper
+    min-width 500px
     min-height 500px
     padding-top 3em
 
-.title 
-    text-align center
+.title__userTable
     display grid
+    text-align center
     border 1px solid #efefef
     background-color rgb(181, 181, 181)
 
-.content 
+.table__user
     display grid
-    grid-template-columns repeat(5, 1fr)
+    grid-template-columns repeat(3, 1fr)
     gap .2em
 
-    &__head
+    &__person
         text-align center
         border 1px solid #efefef
         background-color #EEE
         padding .5em
-        
-.row
+
+.person
     display grid
-    grid-template-columns repeat(5, 1fr)
+    grid-template-columns repeat(3, 1fr)
     gap .2em
 
     &__item

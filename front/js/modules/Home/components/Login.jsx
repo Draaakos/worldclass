@@ -30,7 +30,7 @@ const Login = () => {
         <h2 className="login__title">Iniciar Sesión</h2>
         <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
         <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
-        <input className="login__btn" type="submit" value="Entrar" />
+        <input className="btn" type="submit" value="Entrar" />
       </form>
     </div>
   );
