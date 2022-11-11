@@ -1,15 +1,10 @@
-body 
-    padding 0
-    border 0
-    margin 0
-
-.form__register 
+.form-register
     color #46A2FD
-    width 50%
     border 1px solid #ccc
     padding 20px
-    margin 5em auto
     background-color white
+    max-width 400px
+    width 80vw
 
     &__title
         text-align center
@@ -33,50 +28,11 @@ body
         color #fff
         border none
 
-        :hover 
+        &:hover 
             background #64aff9
             cursor pointer
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (min-width: 1024px)
+    .form-register
+        width 400px

@@ -7,6 +7,7 @@ import Modal from './components/Modal';
 
 
 const Dashboard = () => {
+  const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
   const [ dashboardData, setDashboardData ] = useState({ 
     personList: [], 
     carList: []
@@ -15,7 +16,6 @@ const Dashboard = () => {
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
-        console.log(response)
         if(response.status == 200) {
           setDashboardData(response);
           return;
@@ -25,18 +25,19 @@ const Dashboard = () => {
       })
   }, []);
 
+  const modal = isRegisterModalOn 
+    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
+    : null;
+
 
   const app = (
     <>
+      { modal }
+
       <div>
-        <NavBar />
+        <NavBar onActiveModal={() => setIsRegisterModalOn(true)} />
       </div>
-      <button id='button-open'>
-        abrir modal
-      </button>
-      <Modal>
-        <UserForm />
-      </Modal>
+
       <div>Lista de Vehículos:</div>
       <div className='cards-wrapper'>
         {

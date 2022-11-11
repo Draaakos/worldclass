@@ -1,15 +1,13 @@
-
-const Modal = ({children}) => {
-  const modal = getElementById('modal')
-  const button = getElementById('button-open')
-
+const Modal = ({ children, onCloseModal }) => {
   return (
-    <div className="modal" id="modal">
+    <div className="modal" onClick={onCloseModal}>
       <div className="modal__content">
-        {children}
+        <div className="card" onClick={evt => evt.stopPropagation()}>
+          {children}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Modal
