@@ -4,34 +4,52 @@ from django.http import JsonResponse
 # from .forms import UserForm
 from api.models import Person
 
+PERSON_TYPES = {
+    'ADMIN': 1,
+    'MODERATOR': 2,
+    'USER': 3
+}
+
 class RegisterView(View):
     def post(self, request):
+        session_user_id_active = request.session.get('person_logged_id')
+        person_active = Person.objects.get(pk=session_user_id_active)
         data = json.loads(request.body)
-        
+
         try:
-            self._add_new_user(data)
+            person = self._add_new_user(data, person_active)
             return JsonResponse({
-                'message': 'Usuario creado correctamente',
-                'status': 200
+                'status': 200,
+                'person': person,
+                'msg': person['msg']
             })
         except:
             return JsonResponse({
-                'message': 'Hubo un error',
+                'msg': 'Hubo un error',
                 'status': 500
             })
 
-    def _add_new_user(self, data):
-        username = data.get('username')
-        password = data.get('password')
-        email = data.get('email')
-        person_type = data.get('personType')
+    def _add_new_user(self, data, person_active):
+        if person_active.person_type_id == PERSON_TYPES['ADMIN']:
+            username = data.get('username')
+            password = data.get('password')
+            email = data.get('email')
+            person_type = data.get('personType')
 
-        person = Person();
-        person.username = username.lower()
-        person.password = password
-        person.email = email
-        person.person_type_id = person_type
-        person.save();
+            person = Person()
+            person.username = username.lower()
+            person.password = password
+            person.email = email
+            person.person_type_id = person_type
+            person.save()
 
-        return person 
+            return {
+                'person': person.to_json(),
+                'msg': 'Usuario creado correctamente'
+            } 
+        else:
+            return {
+                'person': None,
+                'msg': 'No tienes permisos para crear usuario'
+            }
 
