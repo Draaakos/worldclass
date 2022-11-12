@@ -8,7 +8,7 @@ class PersonTypeView(View):
     def get(self, request):
         try:
             return JsonResponse({
-                "data": [ person_type.to_json() for person_type in PersonType.objects.all() ],
+                "personTypeData": [ person_type.to_json() for person_type in PersonType.objects.all() ],
                 "status": 200
             })
         except:

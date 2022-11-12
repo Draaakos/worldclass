@@ -18,6 +18,7 @@ class PersonDataView(View):
 
     def post(self, request):
         data = json.loads(request.body)
+        # person_type = request.session.get('person_type')
         
         try:
             self._create_person(data)

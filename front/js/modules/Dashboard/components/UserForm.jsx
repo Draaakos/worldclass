@@ -15,11 +15,13 @@ const UserForm = () => {
     service.fetchAllCostCenter()
       .then(response => {
         setCostCenterOptions(response.data);
+        console.log(response.data)
       });
     
     service.fetchAllPersonTypes()
       .then(response => {
-        setPersonTypeOptions(response.data)
+        setPersonTypeOptions(response.personTypeData)
+        console.log(response.personTypeData)
       })
   }, []);
   
