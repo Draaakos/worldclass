@@ -13,6 +13,15 @@ const service = {
   fetchAllPersonTypes() {
     const url = '/api/v1/person/type';
     return get(url).then(response => response.json());
+  },
+  registerCar(payload) {
+    const url = '/api/v1/car';
+    return post(url, payload)
+      .then(response => response.json());
+  },
+  fetchAllCarTypes() {
+    const url = '/api/v1/car/type';
+    return get(url).then(response => response.json());
   }
 }
 

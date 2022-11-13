@@ -52,7 +52,7 @@ const UserForm = () => {
     };
 
     service.registerUser(payload)
-      .then(response => console.log(response))
+      .then(response => alert(response.message))
   }
 
   const costCenterSelector = (

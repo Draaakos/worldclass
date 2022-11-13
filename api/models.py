@@ -7,6 +7,7 @@ class CostCenter(models.Model):
 
     def to_json(self):
         return {
+            'id': self.id,
             'name': self.name,
             'code': self.code
         }
@@ -36,18 +37,20 @@ class Person(models.Model):
         }
 
 
-class CarModel(models.Model):
-    name = models.CharField(max_length=30)
-
-
 class CarType(models.Model):
     name = models.CharField(max_length=30)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
 
 
 class Car(models.Model):
     patent = models.CharField(max_length=50, unique=True, primary_key=True )
     color = models.CharField(max_length=100)
-    car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE, null=False, blank=False)
+    car_model = models.CharField(max_length=100)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
 
@@ -56,8 +59,8 @@ class Car(models.Model):
             'patent': self.patent,
             'carType': self.car_type.name,
             'color': self.color,
-            'carModel': self.car_model.name,
-            'costCenter': self.cost_center.name
+            'costCenter': self.cost_center.name,
+            'carModel': self.car_model
         }
 
 

@@ -44,20 +44,6 @@
         }
     },
     {
-        "model": "api.carmodel",
-        "pk": 1,
-        "fields": {
-            "name": "Audi R8"
-        }
-    },
-    {
-        "model": "api.carmodel",
-        "pk": 2,
-        "fields": {
-            "name": "Audi R9"
-        }
-    },
-    {
         "model": "api.cartype",
         "pk": 1,
         "fields": {

@@ -8,6 +8,9 @@ class HomeView(generic.TemplateView):
 class DashboardView(generic.TemplateView):
     template_name = 'dashboard.html'
 
+class CostCenterView(generic.TemplateView):
+    template_name = 'costcenter.html'
 
 home = HomeView.as_view()
 dashboard = DashboardView.as_view()
+costcenter = CostCenterView.as_view()

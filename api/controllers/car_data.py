@@ -18,28 +18,29 @@ class CardDataView(View):
 
     def post(self, request):
         data = json.loads(request.body)
-        try: 
-            self._add_new_car(data)
-            return JsonResponse({
-                "message": "vehiculo agregado correctamente",
-                "status": 200
-            })
-        except:
-            return JsonResponse({
-                "message": "error al agregar vehiculo",
-                "status": 500
-            })
+        # try: 
+        self._add_new_car(data)
+        return JsonResponse({
+            "message": "vehiculo agregado correctamente",
+            "status": 200
+        })
+        # except:
+        #     return JsonResponse({
+        #         "message": "error al agregar vehiculo",
+        #         "status": 500
+        #     })
 
     def _add_new_car(self, data):
         patent = data.get('patent')
         color = data.get('color')
+        cost_center_id = data.get('costCenter')
+        car_type_id = data.get('carType')
 
         car = Car();
         car.patent = patent
         car.color = color
-        car.car_model_id = 1
-        car.car_type_id = 1
-        car.cost_center_id = "J823JDEC8JR9EJASDI"
+        car.car_type_id = car_type_id
+        car.cost_center_id = cost_center_id
         car.save()
 
         return car

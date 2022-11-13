@@ -4,6 +4,7 @@ import service from 'services/dashboard';
 import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
 import Modal from './components/Modal';
+import CarForm from './components/CarForm';
 
 import UserTable from './components/UserTable';
 
@@ -40,9 +41,9 @@ const Dashboard = () => {
       </div>
 
       <div className='cards-wrapper'>
-      {/* <div>
-        <UserForm />
-      </div> */}
+      <div>
+        <CarForm />
+      </div>
         <div className='cards-wrapper'>
           <div className='title'>Lista de Vehículos:</div>
             <div className="table">
@@ -78,7 +79,8 @@ const Dashboard = () => {
               dashboardData.personList.map( item =>
                 <UserTable
                     username={item.username}
-                    email = {item.email} 
+                    email = {item.email}
+                    personType = {item.personType} 
                   />
                 )
             }
