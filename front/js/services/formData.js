@@ -22,6 +22,11 @@ const service = {
   fetchAllCarTypes() {
     const url = '/api/v1/car/type';
     return get(url).then(response => response.json());
+  },
+  registerCostCenter(payload) {
+    const url = '/api/v1/costcenter';
+    return post(url, payload)
+      .then(response => response.json());
   }
 }
 

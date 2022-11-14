@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
-import UserForm from './components/UserForm';
 import service from 'services/dashboard';
 import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
 import Modal from './components/Modal';
 import CarForm from './components/CarForm';
-
-import UserTable from './components/UserTable';
 
 const Dashboard = () => {
   const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
@@ -25,7 +22,7 @@ const Dashboard = () => {
 
         window.location.assign('/');
       })
-  }, []);
+  },[]);
 
   const modal = isRegisterModalOn 
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
@@ -40,7 +37,6 @@ const Dashboard = () => {
         <NavBar onActiveModal={() => setIsRegisterModalOn(true)} />
       </div>
 
-      <div className='cards-wrapper'>
       <div>
         <CarForm />
       </div>
@@ -54,38 +50,20 @@ const Dashboard = () => {
               <div className="content__head">Tipo</div>
               <div className="content__head">Centro de Costo</div>
             </div>
-         </div>
-        {
-          dashboardData.carList.map(car =>
-            <CarCard
-              key={car.patent}
-              patent={car.patent}
-              carModel={car.carModel}
-              carType={car.carType}
-              color={car.color}
-              costCenter={car.costCenter}
-            />
-          )
-        }
-      </div>
-        <div className="content-wrapper">
-          <div className="title__userTable"> Tabla Usuarios</div>
-            <div className="table__user">
-              <div className="table__user__person">Nombre</div>
-              <div className="table__user__person">Email</div>
-              <div className="table__user__person">Tipo de usuario</div>
-            </div>
-            {
-              dashboardData.personList.map( item =>
-                <UserTable
-                    username={item.username}
-                    email = {item.email}
-                    personType = {item.personType} 
-                  />
-                )
-            }
+          </div>
+          {
+            dashboardData.carList.map(car =>
+              <CarCard
+                key={car.patent}
+                patent={car.patent}
+                carModel={car.carModel}
+                carType={car.carType}
+                color={car.color}
+                costCenter={car.costCenter}
+              />
+            )
+          }
         </div>
-      </div>
     </>
   );
 

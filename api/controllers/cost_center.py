@@ -1,7 +1,6 @@
 import json
 from django.views import View
 from django.http import JsonResponse
-# from .forms import UserForm
 from api.models import CostCenter
 
 class CostCenterView(View):

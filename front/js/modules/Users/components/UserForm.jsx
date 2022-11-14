@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import service from 'services/formData';
+import service from '../../../services/formData';
 
 const UserForm = () => {
   const [costCenterOptions, setCostCenterOptions] = useState([]);
@@ -79,7 +79,7 @@ const UserForm = () => {
 
   return(
     <form className="form-register" onSubmit={onSubmit}>
-      <h2 className="form-register__title">Regístrarse</h2>
+      <h2 className="form-register__title">Regístrar</h2>
       <label className="form-register__label" >Nombre</label>
       <input className="form-register__input" ref={name} type="text" placeholder="Nombre completo" required />
       <label className="form-register__label" >Correo Electronico</label>

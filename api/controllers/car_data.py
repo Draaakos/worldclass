@@ -35,12 +35,14 @@ class CardDataView(View):
         color = data.get('color')
         cost_center_id = data.get('costCenter')
         car_type_id = data.get('carType')
+        car_model = data.get('carModel')
 
         car = Car();
         car.patent = patent
         car.color = color
         car.car_type_id = car_type_id
         car.cost_center_id = cost_center_id
+        car.car_model = car_model
         car.save()
 
         return car
