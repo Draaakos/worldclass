@@ -9,6 +9,18 @@ const Banner = () => (
   </div>
 );
 
+const Info = () => (
+  <>
+    <div className="info__left__number">450</div>
+    <div className="container__info">
+    <div className="container__info__title"> Proyectos Completados</div>
+      <div className="container__info__text-two">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate suscipit, voluptates officiis sit vel itaque architecto temporibus consequuntur exercitationem modi assumenda aut pariatur rerum consequatur dolor laborum libero harum neque.</div>
+    </div>
+
+    <div className="info__rigth"> hola</div>
+  </>
+); 
+
 
 const Home = () => {
   return(
@@ -18,7 +30,9 @@ const Home = () => {
           <Banner />
         </div>
       </div>
-      <div className="main-info">aca</div>
+      <div className="main-info">
+        <Info />
+      </div>  
     </section>
   )
 }
