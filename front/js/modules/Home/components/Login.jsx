@@ -25,15 +25,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form className="login__form" onSubmit={onSubmit}>
-        <h2 className="login__title">Iniciar Sesión</h2>
-        <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
-        <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
-        <input className="btn" type="submit" value="Entrar" />
-      </form>
-    </div>
+    <form className="login__form" onSubmit={onSubmit}>
+      <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
+      <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
+      <input className="btn" type="submit" value="Entrar" />
+    </form>
   );
 };
 
 export default Login; 
+

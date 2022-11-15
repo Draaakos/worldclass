@@ -11,13 +11,19 @@ const Banner = () => (
 
 const Info = () => (
   <>
-    <div className="info__left__number">450</div>
-    <div className="container__info">
-    <div className="container__info__title"> Proyectos Completados</div>
-      <div className="container__info__text-two">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate suscipit, voluptates officiis sit vel itaque architecto temporibus consequuntur exercitationem modi assumenda aut pariatur rerum consequatur dolor laborum libero harum neque.</div>
+    <div className="info__left">
+      <div className="info__left__left">450</div>
     </div>
-
-    <div className="info__rigth"> hola</div>
+    <div className="container__info">
+      <div className="container__info__title"> Proyectos Completados
+      <div className="container__info__text-two">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate suscipit, voluptates officiis sit vel itaque architecto temporibus consequuntur exercitationem modi assumenda aut pariatur rerum consequatur dolor laborum libero harum neque.</div>
+      </div>
+    </div>
+    <div className="info">
+      <div className="info__rigth"> CONTRUCCION MODELADO DE INFORMACIÓN
+      <div className="info__rigth__two">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore iste, eligendi reprehenderit, voluptatibus nihil, temporibus architecto excepturi culpa neque animi doloribus esse sed omnis assumenda atque reiciendis dolores quae consectetur?</div>
+      </div>
+    </div>
   </>
 ); 
 
@@ -25,6 +31,9 @@ const Info = () => (
 const Home = () => {
   return(
     <section className="page">
+      <div className="navbar">
+        <Login />
+      </div>
       <div className="banner__wrapper">
         <div className="banner__wrapper-shadow">
           <Banner />

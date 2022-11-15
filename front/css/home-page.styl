@@ -1,6 +1,7 @@
 @require 'ui/config'
-// @require 'modules/login'
+@require 'modules/login'
 // @require 'ui/modal'
+
 
 .page
     display grid
@@ -35,7 +36,10 @@
     align-items center
     justify-content center
     
+
     &__title
+        width 100%
+        height 100%
         font-size 1.8em
         color white
         margin-bottom .5em
@@ -50,26 +54,86 @@
 
 .main-info
     width 100%
-    background-color red
+    background-color black
     display grid
     grid-template-columns repeat(3, 1fr)
 
 
 .info__left
-    background-color red
+    width 100%
+    height 100%
+    text-align center
+    color white
+    
 
+    &__left
+        font-size 100px
+        color #bf930d
+        position relative
+        display flex
+        align-items center
+        justify-content space-around
+        width 100%
+        height 100%
+        margin 0px auto
+        
 
 .container__info
-    background-color blue
+    width 100%
+    height 100%
+    position relative
     
 
     &__title
+        text-align center
         color white
-        
+        position relative
+        width 100%
+        height 100%
+
+
     &__text-two
-        color red
+        color rgba(255, 255, 255, 0.638)
+        position relative
+        align-items center
+        text-align justify
+        padding 20px
 
 
-.info__rigth
+.info
     background-color orange
+    width 100%
+    height 100%
+    margin-top -120px
+    text-align center
+
+ 
+    &__rigth
+        text-align justify
+        text-indent 1em
+        font-size 30px
+        display grid
+        align-items center
+        position relative
+        color rgba(255, 255, 255, 0.862)
+        width 100%
+        height 100%
+        margin 0px auto
+        background-color #3f3f3f
+    
+
+    &__rigth__two
+        font-size 20px
+        background-color #bf930d
+        position relative
+        justify-content space-around
+        align-items center
+        text-align justify
+        display flex
+        margin-top 20px
+        margin 0px auto
+        color rgba(0, 0, 0, 0.587)
+        width 100%
+        height 100%
+        
 
