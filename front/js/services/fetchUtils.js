@@ -15,4 +15,9 @@ const put = (url, data = {}) => fetch(url, {
   body: data
 });
 
-export { post, get, put };
+const onDelete = (url, data)  => fetch(url, {
+  method: 'DELETE',
+  cache: 'no-cache',
+})
+
+export { post, get, put, onDelete };

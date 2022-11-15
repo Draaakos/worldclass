@@ -4,9 +4,10 @@ import NavBar from './components/NavBar';
 import CarCard from './components/CarCard';
 import Modal from './components/Modal';
 import CarForm from './components/CarForm';
+import AddRegisterButton from './components/AddRegisterButton';
 
 const Dashboard = () => {
-  const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
+  const [ isRegisterCar, setIsRegisterCar ] = useState(false); 
   const [ dashboardData, setDashboardData ] = useState({ 
     personList: [], 
     carList: []
@@ -24,24 +25,24 @@ const Dashboard = () => {
       })
   },[]);
 
-  const modal = isRegisterModalOn 
-    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
+  const modal = isRegisterCar 
+    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm /></Modal> 
     : null;
 
 
   const app = (
     <>
-      { modal }
-
+      {modal}
       <div>
-        <NavBar onActiveModal={() => setIsRegisterModalOn(true)} />
+        <NavBar />
       </div>
-
-      <div>
-        <CarForm />
-      </div>
-        <div className='cards-wrapper'>
-          <div className='title'>Lista de Vehículos:</div>
+        <div className='content-wrapper'>
+          <div className='wrapper'>
+            <div className="wrapper__title">
+              Lista de Vehiculos
+            </div>
+            <AddRegisterButton onActiveModal={() => setIsRegisterCar(true)}/>
+          </div>
             <div className="table">
               <div className="content">
               <div className="content__head">Patente</div>
@@ -49,6 +50,7 @@ const Dashboard = () => {
               <div className="content__head">Modelo</div>
               <div className="content__head">Tipo</div>
               <div className="content__head">Centro de Costo</div>
+              <div className="content__head">Opciones</div>
             </div>
           </div>
           {

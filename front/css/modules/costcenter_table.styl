@@ -4,12 +4,23 @@
     padding-top 3em
 
 .wrapper
-    &__title
-        text-align center
-        border 1px solid #efefef
-        background-color rgb(181, 181, 181)
+    display flex
+    justify-content space-between
+    background-color #AD5C36
+    color white
+    text-align center
+    padding 1.3em
 
-.table-costCenter
+    &__title
+        font-size 1.6em
+
+    &__add-button
+        border-radius .3em
+        padding .7em
+        font-size 1.2em
+        background-color #4c9f4c
+        
+.table-costcenter
     display flex
     justify-content space-around
 
@@ -20,7 +31,7 @@
         padding .5em
         width 100%
 
-.costCenter
+.costcenter
     display flex
     justify-content space-around
 
@@ -28,3 +39,11 @@
         border 1px solid #efefef
         padding .5em
         width 100%
+
+    &__options-title
+        width 40%
+
+.options-wrapper
+    display flex
+
+

@@ -1,4 +1,4 @@
-import { get, post } from './fetchUtils.js';
+import { get, post, onDelete } from './fetchUtils.js';
 
 const service = {
   fetchAllCostCenter() {
@@ -26,6 +26,11 @@ const service = {
   registerCostCenter(payload) {
     const url = '/api/v1/costcenter';
     return post(url, payload)
+      .then(response => response.json());
+  },
+  deleteCar(id) {
+    const url = '/api/v1/car/<int:id>';
+    return onDelete(url, id)
       .then(response => response.json());
   }
 }

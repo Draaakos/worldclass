@@ -2,9 +2,13 @@
 const CostCenterTable = ({code, name}) => {
     return (
       <>
-        <div className="costCenter">
-          <div className="costCenter__item">{code}</div>
-          <div className="costCenter__item">{name}</div>
+        <div className="costcenter">
+          <div className="costcenter__item">{code}</div>
+          <div className="costcenter__item">{name}</div>
+          <div className="options-wrapper">
+            <div>Borrar</div>
+            <div>Editar</div>
+          </div>
         </div>
       </> 
     )
