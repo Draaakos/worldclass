@@ -5,8 +5,20 @@ import CarCard from './components/CarCard';
 import Modal from './components/Modal';
 import CarForm from './components/CarForm';
 import AddRegisterButton from './components/AddRegisterButton';
+// import service from 'services/formData';
+
+
+import Table from './components/Table';
+
+
+const PLACE_OPTIONS = ['Patente', 'Color', 'Modelo', 'Tipo', 'Centro de costo', 'Opciones'];
+
 
 const Dashboard = () => {
+  // const [ optionSelectTables, setOptionSelectTables ] = useState({
+
+  // });
+
   const [ isRegisterCar, setIsRegisterCar ] = useState(false); 
   const [ dashboardData, setDashboardData ] = useState({ 
     personList: [], 
@@ -31,7 +43,7 @@ const Dashboard = () => {
 
 
   const app = (
-    <>
+    <div>
       {modal}
       <div>
         <NavBar />
@@ -43,30 +55,13 @@ const Dashboard = () => {
             </div>
             <AddRegisterButton onActiveModal={() => setIsRegisterCar(true)}/>
           </div>
-            <div className="table">
-              <div className="content">
-              <div className="content__head">Patente</div>
-              <div className="content__head">Color</div>
-              <div className="content__head">Modelo</div>
-              <div className="content__head">Tipo</div>
-              <div className="content__head">Centro de Costo</div>
-              <div className="content__head">Opciones</div>
-            </div>
-          </div>
-          {
-            dashboardData.carList.map(car =>
-              <CarCard
-                key={car.patent}
-                patent={car.patent}
-                carModel={car.carModel}
-                carType={car.carType}
-                color={car.color}
-                costCenter={car.costCenter}
-              />
-            )
-          }
+
+          <Table 
+            placeOptions={PLACE_OPTIONS} 
+            rowData={dashboardData.carList} 
+          />
         </div>
-    </>
+    </div>
   );
 
   return (
