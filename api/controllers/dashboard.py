@@ -7,7 +7,6 @@ from api.models import CostCenter
 
 class DashboardView(View):
     def get(self, request, **kwargs):
-        
         if request.session.get('person_logged_id'):
             return JsonResponse({
                 'status': 200,

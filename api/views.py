@@ -10,8 +10,19 @@ from .controllers.person_data import PersonDataView
 from .controllers.person_type import PersonTypeView
 from .controllers.car_type import CarTypeView
 
+class LogoutView(View):
+    def get(self, request):
+        request.session['is_logged'] = 0
+        request.session['person_logged_id'] = None
+
+        return JsonResponse({
+            'msg': 'sesion finalizada'
+        })
+
+
 register = RegisterView.as_view()
 login = LoginView.as_view()
+logout = LogoutView.as_view()
 dashboard = DashboardView.as_view()
 car_data = CardDataView.as_view()
 cost_center = CostCenterView.as_view()
