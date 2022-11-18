@@ -7,9 +7,8 @@ class CostCenter(models.Model):
 
     def to_json(self):
         return {
-            'id': self.id,
-            'name': self.name,
-            'code': self.code
+            'code': self.code,
+            'name': self.name
         }
 
 

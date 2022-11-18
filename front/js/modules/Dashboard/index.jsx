@@ -1,23 +1,17 @@
 import { useEffect, useState } from 'react';
 import service from 'services/dashboard';
-import NavBar from './components/NavBar';
-import CarCard from './components/CarCard';
 import Modal from './components/Modal';
 import CarForm from './components/CarForm';
 import AddRegisterButton from './components/AddRegisterButton';
-// import service from 'services/formData';
-
 
 import Table from './components/Table';
+import TemplatePage from '../Template';
 
 
 const PLACE_OPTIONS = ['Patente', 'Color', 'Modelo', 'Tipo', 'Centro de costo', 'Opciones'];
 
 
 const Dashboard = () => {
-  // const [ optionSelectTables, setOptionSelectTables ] = useState({
-
-  // });
 
   const [ isRegisterCar, setIsRegisterCar ] = useState(false); 
   const [ dashboardData, setDashboardData ] = useState({ 
@@ -42,11 +36,10 @@ const Dashboard = () => {
     : null;
 
 
-  const app = (
+  const page = (
     <div>
       {modal}
       <div>
-        <NavBar />
       </div>
         <div className='content-wrapper'>
           <div className='wrapper'>
@@ -63,6 +56,10 @@ const Dashboard = () => {
         </div>
     </div>
   );
+
+  const app = (
+    <TemplatePage>{page}</TemplatePage>
+  )
 
   return (
     <div>
