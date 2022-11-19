@@ -2,12 +2,13 @@ import json
 from django.views import View
 from django.http import JsonResponse
 from api.models import CostCenter
+from ..utils.cost_center import cost_center_data
 
 class CostCenterView(View):
     def get(self, request, **kwargs):
-        try:   
+        try:
             return JsonResponse({
-                "data": [cost_center.to_json() for cost_center in CostCenter.objects.all()],
+                "data": cost_center_data(),
                 "status": 200
             })
         except:
@@ -72,16 +73,16 @@ class CostCenterView(View):
         try:
             cost_center = CostCenter.objects.get(id=id)
             cost_center.delete()
-            
+
             return JsonResponse({
                 "message": "eliminado correctamente",
                 "status": 200
             })
-        except: 
+        except:
             return JsonResponse({
                 "message": "error al eliminar centro de costo",
                 "status": 500
             })
-        
+
 
 
