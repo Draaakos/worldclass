@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EditablePlace from "./EditablePlace";
+import service from "../../../../services/formData";
 
 const Row = ({ data, gridStyle }) => {
   const [ payload, setPayload ] = useState(data);
@@ -10,8 +11,9 @@ const Row = ({ data, gridStyle }) => {
     setPayload(_payload);
   };
 
-  const onSend = () => {
-    console.log(payload)
+  const onSubmit = evt => {
+    service.registerCar(payload)
+      .then(response => console.log(response))
   }
 
   const rowList = Object.entries(data)
@@ -26,10 +28,13 @@ const Row = ({ data, gridStyle }) => {
       );
     });
 
-
   return (
     <div className="table__row" style={gridStyle}>
       { rowList }
+      <div className="wrapper-icons">
+        <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
+        <i className="fas fa-user-alt-slash wrapper-icons__item"></i>
+      </div>
     </div>
   );
 };  
