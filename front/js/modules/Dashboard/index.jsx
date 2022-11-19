@@ -8,7 +8,7 @@ import Table from './components/Table';
 import TemplatePage from '../Template';
 
 
-const PLACE_OPTIONS = ['Patente', 'Color', 'Modelo', 'Tipo', 'Centro de costo', 'Opciones'];
+const PLACE_OPTIONS = ['Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 'Opciones'];
 
 
 const Dashboard = () => {

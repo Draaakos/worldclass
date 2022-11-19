@@ -3,7 +3,6 @@ import RowHead from "./RowHead"
 
 const Table = ({ placeOptions, rowData }) => {
   const gridStyle = { gridTemplateColumns: `repeat(${placeOptions.length}, 1fr)`};
-
   return (
     <div className="table">
       <RowHead placeOptions={placeOptions} gridStyle={gridStyle} />
