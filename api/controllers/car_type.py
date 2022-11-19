@@ -3,15 +3,16 @@ from django.views import View
 from django.http import JsonResponse
 # from .forms import UserForm
 from api.models import CarType
+from ..utils.car_type import car_type_data
 
 class CarTypeView(View):
     def get(self, request, **kwargs):
         try:
             return JsonResponse({
-                "data": [ car.to_json() for car in CarType.objects.all() ],
+                "data": car_type_data(),
                 "status": 200
             })
-        except: 
+        except:
             return JsonResponse({
                 "message": "error al obtener tipo de vehiculo",
                 "status": 500
@@ -39,7 +40,7 @@ class CarTypeView(View):
         car_type = CarType()
         car_type.name = name
         car_type.save()
-        
+
         return car_type
 
 
@@ -47,7 +48,7 @@ class CarTypeView(View):
         data = json.loads(request.body)
         self._edit_car_type(data, id)
 
-        try: 
+        try:
             return JsonResponse({
                 "message": "vehiculo editado correctamente",
                 "status": 200
@@ -57,7 +58,7 @@ class CarTypeView(View):
                 "message": "error al editar tipo de vehiculo",
                 "status": 500
             })
-    
+
     def _edit_car_type(self, data, id):
         name = data.get('name')
 
@@ -77,7 +78,7 @@ class CarTypeView(View):
                 "message": "vehiculo borrado correctamente",
                 "status": 200
             })
-        except: 
+        except:
             return JsonResponse({
                 "message": "error al eliminar tipo de vehiculo",
                 "status": 500

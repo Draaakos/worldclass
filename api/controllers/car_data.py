@@ -18,7 +18,7 @@ class CardDataView(View):
 
     def post(self, request):
         data = json.loads(request.body)
-        # try: 
+        # try:
         self._add_new_car(data)
         try:
             return JsonResponse({
@@ -48,17 +48,17 @@ class CardDataView(View):
 
         return car
 
-    
+
     def put(self, request, id):
         data = json.loads(request.body)
 
-        try: 
+        try:
             self._edit_car(data, id)
             return JsonResponse({
                 "message": "vehiculo editado correctamente",
                 "status": 200
             })
-        except: 
+        except:
             return JsonResponse({
                 "message": "error al editar vehiculo",
                 "status": 500

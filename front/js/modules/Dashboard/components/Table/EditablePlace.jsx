@@ -1,51 +1,54 @@
 import { useEffect, useState } from "react";
-import service from "../../../../services/formData";
+// import service from "../../../../services/formData";
 
-const EditablePlace = ({ editableKey, value, onChange }) => {
-  const [ isSelectorOption, setIsSelectorOption ] = useState(false);
-  const [ isInputOption, setIsInputOption ] = useState(true);
-  
-  const [ costCenterOptions, setCostCenterOptions ] = useState([])
-  const [ carTypeOptions, setCarTypeOptions ] = useState([])
-  
-  const changeStates = () => {
-    setIsSelectorOption(true)
-    setIsInputOption(false)
-  };
+const EditablePlace = ({
+  editableKey,
+  value,
+  onChange,
+  isSelector,
+  selectorOptions
+}) => {
+  // const [ isSelectorOption, setIsSelectorOption ] = useState(false);
+  // const [ isInputOption, setIsInputOption ] = useState(true);
 
-  useEffect(() => {
-    service.fetchAllCostCenter()
-    .then(response => setCostCenterOptions(response.data))
+  // const [ costCenterOptions, setCostCenterOptions ] = useState([]);
+  // const [ carTypeOptions, setCarTypeOptions ] = useState([]);
 
-    service.fetchAllCarTypes()
-      .then(response => setCarTypeOptions(response.data))
-  }, [])
 
-  const select = isSelectorOption
-    ?
-    <select className='table__select' onChange={evt => onChange(editableKey, evt.target.value)}>
-      {
-        costCenterOptions.map(item => <option key={item.code}>{item.name}</option>)
-      }
+  // console.log(costCenterOptions)
+
+
+  // const changeStates = () => {
+  //   setIsSelectorOption(true)
+  //   setIsInputOption(false)
+  // };
+
+  // useEffect(() => {
+  //   service.fetchAllCostCenter()
+  //   .then(response => setCostCenterOptions(response.data));
+
+  //   service.fetchAllCarTypes()
+  //     .then(response => setCarTypeOptions(response.data));
+  // }, []);
+
+  // <select className='table__select' onChange={evt => onChange(editableKey, evt.target.value)}></select>
+  const content = isSelector ? (
+    <select>
+      { selectorOptions.map(item => <option key={item.code}>{item.name}</option>) }
     </select>
-    : null
-
-
-  const input = isInputOption
-  ?
-  <input 
-    onChange={evt => onChange(editableKey, evt.target.value)} 
-    defaultValue={value} 
-    onClick={changeStates}
-  />
-  : null
-
-  return (
-    <div>
-      {select}
-      {input}
-    </div>
+  ) : (
+    <input
+      // onChange={evt => onChange(editableKey, evt.target.value)}
+      defaultValue={value}
+      // onClick={changeStates}
+    />
   );
+
+  return <div>{content}</div>;
 }
+
+EditablePlace.defaultProps = {
+  selectorOptions: []
+};
 
 export default EditablePlace;

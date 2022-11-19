@@ -12,10 +12,9 @@ const PLACE_OPTIONS = ['Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 
 
 
 const Dashboard = () => {
-
-  const [ isRegisterCar, setIsRegisterCar ] = useState(false); 
-  const [ dashboardData, setDashboardData ] = useState({ 
-    personList: [], 
+  const [ isRegisterCar, setIsRegisterCar ] = useState(false);
+  const [ dashboardData, setDashboardData ] = useState({
+    personList: [],
     carList: []
   });
 
@@ -29,10 +28,11 @@ const Dashboard = () => {
 
         window.location.assign('/');
       })
-  },[]);
+  }, []);
 
-  const modal = isRegisterCar 
-    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm /></Modal> 
+
+  const modal = isRegisterCar
+    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm /></Modal>
     : null;
 
 
@@ -49,23 +49,20 @@ const Dashboard = () => {
             <AddRegisterButton onActiveModal={() => setIsRegisterCar(true)}/>
           </div>
 
-          <Table 
-            placeOptions={PLACE_OPTIONS} 
-            rowData={dashboardData.carList} 
+          <Table
+            placeOptions={PLACE_OPTIONS}
+            rowData={dashboardData.carList}
+            selectorList={dashboardData.selectors}
           />
         </div>
     </div>
   );
 
-  const app = (
-    <TemplatePage>{page}</TemplatePage>
-  )
+  const app = <TemplatePage>{page}</TemplatePage>;
+  const defaultMessage = <span>Debes iniciar sesión</span>;
+  const content = dashboardData.personList.length ? app : defaultMessage;
 
-  return (
-    <div>
-      { dashboardData.personList.length ? app : <span>Debes iniciar sesión</span> }
-    </div>
-  );
+  return <div>{content}</div>
 };
 
 export default Dashboard;
