@@ -1,6 +1,10 @@
-static
 node_modules
+media
+nginx
+static
+static-root
 *.sqlite3
-.DS_Store
 __pycache__/
+*/__pycache__/*
  *.pyc
+ *.xlsx
