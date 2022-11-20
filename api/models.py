@@ -57,9 +57,9 @@ class Car(models.Model):
     def to_json(self):
         return {
             'patent': self.patent,
-            'carType': self.car_type.name,
+            'carType': self.car_type.id,
             'color': self.color,
-            'costCenter': self.cost_center.name,
+            'costCenter': self.cost_center.id,
             'carModel': self.car_model
         }
 

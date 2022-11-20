@@ -17,7 +17,7 @@ const Row = ({ data, gridStyle, selectorList }) => {
       .then(response => console.log(response))
   }
 
-  const rowList = Object.entries(data)
+  const rowList = Object.entries(payload)
     .map((values, index) => {
       const editableKey = values[0];
       const value = values[1];
@@ -25,7 +25,6 @@ const Row = ({ data, gridStyle, selectorList }) => {
 
       let selectorData = [];
       if(isSelector) {
-        console.log(editableKey)
         const _selectorData = selectorList.find(item => item.key == editableKey);
         selectorData = _selectorData.values;
       };
@@ -38,7 +37,6 @@ const Row = ({ data, gridStyle, selectorList }) => {
             onChange={onChange}
             isSelector={isSelector}
             selectorOptions={selectorData}
-            // onClick={changeState}
           />
         </div>
       );

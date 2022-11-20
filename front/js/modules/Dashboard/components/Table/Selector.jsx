@@ -1,29 +1,34 @@
 import { useState } from "react";
 
-const Selector = ({selectorOptions, defaultValue, editableKey}) => {
+const Selector = ({
+  selectorOptions,
+  defaultValue,
+  editableKey,
+  onChange
+}) => {
   const [ selectorState, setSelectorState ] = useState(true)
-  const [ selectorValue, setSelectorValue ] = useState('')
 
   const onActiveInput = () => {
     setSelectorState(false)
-  }
-  
-  const onChange = (evt) => {
-    setSelectorValue(evt.target.value)
-  }
-  
-  console.log('selector value', selectorValue)
-  
-  const content = selectorState ? (
-    <input 
-      defaultValue={defaultValue}
-      onClick={onActiveInput}
-    />
-  ) : (
-    <select className="table-selector" onChange={evt => onChange(editableKey, selectorValue)}>
-      { selectorOptions.map(item => <option value={item.id} key={item.id}>{item.name}</option>) }
-    </select>
-  )
+  };
+
+  const onSelectNewOption = evt => {
+    onChange(editableKey, evt.target.value);
+    setSelectorState(true);
+  };
+
+  const content = selectorState
+    ? <div onClick={onActiveInput}>{selectorOptions.find(option => option.id == defaultValue).name}</div>
+    : (
+      <select className="table-selector" onChange={onSelectNewOption}>
+        {
+          selectorOptions.map(item => item.id == defaultValue
+            ? <option value={item.id} key={item.id} selected>{item.name}</option>
+            : <option value={item.id} key={item.id}>{item.name}</option>
+          )
+        }
+      </select>
+    );
 
   return (
     <div>{content}</div>
