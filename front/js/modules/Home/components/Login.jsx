@@ -37,7 +37,7 @@ const Login = () => {
       <div className={navbarLoginContainerClasses}>
         <div onClick={() => setIsActiveLogin(false)} className="login-close-button">x</div>
         <div className="login-section">
-          <form className="login-form">
+          <form className="login-form" onSubmit={onSubmit}>
             <input className="login-form__item login-form__input" ref={usernameRef} type="text" placeholder="Usuario" required />
             <input className="login-form__item login-form__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
             <input className="login-form__item login-form__button" type="submit" value="Entrar" />
@@ -45,11 +45,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-    // <form className="login__form" onSubmit={onSubmit}>
-    //   <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
-    //   <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
-    //   <input className="btn" type="submit" value="Entrar" />
-    // </form>
   );
 };
 
