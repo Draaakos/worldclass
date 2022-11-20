@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import classNames from "classnames";
 import service from 'services/auth.js';
 
 const Login = () => {
+  const [ isActiveLogin, setIsActiveLogin ] = useState(false);
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -24,12 +26,30 @@ const Login = () => {
       })
   };
 
+  const navbarLoginContainerClasses = classNames({
+    'navbar-login__container': true,
+    'navbar-login__container--active': isActiveLogin
+  });
+
   return (
-    <form className="login__form" onSubmit={onSubmit}>
-      <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
-      <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
-      <input className="btn" type="submit" value="Entrar" />
-    </form>
+    <div className="navbar-login">
+      <div className="navbar-button-login" onClick={() => setIsActiveLogin(true)}>Login</div>
+      <div className={navbarLoginContainerClasses}>
+        <div onClick={() => setIsActiveLogin(false)} className="login-close-button">x</div>
+        <div className="login-section">
+          <form className="login-form">
+            <input className="login-form__item login-form__input" ref={usernameRef} type="text" placeholder="Usuario" required />
+            <input className="login-form__item login-form__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
+            <input className="login-form__item login-form__button" type="submit" value="Entrar" />
+          </form>
+        </div>
+      </div>
+    </div>
+    // <form className="login__form" onSubmit={onSubmit}>
+    //   <input className="login__input" ref={usernameRef} type="text" placeholder="Usuario" required />
+    //   <input className="login__input" ref={passwordRef} type="password" placeholder="Contraseña" required />
+    //   <input className="btn" type="submit" value="Entrar" />
+    // </form>
   );
 };
 

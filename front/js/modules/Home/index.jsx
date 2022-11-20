@@ -1,3 +1,4 @@
+import React from 'react';
 import Login from './components/Login';
 
 const Banner = () => (
@@ -10,29 +11,32 @@ const Banner = () => (
 );
 
 const Info = () => (
-  <>
-    <div className="info__left">
+  <React.Fragment>
+    <div className="main-info__container">
       <div className="info__left__left">2022</div>
     </div>
-    <div className="container__info">
-      <div className="container__info__title"> Líderes en mitigación y colectores de polvo</div>
-      <div className="container__info__text-two">Somos una empresa dedicada a prestar servicios a la industria minería en el control de material particulado en minería y otros procesos integrales</div>
-    </div>
-    <div className="info">
-      <div className="info__rigth"> Controlemos Nuestra Empresa
-      <div className="info__rigth__two">Permita que nuestra preocupación prematura se convierta en pensamiento y planificación</div>
+    <div className="main-info__container">
+      <div>
+        <div className="container__info__title"> Líderes en mitigación y colectores de polvo</div>
+        <div className="container__info__text-two">Somos una empresa dedicada a prestar servicios a la industria minería en el control de material particulado en minería y otros procesos integrales</div>
       </div>
     </div>
-  </>
+    <div className="main-info__container">
+      <div className='main-info__absolute'>
+        <div className="main-block-head">
+          <span>Controlemos Nuestra Empresa</span>
+        </div>
+        <div className="main-block-body">Permita que nuestra preocupación prematura se convierta en pensamiento y planificación</div>
+      </div>
+    </div>
+  </React.Fragment>
 ); 
 
 
 const Home = () => {
   return(
     <section className="page">
-      <div className="navbar-login">
-        <Login />
-      </div>
+      <Login />
       <div className="banner__wrapper">
         <div className="banner__wrapper-shadow">
           <Banner />
