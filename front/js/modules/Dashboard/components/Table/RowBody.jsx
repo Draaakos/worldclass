@@ -17,7 +17,6 @@ const Row = ({ data, gridStyle, selectorList }) => {
       .then(response => console.log(response))
   }
 
-
   const rowList = Object.entries(data)
     .map((values, index) => {
       const editableKey = values[0];
@@ -39,6 +38,7 @@ const Row = ({ data, gridStyle, selectorList }) => {
             onChange={onChange}
             isSelector={isSelector}
             selectorOptions={selectorData}
+            // onClick={changeState}
           />
         </div>
       );
