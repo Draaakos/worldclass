@@ -6,7 +6,23 @@ const service = {
 
     return get(url)
       .then(response => response.json());
+  },
+  logout(){
+    const url = '/api/v1/logout';
+    
+    return get(url)
+      .then(response => response.json());
   }
 }
 
 export default service;
+
+
+
+
+
+
+
+
+
+

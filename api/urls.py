@@ -16,4 +16,5 @@ urlpatterns = [
     path('person/<int:id>', views.person_data, name='person_data'),
     path('person/type', views.person_type, name='person_type'),
     path('person/type/<int:id>', views.person_type, name='person_type')
+    
 ]

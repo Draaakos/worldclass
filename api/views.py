@@ -10,6 +10,7 @@ from .controllers.person_data import PersonDataView
 from .controllers.person_type import PersonTypeView
 from .controllers.car_type import CarTypeView
 
+
 class LogoutView(View):
     def get(self, request):
         request.session['is_logged'] = 0
