@@ -30,7 +30,7 @@ const Info = () => (
 const Home = () => {
   return(
     <section className="page">
-      <div className="navbar">
+      <div className="navbar-login">
         <Login />
       </div>
       <div className="banner__wrapper">
