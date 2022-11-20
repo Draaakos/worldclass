@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Selector from "./Selector";
 // import service from "../../../../services/formData";
 
 const EditablePlace = ({
@@ -9,7 +10,7 @@ const EditablePlace = ({
   selectorOptions
 }) => {
   // const [ isSelectorOption, setIsSelectorOption ] = useState(false);
-  // const [ isInputOption, setIsInputOption ] = useState(true);
+  // const [ isInput, setIsInput ] = useState(true);
 
   // const [ costCenterOptions, setCostCenterOptions ] = useState([]);
   // const [ carTypeOptions, setCarTypeOptions ] = useState([]);
@@ -33,9 +34,10 @@ const EditablePlace = ({
 
   // <select className='table__select' onChange={evt => onChange(editableKey, evt.target.value)}></select>
   const content = isSelector ? (
-    <select>
-      { selectorOptions.map(item => <option key={item.code}>{item.name}</option>) }
-    </select>
+    // <select className="table-selector">
+    //   { selectorOptions.map(item => <option key={item.code}>{item.name}</option>) }
+    // </select>
+    <Selector selectorOptions={selectorOptions} defaultValue={value} editableKey={editableKey} onChange={onChange}/>
   ) : (
     <input
       // onChange={evt => onChange(editableKey, evt.target.value)}
@@ -47,8 +49,8 @@ const EditablePlace = ({
   return <div>{content}</div>;
 }
 
-EditablePlace.defaultProps = {
-  selectorOptions: []
-};
+// EditablePlace.defaultProps = {
+//   selectorOptions: []
+// };
 
 export default EditablePlace;
