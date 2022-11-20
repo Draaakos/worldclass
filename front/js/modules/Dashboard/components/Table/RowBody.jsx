@@ -23,6 +23,8 @@ const Row = ({ data, gridStyle, selectorList }) => {
       const value = values[1];
       const isSelector = !!(selectors.indexOf(editableKey) != -1);
 
+      if(editableKey == 'id') return null;
+
       let selectorData = [];
       if(isSelector) {
         const _selectorData = selectorList.find(item => item.key == editableKey);
@@ -40,7 +42,8 @@ const Row = ({ data, gridStyle, selectorList }) => {
           />
         </div>
       );
-    });
+    })
+    .filter(x => x)
 
   return (
     <div className="table__row" style={gridStyle}>
@@ -57,7 +60,7 @@ Row.defaultProps = {
   selectorList: []
 };
 
-const RowBody = ({ rowData, gridStyle, selectorList }) => (
+const RowBody = ({ rowData, gridStyle, selectorList }) => (console.log(rowData),
   <div className="table__body">
     {
       rowData.map((data, index) =>

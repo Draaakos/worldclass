@@ -11,23 +11,21 @@ import Footer from "../Dashboard/components/Footer";
 const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Opciones'];
 
 const CostCenter = () => {
-  const [ isRegisterCostCenter, setIsRegisterCostCenter ] = useState(false); 
-  const [ costCenterData, setCostCenterData ] = useState({
-    costcenterList: []
-  });
+  const [ isRegisterCostCenter, setIsRegisterCostCenter ] = useState(false);
+  const [ costCenterList, setCostCenterList ] = useState([]);
 
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
-          setCostCenterData(response);
+          setCostCenterList(response.costCenterList);
           return;
         }
       })
   }, []);
 
-  const modal = isRegisterCostCenter 
-    ? <Modal onCloseModal={() => setIsRegisterCostCenter(false)}><CostCenterForm /></Modal> 
+  const modal = isRegisterCostCenter
+    ? <Modal onCloseModal={() => setIsRegisterCostCenter(false)}><CostCenterForm /></Modal>
     : null;
 
   const costCenterPage = (
@@ -38,9 +36,10 @@ const CostCenter = () => {
           <div className="wrapper__title">Lista de Centros de Costo</div>
           <AddRegisterButton onActiveModal={() => setIsRegisterCostCenter(true)} />
         </div>
-        <Table 
-          placeOptions={PLACE_OPTIONS} 
-          rowData={costCenterData.costcenterList} 
+        <Table
+          placeOptions={PLACE_OPTIONS}
+          rowData={costCenterList}
+          selectorList={[]}
         />
       </div>
     </div>
