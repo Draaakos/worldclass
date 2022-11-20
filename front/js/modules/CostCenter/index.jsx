@@ -13,7 +13,7 @@ const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Opciones'];
 const CostCenter = () => {
   const [ isRegisterCostCenter, setIsRegisterCostCenter ] = useState(false); 
   const [ costCenterData, setCostCenterData ] = useState({
-    costcenterList: []
+    costCenterList: []
   });
 
   useEffect(() => {
@@ -25,6 +25,8 @@ const CostCenter = () => {
         }
       })
   }, []);
+
+  console.log(costCenterData)
 
   const modal = isRegisterCostCenter 
     ? <Modal onCloseModal={() => setIsRegisterCostCenter(false)}><CostCenterForm /></Modal> 
@@ -40,7 +42,7 @@ const CostCenter = () => {
         </div>
         <Table 
           placeOptions={PLACE_OPTIONS} 
-          rowData={costCenterData.costcenterList} 
+          rowData={costCenterData.costCenterList} 
         />
       </div>
     </div>
