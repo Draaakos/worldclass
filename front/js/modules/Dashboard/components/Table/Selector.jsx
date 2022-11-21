@@ -18,7 +18,7 @@ const Selector = ({
   };
 
   const content = selectorState
-    ? <div onClick={onActiveInput}>{selectorOptions.find(option => option.id == defaultValue).name}</div>
+    ? <div onClick={onActiveInput} className="table__row__item select">{selectorOptions.find(option => option.id == defaultValue).name}</div>
     : (
       <select className="table-selector" onChange={onSelectNewOption}>
         {

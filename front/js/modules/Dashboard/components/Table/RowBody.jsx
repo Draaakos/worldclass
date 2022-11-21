@@ -5,16 +5,19 @@ import service from "../../../../services/formData";
 const Row = ({ data, gridStyle, selectorList }) => {
   const selectors = selectorList.map(element => element.key);
   const [ payload, setPayload ] = useState(data);
+  const [ onActiveButton, setOnActiveButton ] = useState(false)
 
   const onChange = (key, value) => {
     const _payload = { ...payload };
     _payload[key] = value;
     setPayload(_payload);
+    setOnActiveButton(true)
   };
 
   const onSubmit = evt => {
     service.registerCar(payload)
       .then(response => console.log(response))
+    setOnActiveButton(false)
   }
 
   const rowList = Object.entries(payload)
@@ -45,11 +48,16 @@ const Row = ({ data, gridStyle, selectorList }) => {
     })
     .filter(x => x)
 
+    const editButton = onActiveButton ?
+      <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
+    : null
+
+
   return (
     <div className="table__row" style={gridStyle}>
       { rowList }
       <div className="wrapper-icons">
-        <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
+        {editButton}
         <i className="fas fa-user-alt-slash wrapper-icons__item"></i>
       </div>
     </div>
