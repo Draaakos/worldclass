@@ -1,7 +1,7 @@
 import { useState } from "react";
-import EditablePlace from "./EditablePlace";
 import service from "../../../../services/formData";
 import EditableInput from "ui/EditableInput";
+import Selector from "../../../../ui/Selector";
 
 const Row = ({ data, gridStyle, selectorList }) => {
   const selectors = selectorList.map(element => element.key);
@@ -37,14 +37,14 @@ const Row = ({ data, gridStyle, selectorList }) => {
 
       return (
         <div className="table__row__item" key={`table-row-item-${index}`}>
-          <EditableInput />
-          {/* <EditablePlace
-            editableKey={editableKey}
-            value={value}
+          <EditableInput 
             onChange={onChange}
             isSelector={isSelector}
             selectorOptions={selectorData}
-          /> */}
+            editableKey={editableKey}
+            value={value}
+          />
+          {/* <Selector classes='select --active' /> */}
         </div>
       );
     })
