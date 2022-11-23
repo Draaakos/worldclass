@@ -1,92 +1,111 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto/Roboto-Regular.ttf');
-}
+.table
+    &__row
+        display grid
+        margin-bottom .5em
 
-.content-wrapper
-    min-height 500px
-    max-width 1500px
-    margin 3em auto
-    box-shadow rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
-    font-family: 'Roboto';
+        &__item
+            border 1px solid #efefef
 
-.wrapper
-    display flex
-    justify-content space-between
-    background-color #699361
-    color white
-    padding 1em
-    
-    &__title
-        text-align center
-    
-    &__add-button
-        background-color #2d2d2d
-        color white
-        border-radius 1.5em
-        padding .4em
+            input
+                border 0
+                width 100%
+                height 100%
+                padding .5em
 
-        &:hover
-            box-shadow rgba(0, 0, 0, 0.341) 0px 3px 8px
-            cursor pointer
-            transition-duration 0.6s
-
-
-.table__row
-    text-align center
-    font-size .8em
-
-    &__item div
-        font-size .9em
-
-    &__item input
-        text-align center
-        font-size .8em
-
-.select
-    display flex
-    justify-content center
-    align-items center
-
-.wrapper-icons
-    display flex
-    justify-content space-around
-
-    &__item
-        background-color #82ab7a
-        padding .3em
-        border-radius .2em
-
-        &:hover
-            cursor pointer
-            background-color #6e9068
-
-.table-selector
-        border none
-        background-color white
-        font-size .8em
-
-@media screen and (min-width: 1024px)
-    .wrapper
-        &__title
-            font-size 1.4em
-
-        &__add-button
-            padding 1em
-
-    .table__row
-        font-size 1.2em
-
-.wrapper-icons
-    &__item
-        padding .5em
-
-.table-selector
-    padding .7em
-    
+                &:focus
+                    outline none
 
 
 
 
+// @font-face {
+//     font-family: 'Roboto';
+//     src: url('../fonts/Roboto/Roboto-Regular.ttf');
+// }
 
-        
+// .content-wrapper
+//     min-height 500px
+//     max-width 1500px
+//     margin 3em auto
+//     box-shadow rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
+//     font-family: 'Roboto';
+
+// .wrapper
+//     display flex
+//     justify-content space-between
+//     background-color #699361
+//     color white
+//     padding 1em
+
+//     &__title
+//         text-align center
+
+//     &__add-button
+//         background-color #2d2d2d
+//         color white
+//         border-radius 1.5em
+//         padding .4em
+
+//         &:hover
+//             box-shadow rgba(0, 0, 0, 0.341) 0px 3px 8px
+//             cursor pointer
+//             transition-duration 0.6s
+
+
+// .table__row
+//     text-align center
+//     font-size .8em
+
+//     &__item div
+//         font-size .9em
+
+//     &__item input
+//         text-align center
+//         font-size .8em
+
+// .select
+//     display flex
+//     justify-content center
+//     align-items center
+
+// .wrapper-icons
+//     display flex
+//     justify-content space-around
+
+//     &__item
+//         background-color #82ab7a
+//         padding .3em
+//         border-radius .2em
+
+//         &:hover
+//             cursor pointer
+//             background-color #6e9068
+
+// .table-selector
+//         border none
+//         background-color white
+//         font-size .8em
+
+// @media screen and (min-width: 1024px)
+//     .wrapper
+//         &__title
+//             font-size 1.4em
+
+//         &__add-button
+//             padding 1em
+
+//     .table__row
+//         font-size 1.2em
+
+// .wrapper-icons
+//     &__item
+//         padding .5em
+
+// .table-selector
+//     padding .7em
+
+
+
+
+
+

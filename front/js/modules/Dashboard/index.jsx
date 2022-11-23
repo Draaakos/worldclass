@@ -3,6 +3,7 @@ import service from 'services/dashboard';
 import Modal from './components/Modal';
 import CarForm from './components/CarForm';
 import AddRegisterButton from './components/AddRegisterButton';
+import Button from 'ui/Button';
 
 import Table from './components/Table';
 import TemplatePage from '../Template';
@@ -41,12 +42,14 @@ const Dashboard = () => {
       {modal}
       <div>
       </div>
-        <div className='content-wrapper'>
-          <div className='wrapper'>
-            <div className="wrapper__title">
+        <div>
+          <div className="hero-dual hero-primary">
+            <div>
               Lista de Vehiculos
             </div>
-            <AddRegisterButton onActiveModal={() => setIsRegisterCar(true)}/>
+            <div>
+              <Button text="Crear nuevo" classes="button--primary" onClick={() => setIsRegisterCar(true)} />
+            </div>
           </div>
 
           <Table

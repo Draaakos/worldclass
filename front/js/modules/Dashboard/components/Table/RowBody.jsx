@@ -1,17 +1,18 @@
 import { useState } from "react";
 import EditablePlace from "./EditablePlace";
 import service from "../../../../services/formData";
+import EditableInput from "ui/EditableInput";
 
 const Row = ({ data, gridStyle, selectorList }) => {
   const selectors = selectorList.map(element => element.key);
   const [ payload, setPayload ] = useState(data);
-  const [ onActiveButton, setOnActiveButton ] = useState(false)
+  const [ onActiveButton, setOnActiveButton ] = useState(false);
 
   const onChange = (key, value) => {
     const _payload = { ...payload };
     _payload[key] = value;
     setPayload(_payload);
-    setOnActiveButton(true)
+    setOnActiveButton(true);
   };
 
   const onSubmit = evt => {
@@ -36,26 +37,27 @@ const Row = ({ data, gridStyle, selectorList }) => {
 
       return (
         <div className="table__row__item" key={`table-row-item-${index}`}>
-          <EditablePlace
+          <EditableInput />
+          {/* <EditablePlace
             editableKey={editableKey}
             value={value}
             onChange={onChange}
             isSelector={isSelector}
             selectorOptions={selectorData}
-          />
+          /> */}
         </div>
       );
     })
-    .filter(x => x)
+    .filter(x => x);
 
-    const editButton = onActiveButton ?
-      <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
-    : null
-
+    const editButton = onActiveButton
+      ? <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
+      : null
 
   return (
     <div className="table__row" style={gridStyle}>
       { rowList }
+
       <div className="wrapper-icons">
         {editButton}
         <i className="fas fa-user-alt-slash wrapper-icons__item"></i>
@@ -68,8 +70,12 @@ Row.defaultProps = {
   selectorList: []
 };
 
-const RowBody = ({ rowData, gridStyle, selectorList }) => (console.log(rowData),
-  <div className="table__body">
+const RowBody = ({
+  rowData,
+  gridStyle,
+  selectorList
+}) => (
+  <div className="table__body table--grid-6">
     {
       rowData.map((data, index) =>
         <Row
