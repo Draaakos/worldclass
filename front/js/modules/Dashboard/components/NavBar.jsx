@@ -9,7 +9,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <h2 className="navbar__title">World Class</h2>
+      <h2 className="navbar__title">Worldclass</h2>
       <div className="navbar__wrapper-items">
         <a className="navbar__item" href="/dashboard">Inicio</a>
         <a className="navbar__item" href="/dashboard/user">Usuarios</a>
