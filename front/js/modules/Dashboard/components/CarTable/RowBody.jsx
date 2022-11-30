@@ -1,90 +1,57 @@
 import { useState } from "react";
+import classNames from "classnames";
 import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
-// import service from "../../../../services/formData";
-// import EditableInput from "ui/EditableInput";
-// import Selector from "../../../../ui/Selector";
+import service from "../../../../services/formData";
 
-// const Row = ({ data, gridStyle, selectorList }) => {
-//   const selectors = selectorList.map(element => element.key);
-//   const [ payload, setPayload ] = useState(data);
-//   const [ onActiveButton, setOnActiveButton ] = useState(false);
 
-//   const onChange = (key, value) => {
-//     const _payload = { ...payload };
-//     _payload[key] = value;
-//     setPayload(_payload);
-//     setOnActiveButton(true);
-//   };
+const Row = ({ data, selectors }) => {
+  const [ payload, setPayload ] = useState(data);
+  const [ editableActive, setEditableActive ] = useState(false);
 
-//   const onSubmit = evt => {
-//     service.registerCar(payload)
-//       .then(response => console.log(response))
-//     setOnActiveButton(false)
-//   }
+  const editableButtonClasses = classNames([
+    'button',
+    'button--info'
+  ], {
+    'button--hidden': !editableActive
+  });
 
-//   const rowList = Object.entries(payload)
-//     .map((values, index) => {
-//       const editableKey = values[0];
-//       const value = values[1];
-//       const isSelector = !!(selectors.indexOf(editableKey) != -1);
+  const onChange = (key, value) => {
+    const _payload = { ...payload };
+    _payload[key] = value;
+    setPayload(_payload);
+    setEditableActive(true);
+  };
 
-//       if(editableKey == 'id') return null;
+  const onEdit = id => {
+    return () => {
+      service.updateCar(payload, id)
+      setEditableActive(false);
+    }
+  }
 
-//       let selectorData = [];
-//       if(isSelector) {
-//         const _selectorData = selectorList.find(item => item.key == editableKey);
-//         selectorData = _selectorData.values;
-//       };
+  const onDelete = id => {
+    return () => {
+      service.deleteCar(id)
+      setEditableActive(false);
+    }
+  }
 
-//       return (
-//         <div className="table__row__item" key={`table-row-item-${index}`}>
-//           <EditableInput
-//             onChange={onChange}
-//             isSelector={isSelector}
-//             selectorOptions={selectorData}
-//             editableKey={editableKey}
-//             value={value}
-//           />
-//           {/* <Selector classes='select --active' /> */}
-//         </div>
-//       );
-//     })
-//     .filter(x => x);
-
-//     const editButton = onActiveButton
-//       ? <i className="fas fa-pen wrapper-icons__item" onClick={onSubmit}></i>
-//       : null
-
-//   return (
-//     <div className="table__row" style={gridStyle}>
-//       { rowList }
-
-//       <div className="wrapper-icons">
-//         {editButton}
-//         <i className="fas fa-user-alt-slash wrapper-icons__item"></i>
-//       </div>
-//     </div>
-//   );
-// };
-
-// Row.defaultProps = {
-//   selectorList: []
-// };
-
-const Row = ({ data, selectors }) => (
-  <div className="car-table__row">
-    <div><EditableInput value={data.patent}/></div>
-    <div><Selector data={selectors.carType}/></div>
-    <div><EditableInput value={data.color}/></div>
-    <div><Selector data={selectors.costCenter}/></div>
-    <div><EditableInput value={data.carModel}/></div>
-    <div>
-      <button>Editar</button>
-      <button>Eliminar</button>
+  return (
+    <div className="car-table__row">
+      <div><EditableInput value={data.patent} onChange={onChange} valueKey="patent"/></div>
+      <div><Selector value={data.carType} data={selectors.carType} onChange={onChange} valueKey="carType"/></div>
+      <div><EditableInput value={data.color} onChange={onChange} valueKey="color"/></div>
+      <div><Selector value={data.costCenter} data={selectors.costCenter} onChange={onChange} valueKey="costCenter"/></div>
+      <div><EditableInput value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
+      <div className="car-table__options">
+        <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button>
+        <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 const RowBody = ({ data, selectors }) => (
   <div>

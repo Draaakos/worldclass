@@ -1,10 +1,11 @@
 import Selector from "./Selector";
 
-const EditableInput = ({ onChange, value }) => {
+const EditableInput = ({ onChange, valueKey, value }) => {
   return (
     <input
+      className="editable-input"
       type="text"
-      onChange={evt => onChange(evt.target.value)}
+      onChange={evt => onChange(valueKey, evt.target.value)}
       defaultValue={value}
     />
   )

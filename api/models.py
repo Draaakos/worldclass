@@ -48,7 +48,7 @@ class CarType(models.Model):
 
 
 class Car(models.Model):
-    patent = models.CharField(max_length=50, unique=True, primary_key=True )
+    patent = models.CharField(max_length=6)
     color = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
@@ -56,6 +56,7 @@ class Car(models.Model):
 
     def to_json(self):
         return {
+            'id': self.id,
             'patent': self.patent,
             'carType': self.car_type.id,
             'color': self.color,

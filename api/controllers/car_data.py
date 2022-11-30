@@ -18,7 +18,7 @@ class CardDataView(View):
 
     def post(self, request):
         data = json.loads(request.body)
-        # try:
+
         self._add_new_car(data)
         try:
             return JsonResponse({
@@ -49,8 +49,9 @@ class CardDataView(View):
         return car
 
 
-    def put(self, request, id):
+    def put(self, request, **kwargs):
         data = json.loads(request.body)
+        id = kwargs.get('id')
 
         try:
             self._edit_car(data, id)
@@ -67,19 +68,26 @@ class CardDataView(View):
 
     def _edit_car(self, data, id):
         color = data.get('color')
-        cost_center = data.get('cost_center')
+        cost_center = data.get('costCenter')
+        car_model = data.get('carModel')
+        car_type = data.get('carType')
 
-        car = Car.objects.get(patent=id)
+        car = Car.objects.get(pk=id)
         car.color = color
+        car.car_model = car_model
+        car.car_type_id = car_type
         car.cost_center_id = cost_center
         car.save()
 
         return car
 
-    def delete(self, id):
+    def delete(self, request, **kwargs):
+        id = kwargs.get('id')
+
         try:
-            car = Car.objects.get(patent=id)
+            car = Car.objects.get(pk=id)
             car.delete()
+
             return JsonResponse({
                 "message": "Vehiculo eliminado correctamente",
                 "status": 200

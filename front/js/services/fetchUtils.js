@@ -12,10 +12,10 @@ const get = (url) => fetch(url, {
 const put = (url, data = {}) => fetch(url, {
   method: 'PUT',
   cache: 'no-cache',
-  body: data
+  body: JSON.stringify(data)
 });
 
-const onDelete = (url, data)  => fetch(url, {
+const onDelete = (url)  => fetch(url, {
   method: 'DELETE',
   cache: 'no-cache',
 })
