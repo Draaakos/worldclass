@@ -3,13 +3,13 @@ import service from '../../services/dashboard';
 import UserForm from "./components/UserForm";
 import Modal from "../Dashboard/components/Modal";
 import AddRegisterButton from "../Dashboard/components/AddRegisterButton";
-import Table from "../Dashboard/components/Table";
+import CarTable from "../Dashboard/components/CarTable";
 import TemplatePage from "../Template";
 
 const PLACE_OPTIONS = ['Nombre', 'Email', 'Tipo de Usuario', 'Opciones'];
 
 const Users = () => {
-  const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false); 
+  const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false);
   const [ userData, setUserData ] = useState({
     personList: []
   });
@@ -24,8 +24,8 @@ const Users = () => {
       })
   }, []);
 
-  const modal = isRegisterModalOn 
-    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal> 
+  const modal = isRegisterModalOn
+    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal>
     : null;
 
   const usersPage = (
@@ -39,15 +39,15 @@ const Users = () => {
           <AddRegisterButton onActiveModal={() => setIsRegisterModalOn(true)}/>
         </div>
 
-        <Table 
-          placeOptions={PLACE_OPTIONS} 
-          rowData={userData.personList} 
+        <CarTable
+          placeOptions={PLACE_OPTIONS}
+          rowData={userData.personList}
         />
 
       </div>
     </div>
   )
-  
+
   return (
     <TemplatePage>
       {usersPage}

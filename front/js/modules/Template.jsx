@@ -1,8 +1,8 @@
 import React from 'react'
-import NavBar from './Dashboard/components/NavBar'
-import Footer from './Dashboard/components/Footer'
+import NavBar from './Dashboard/components/NavBar';
+import Footer from './Dashboard/components/Footer';
 
-const TemplatePage = ({children}) => {
+const TemplatePage = ({ children }) => {
   return (
     <div className='template-page'>
       <NavBar />
@@ -12,4 +12,4 @@ const TemplatePage = ({children}) => {
   )
 }
 
-export default TemplatePage
+export default TemplatePage;

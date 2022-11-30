@@ -15,16 +15,10 @@ class DashboardView(View):
                 'personList': self._fetch_dashboard_person_data(),
                 'costCenterList': self._fetch_cost_center_data(),
                 'carList': self._fetch_dashboard_car_data(),
-                'selectors': [
-                    {
-                        'key': 'carType',
-                        'values': car_type_data()
-                    },
-                    {
-                        'key': 'costCenter',
-                        'values': cost_center_data()
-                    }
-                ]
+                'selectors': {
+                    'carType': car_type_data(),
+                    'costCenter': cost_center_data()
+                }
             })
         else:
             return JsonResponse({

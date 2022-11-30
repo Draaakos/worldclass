@@ -1,19 +1,17 @@
 import Selector from "./Selector";
 
-const EditableInput = ({onChange, isSelector, SelectorOptions, editableKey, value}) => {
-  
-  const content = isSelector ? (
-    <Selector 
-      selectorOptions={SelectorOptions} 
-      defaultValue={value} 
-      editableKey={editableKey} 
-      onChange={onChange}
-    />
-    ) : <input className="editable-input__input" type="text" onChange={evt => onChange(editableKey, evt.target.value)} defaultValue={value}/>
-  
+const EditableInput = ({ onChange, value }) => {
   return (
-    <div>{content}</div>
+    <input
+      type="text"
+      onChange={evt => onChange(evt.target.value)}
+      defaultValue={value}
+    />
   )
+};
+
+EditableInput.defaultProps = {
+  onChange: () => {}
 };
 
 export default EditableInput;

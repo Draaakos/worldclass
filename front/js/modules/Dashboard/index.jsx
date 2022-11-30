@@ -5,7 +5,7 @@ import CarForm from './components/CarForm';
 import AddRegisterButton from './components/AddRegisterButton';
 import Button from 'ui/Button';
 
-import Table from './components/Table';
+import CarTable from './components/CarTable';
 import TemplatePage from '../Template';
 
 
@@ -52,10 +52,10 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <Table
-            placeOptions={PLACE_OPTIONS}
-            rowData={dashboardData.carList}
-            selectorList={dashboardData.selectors}
+          <CarTable
+            headers={PLACE_OPTIONS}
+            data={dashboardData.carList}
+            selectors={dashboardData.selectors}
           />
         </div>
     </div>

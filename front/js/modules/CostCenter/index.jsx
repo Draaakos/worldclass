@@ -4,7 +4,7 @@ import CostCenterForm from "./components/CostCenterForm";
 import service from 'services/dashboard';
 import Modal from "../Dashboard/components/Modal";
 import AddRegisterButton from "../Dashboard/components/AddRegisterButton";
-import Table from "../Dashboard/components/Table";
+// import Table from "../Dashboard/components/Table";
 import TemplatePage from "../Template";
 import Footer from "../Dashboard/components/Footer";
 
@@ -36,11 +36,11 @@ const CostCenter = () => {
           <div className="wrapper__title">Lista de Centros de Costo</div>
           <AddRegisterButton onActiveModal={() => setIsRegisterCostCenter(true)} />
         </div>
-        <Table
+        {/* <Table
           placeOptions={PLACE_OPTIONS}
           rowData={costCenterList}
           selectorList={[]}
-        />
+        /> */}
       </div>
     </div>
   )

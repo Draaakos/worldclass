@@ -1,30 +1,15 @@
 import { useState } from "react";
 
-const Selector = ({onChange, selectorOptions, classes}) => {
-   
-  const [ selectorState, setSelectorState ] = useState(true) 
-
-  const onActiveInput = () => {
-    setSelectorState(false)
-  };
-
-  const content = selectorState 
-    ? <div onClick={onActiveInput}>hello</div>
-    : (
-      <select className={`select ${classes}`} onChange={onChange}>
-        {selectorOptions}
-      </select>
-    )
-
+const Selector = ({ data, onChange }) => {
   return (
-    <div>{content}</div>
+    <select onChange={onChange}>
+      { data.map((item, index) => <option key={`select-${index}`} value={item.value}>{item.name}</option>) }
+    </select>
   )
 }
 
 Selector.defaultProps = {
-    onChange: () => {},
-    selectorOptions: 'el calle',
-    classes: ''
+  onChange: () => {}
 };
 
 export default Selector;
