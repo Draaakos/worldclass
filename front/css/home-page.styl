@@ -77,8 +77,6 @@
         border-radius 3px
 
 
-
-
 .navbar-button-login
     padding .5em 1em
     border-radius 5px
@@ -100,8 +98,6 @@
     display flex
     justify-content center
     align-items center
-
-
 
 
 .banner__wrapper
@@ -129,21 +125,81 @@
     display flex
     align-items center
     justify-content center
-    background-color rgba(255, 255, 255, .5)
+    background-color rgba(255, 255, 255, 6%)
     font-family "Roboto"
     font-size 1.2em
     width 75%
     margin 0 auto
 
+        
+    &__line-one
+        margin 20px
+        width 10px
+        height 100px
+        margin-right 1em
+        border-left solid 2px #efefef
+        border-top solid 2px #efefef
+        border-bottom solid 2px #efefef
+
+    &__container
+        padding-right 10px
+
+    
+    &__title
+        font-size 0.8em
+        padding-bottom 10px
+        color white
+        font-weight bold
+
+    
+    &__title-paragraph
+        font-size 0.4em
+        color #ffffff73
+
+
+    &__line-two
+        margin 10 px
+        width 10px
+        height 100px
+        margin-right 1em
+        border-right solid 2px #efefef
+        border-top solid 2px #efefef
+        border-bottom solid 2px #efefef
+    
+.main-info__container
+    font-family "Roboto"
+
+    &__body
+        font-size 3em
+        color #fccd3c
+        text-align center
+    
+    &__title
+        font-size 1.4em
+        text-align left
+        display block
+        max-width 200px
+        padding 10px
+        
+
+    &__body-title
+        color #ffffff61
+        padding 10px
+        font-size 0.8em
+        text-align left
+        max-width 250px
+        
 
 .main-info
     background-color black
 
     &__container
+        padding-right 10px
         padding 1em
         color white
-        text-align center
+        text-align justify
         border-top 1px solid white
+
 
         .main-block-head,
         .main-block-body
@@ -162,13 +218,50 @@
                 max-width 150px
                 width 150px
 
+
         .main-block-body
-            color #323232
+            text-align initial
+            color #00000094
             background-color #fccd3c
-            padding-bottom 3em
+            padding-bottom 5em
         
 
 @media screen and (min-width: 1024px)
+    .banner
+        background-color transparent
+
+        &__title
+            font-size 1.7em
+
+        &__title-paragraph
+            padding-left 50px
+            font-size 0.7em
+            width 80%
+
+        &__line-one
+            width 10px
+            height 140px
+            border-left solid 3px #efefef
+            border-top solid 3px #efefef
+            border-bottom solid 3px #efefef
+
+        &__line-two
+            width 10px
+            height 140px
+            border-right solid 3px #efefef
+            border-top solid 3px #efefef
+            border-bottom solid 3px #efefef
+    
+
+    .main-info__container
+        font-family "Roboto"
+
+        &__body
+            font-size 6em
+            color #fccd3c
+            padding-left 250px
+     
+
     .main-info
         display grid
         grid-template-columns repeat(3, 1fr)
@@ -185,6 +278,9 @@
             top -70px
             left 3em
             width 80%
+
+    .main-line
+        padding-right 100px
 
 
     .banner__wrapper
