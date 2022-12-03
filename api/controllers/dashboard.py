@@ -6,6 +6,7 @@ from api.models import Car
 from api.models import CostCenter
 from ..utils.cost_center import cost_center_data
 from ..utils.car_type import car_type_data
+from ..utils.user_type import user_type_data
 
 class DashboardView(View):
     def get(self, request, **kwargs):
@@ -17,7 +18,8 @@ class DashboardView(View):
                 'carList': self._fetch_dashboard_car_data(),
                 'selectors': {
                     'carType': car_type_data(),
-                    'costCenter': cost_center_data()
+                    'costCenter': cost_center_data(),
+                    'userType': user_type_data(),
                 }
             })
         else:

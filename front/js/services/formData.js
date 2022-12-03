@@ -45,6 +45,30 @@ const service = {
 
     return onDelete(url)
       .then(response => response.json());
+  },
+  updateCostCenter(payload, id) {
+    const url = `/api/v1/costcenter/${id}`;
+
+    return put(url, payload)
+      .then(response => response.json());
+  },
+  deleteCostCenter(id) {
+    const url = `/api/v1/costcenter/${id}`;
+
+    return onDelete(url)
+      .then(response => response.json());
+  },
+  updateUser(payload, id) {
+    const url = `/api/v1/person/${id}`;
+
+    return put(url, payload)
+      .then(response => response.json());
+  },
+  deleteUser(id) {
+    const url = `/api/v1/person/type/${id}`;
+
+    return onDelete(url)
+      .then(response => response.json());
   }
 }
 

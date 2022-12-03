@@ -4,7 +4,6 @@ import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
 import service from "../../../../services/formData";
 
-
 const Row = ({ data, selectors }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);

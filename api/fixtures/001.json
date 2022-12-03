@@ -10,6 +10,16 @@
     }
   },
   {
+    "model": "api.person",
+    "pk": 2,
+    "fields": {
+      "username": "usuario",
+      "password": "123",
+      "email": "usuario@gmail.com",
+      "person_type": 3
+    }
+  },
+  {
       "model": "api.car",
       "pk": 1,
       "fields": {

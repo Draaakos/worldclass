@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import NavBar from "../Dashboard/components/NavBar";
 import CostCenterForm from "./components/CostCenterForm";
 import service from 'services/dashboard';
 import Modal from "../Dashboard/components/Modal";
-import AddRegisterButton from "../Dashboard/components/AddRegisterButton";
-// import Table from "../Dashboard/components/Table";
 import TemplatePage from "../Template";
-import Footer from "../Dashboard/components/Footer";
+import CostCenterTable from "./components/CostCenterTable";
+import Button from 'ui/Button';
+
 
 const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Opciones'];
 
@@ -24,6 +23,8 @@ const CostCenter = () => {
       })
   }, []);
 
+  console.log(costCenterList)
+
   const modal = isRegisterCostCenter
     ? <Modal onCloseModal={() => setIsRegisterCostCenter(false)}><CostCenterForm /></Modal>
     : null;
@@ -31,16 +32,13 @@ const CostCenter = () => {
   const costCenterPage = (
     <div>
       {modal}
-      <div className="content-wrapper">
-        <div className="wrapper">
-          <div className="wrapper__title">Lista de Centros de Costo</div>
-          <AddRegisterButton onActiveModal={() => setIsRegisterCostCenter(true)} />
+      <div>
+        <div className="hero-dual hero-primary">
+            <div>Lista de Centros de Costo</div>
+            <Button text="crear nuevo" classes="button--primary" onClick={() => setIsRegisterCostCenter(true)}/>
         </div>
-        {/* <Table
-          placeOptions={PLACE_OPTIONS}
-          rowData={costCenterList}
-          selectorList={[]}
-        /> */}
+
+        <CostCenterTable headers={PLACE_OPTIONS} data={costCenterList}/>
       </div>
     </div>
   )

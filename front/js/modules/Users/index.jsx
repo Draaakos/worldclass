@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import service from '../../services/dashboard';
 import UserForm from "./components/UserForm";
 import Modal from "../Dashboard/components/Modal";
-import AddRegisterButton from "../Dashboard/components/AddRegisterButton";
-import CarTable from "../Dashboard/components/CarTable";
 import TemplatePage from "../Template";
+import UserTable from "./components/UserTable";
+import Button from 'ui/Button';
+
 
 const PLACE_OPTIONS = ['Nombre', 'Email', 'Tipo de Usuario', 'Opciones'];
 
@@ -24,6 +25,8 @@ const Users = () => {
       })
   }, []);
 
+  console.log('userdata rowbody', userData)
+
   const modal = isRegisterModalOn
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal>
     : null;
@@ -31,19 +34,21 @@ const Users = () => {
   const usersPage = (
     <div>
       {modal}
-      <div className="content-wrapper">
-        <div className="wrapper">
-          <div className="wrapper__title">
+      <div>
+        <div className="hero-dual hero-primary">
+          <div>
             Lista de usuarios
           </div>
-          <AddRegisterButton onActiveModal={() => setIsRegisterModalOn(true)}/>
+          <div>
+            <Button text="Crear nuevo" classes="button--primary" onClick={() => setIsRegisterModalOn(true)} />
+          </div>
         </div>
 
-        <CarTable
-          placeOptions={PLACE_OPTIONS}
-          rowData={userData.personList}
+        <UserTable
+          headers={PLACE_OPTIONS}
+          data={userData.personList}
+          selectors={userData.selectors}
         />
-
       </div>
     </div>
   )

@@ -36,7 +36,7 @@ class PersonTypeView(View):
     def _create_person_type(self, data):
         name = data.get('name')
 
-        person_type = PersonType();
+        person_type = PersonType()
         person_type.name = name
         person_type.save()
 
@@ -68,7 +68,9 @@ class PersonTypeView(View):
         return person_type
 
 
-    def delete(self, request, id):
+    def delete(self, request, **kwargs):
+        id = kwargs.get('id')
+
         try:
             person_type = PersonType.objects.get(id=id)
             person_type.delete()

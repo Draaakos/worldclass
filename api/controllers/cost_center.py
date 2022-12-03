@@ -69,7 +69,9 @@ class CostCenterView(View):
 
         return cost_center
 
-    def delete(self, id):
+    def delete(self, request, **kwargs):
+        id = kwargs.get('id')
+    
         try:
             cost_center = CostCenter.objects.get(id=id)
             cost_center.delete()
