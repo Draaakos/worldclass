@@ -7,10 +7,11 @@ from ..utils.cost_center import cost_center_data
 class CostCenterView(View):
     def post(self, request):
         data = json.loads(request.body)
-        self._add_new_cost_center(data)
+        cost_center = self._add_new_cost_center(data)
 
         try:
             return JsonResponse({
+                "item": cost_center.to_json(),
                 "message": "creado correctamente",
                 "status": 200
             })

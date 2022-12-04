@@ -27,8 +27,22 @@ const CostCenter = () => {
   }, []);
 
 
+  const onDeleteItem = id => {
+    const _costCenterList = costCenterList.filter(item => item.id != id);
+    setCostCenterList(_costCenterList);
+  };
+
+
   const modal = isRegisterCostCenter
-    ? <Modal onCloseModal={() => setIsRegisterCostCenter(false)}><CostCenterForm /></Modal>
+    ? (
+      <Modal onCloseModal={() => setIsRegisterCostCenter(false)}>
+        <CostCenterForm
+          setCostCenterList={setCostCenterList}
+          costCenterList={costCenterList}
+          onCloseModal={() => setIsRegisterCostCenter(false)}
+        />
+      </Modal>
+    )
     : null;
 
   const costCenterPage = (
@@ -44,6 +58,7 @@ const CostCenter = () => {
           headers={PLACE_OPTIONS}
           data={costCenterList}
           userType={userType}
+          onDeleteItem={onDeleteItem}
         />
       </div>
     </div>

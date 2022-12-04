@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import service from '../../../services/formData';
 
-const CostCenterForm = () => {
+const CostCenterForm = ({ setCostCenterList, costCenterList, onCloseModal }) => {
   const name = useRef(null);
   const code = useRef(null);
-  
+
   const onSubmit = evt => {
     evt.preventDefault();
 
@@ -14,7 +14,12 @@ const CostCenterForm = () => {
     };
 
     service.registerCostCenter(payload)
-      .then(response => alert(response.message))
+      .then(response => {
+        const _costCenterList = [ ...costCenterList ];
+        _costCenterList.push(response.item);
+        setCostCenterList(_costCenterList);
+        onCloseModal();
+      })
   }
 
   return(
@@ -25,7 +30,7 @@ const CostCenterForm = () => {
       <label className="form-register__label" >Codigo</label>
       <input className="form-register__input" ref={code} type="text" placeholder="codigo del centro de costo" required/>
       <input className="form-register__btn" type="submit" value="Registrar" />
-    </form>   
+    </form>
   );
 }
 
