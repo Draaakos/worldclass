@@ -1,3 +1,11 @@
 from django.contrib import admin
+from api.models import Document
 
-# Register your models here.
+
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    ordering = ['id',]
+    list_display = ['id', 'upload']
+    list_editable = ['upload']
+
+

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Selector = ({ data, onChange, value, valueKey }) => {
+const Selector = ({ data, onChange, value, valueKey, isEditable }) => {
   const options = data
     .map((item, index) => {
       return (
@@ -10,10 +10,16 @@ const Selector = ({ data, onChange, value, valueKey }) => {
       )
     });
 
+
+  // TODO: REVISAR INCONSISTENCIA EN ITEM.ID CON ITEM.NAME, SIEMPRE DEVERIA VENIR UN TIPO DE VALOR EN "VALUE"
+  // AHORA ESTA LLEGANDO EN ALGUNOS LUGARES UN ID Y EN OTROS NOMBRE
   return (
-    <select className="selector" onChange={evt=> onChange(valueKey, evt.target.value)}>
-      { options }
-    </select>
+    isEditable
+      ? (
+        <select className="selector" onChange={evt=> onChange(valueKey, evt.target.value)}>
+          { options }
+        </select>
+      ) : <div>{data.find(item => item.id == value || item.name == value).name}</div>
   )
 }
 

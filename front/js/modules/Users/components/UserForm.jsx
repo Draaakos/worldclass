@@ -15,16 +15,15 @@ const UserForm = () => {
     service.fetchAllCostCenter()
       .then(response => {
         setCostCenterOptions(response.data);
-        console.log(response.data)
       });
-    
+
     service.fetchAllPersonTypes()
       .then(response => {
         setPersonTypeOptions(response.personTypeData)
         console.log(response.personTypeData)
       })
   }, []);
-  
+
   const onSubmit = evt => {
     evt.preventDefault();
 
@@ -58,10 +57,10 @@ const UserForm = () => {
   const costCenterSelector = (
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
-      { 
+      {
         costCenterOptions
-          .map((option, index) => 
-            <option key={`option-${index}`} value={option.code}>{option.name}</option>) 
+          .map((option, index) =>
+            <option key={`option-${index}`} value={option.code}>{option.name}</option>)
       }
     </select>
   );
@@ -69,10 +68,10 @@ const UserForm = () => {
   const personTypeSelector = (
     <select className="form-register__input" ref={personType}>
       <option value={null}>Seleccione</option>
-      { 
+      {
         personTypeOptions
-          .map((option, index) => 
-            <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
+          .map((option, index) =>
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
     </select>
   );
@@ -93,7 +92,7 @@ const UserForm = () => {
       <label className="form-register__label">Repetir Contraseña</label>
       <input className="form-register__input" ref={password2} type="password" placeholder="Ingrese contraseña nuevamente" required />
       <input className="form-register__btn" type="submit" value="Registrar" />
-    </form>   
+    </form>
   );
 }
 

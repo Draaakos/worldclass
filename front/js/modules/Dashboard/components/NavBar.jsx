@@ -1,7 +1,9 @@
 import React from "react";
 import service from "../../../services/dashboard";
 
-const NavBar = () => {
+const Item = ({ url, label }) => <a className="navbar__item" href={url}>{label}</a>
+
+const NavBar = ({ navbarOptions }) => {
   const onLogout = () => {
     service.logout()
     window.location.assign("/")
@@ -11,13 +13,15 @@ const NavBar = () => {
     <nav className="navbar">
       <h2 className="navbar__title">Worldclass</h2>
       <div className="navbar__wrapper-items">
-        <a className="navbar__item" href="/dashboard">Inicio</a>
-        <a className="navbar__item" href="/dashboard/user">Usuarios</a>
-        <a className="navbar__item" href="/dashboard/costcenter">Centro de Costo</a>
-        <div className="navbar__item" onClick={onLogout}>Logout</div>
+        { navbarOptions.map(item => <Item url={item.url} label={item.label} key={item.key} />) }
+        <div className="navbar__item" onClick={onLogout}>Cerrar Sesion</div>
       </div>
     </nav>
-  );  
+  );
+}
+
+NavBar.defaultProps = {
+  navbarOptions: []
 }
 
 export default NavBar;

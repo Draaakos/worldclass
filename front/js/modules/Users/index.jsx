@@ -5,27 +5,26 @@ import Modal from "../Dashboard/components/Modal";
 import TemplatePage from "../Template";
 import UserTable from "./components/UserTable";
 import Button from 'ui/Button';
+import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
 
 const PLACE_OPTIONS = ['Nombre', 'Email', 'Tipo de Usuario', 'Opciones'];
 
 const Users = () => {
   const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false);
-  const [ userData, setUserData ] = useState({
-    personList: []
-  });
+  const [ userData, setUserData ] = useState({ personList: [] });
+  const [ userType, setUserType ] = useState(3);
 
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
           setUserData(response);
+          setUserType(response.userType)
           return;
         }
       })
   }, []);
-
-  console.log('userdata rowbody', userData)
 
   const modal = isRegisterModalOn
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal>
@@ -48,13 +47,14 @@ const Users = () => {
           headers={PLACE_OPTIONS}
           data={userData.personList}
           selectors={userData.selectors}
+          userType={userType}
         />
       </div>
     </div>
   )
 
   return (
-    <TemplatePage>
+    <TemplatePage navbarOptions={fetchNavbarByUserType(userType)}>
       {usersPage}
     </TemplatePage>
   );

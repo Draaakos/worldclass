@@ -1,4 +1,5 @@
 from django.db import models
+from .tools import define_product_path
 
 
 class CostCenter(models.Model):
@@ -71,5 +72,11 @@ class Car(models.Model):
         }
 
 
-class Company(models.Model):
-    name = models.CharField(max_length=130)
+class Document(models.Model):
+    name = models.CharField(max_length=50)
+    upload = models.FileField(upload_to=define_product_path)
+
+
+class DocumentCar(models.Model):
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False, blank=False)

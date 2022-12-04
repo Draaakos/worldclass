@@ -3,7 +3,7 @@ import classNames from "classnames";
 import EditableInput from "ui/EditableInput";
 import service from "../../../../services/formData";
 
-const Row = ({data}) => {
+const Row = ({ data, userType }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
 
@@ -36,21 +36,24 @@ const Row = ({data}) => {
     }
   }
 
+  const isEditable = !!(userType == 1);
+
   return (
     <div className="costcenter-table__row">
-      <div><EditableInput value={data.code} valueKey="code" onChange={onChange}/></div>
-      <div><EditableInput value={data.name} valueKey="name" onChange={onChange}/></div>
+      <div><EditableInput isEditable={isEditable} value={data.code} valueKey="code" onChange={onChange}/></div>
+      <div><EditableInput isEditable={isEditable} value={data.name} valueKey="name" onChange={onChange}/></div>
       <div className="costcenter-table__options">
-        <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button>
-        <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button>
+        { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
+        { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
       </div>
     </div>
   )
-}
+};
 
-const RowBody = ({data}) => (
+const RowBody = ({ data, userType }) => (
   <div>
-    { data.map((item, index) => <Row key={`row-${index}`} data={item} />) }
+    { data.map((item, index) => <Row key={`row-${index}`} data={item} userType={userType} />) }
   </div>
-)
+);
+
 export default RowBody;

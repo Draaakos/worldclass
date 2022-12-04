@@ -6,6 +6,7 @@ import Button from 'ui/Button';
 
 import CarTable from './components/CarTable';
 import TemplatePage from '../Template';
+import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
 
 const PLACE_OPTIONS = ['Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 'Opciones'];
@@ -31,34 +32,37 @@ const Dashboard = () => {
   }, []);
 
 
-  const modal = isRegisterCar
+  const modal = isRegisterCar && dashboardData.userType == 1
     ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm /></Modal>
     : null;
 
 
+  const buttonNewCar = dashboardData.userType == 1 ? (
+    <div>
+      <Button text="Crear nuevo" classes="button--primary" onClick={() => setIsRegisterCar(true)} />
+    </div>
+  ) : null;
+
   const page = (
     <div>
-      {modal}
       <div>
+        {modal}
         <div className="hero-dual hero-primary">
-          <div>
-            Lista de Vehiculos
-          </div>
-          <div>
-            <Button text="Crear nuevo" classes="button--primary" onClick={() => setIsRegisterCar(true)} />
-          </div>
+          <div>Lista de Vehiculos</div>
+          { buttonNewCar }
         </div>
 
         <CarTable
           headers={PLACE_OPTIONS}
           data={dashboardData.carList}
           selectors={dashboardData.selectors}
+          userType={dashboardData.userType}
         />
       </div>
     </div>
   );
 
-  const app = <TemplatePage>{page}</TemplatePage>;
+  const app = <TemplatePage navbarOptions={fetchNavbarByUserType(dashboardData.userType)}>{page}</TemplatePage>;
   const defaultMessage = <span>Debes iniciar sesión</span>;
   const content = dashboardData.carList.length ? app : defaultMessage;
 

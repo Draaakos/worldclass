@@ -182,7 +182,7 @@
     "model": "api.persontype",
     "pk": 2,
     "fields": {
-        "name": "moderador"
+        "name": "supervisor"
     }
   },
   {
