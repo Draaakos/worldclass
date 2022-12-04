@@ -60,7 +60,7 @@ const Dashboard = () => {
 
   const app = <TemplatePage>{page}</TemplatePage>;
   const defaultMessage = <span>Debes iniciar sesión</span>;
-  const content = dashboardData.personList.length ? app : defaultMessage;
+  const content = dashboardData.carList.length ? app : defaultMessage;
 
   return <div>{content}</div>
 };

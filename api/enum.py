@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PersonTypeEnum(Enum)
-    USER = 'usuario'
-    ADMIN = 'administrador'
-    MODERATOR = 'moderador'
+class PersonTypeEnum(Enum):
+    ADMIN = 1
+    MODERATOR = 2
+    USER = 3

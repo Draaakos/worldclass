@@ -3,22 +3,10 @@ from django.views import View
 from django.http import JsonResponse
 from api.models import Car
 from django.contrib.auth.decorators import login_required
-from .enum import PersonTypeEnum
+from ..enum import PersonTypeEnum
 
 
 class CardDataView(View):
-    def get(self, request, **kwargs):
-        try:
-            return JsonResponse({
-                "car_list": [ car.to_json() for car in Car.objects.all() ],
-                "status": 200
-            })
-        except:
-            return JsonResponse({
-                "message": "error al obtener los vehiculos",
-                "status": 500
-            })
-
     def post(self, request):
         data = json.loads(request.body)
 

@@ -13,121 +13,183 @@
     "model": "api.person",
     "pk": 2,
     "fields": {
-      "username": "usuario",
+      "username": "modtest1",
       "password": "123",
-      "email": "usuario@gmail.com",
+      "email": "modtest1@gmail.com",
+      "person_type": 2
+    }
+  },
+  {
+    "model": "api.person",
+    "pk": 3,
+    "fields": {
+      "username": "usertest1",
+      "password": "123",
+      "email": "usertest1@gmail.com",
       "person_type": 3
     }
   },
   {
-      "model": "api.car",
-      "pk": 1,
-      "fields": {
-          "patent": "EJS206",
-          "color": "red",
-          "car_model": 1,
-          "car_type": 1,
-          "cost_center": 1
-      }
+    "model": "api.person",
+    "pk": 4,
+    "fields": {
+      "username": "modtest2",
+      "password": "123",
+      "email": "modtest2@gmail.com",
+      "person_type": 2
+    }
   },
   {
-      "model": "api.car",
-      "pk": 2,
-      "fields": {
-          "patent": "ASJ245",
-          "color": "blue",
-          "car_model": 2,
-          "car_type": 2,
-          "cost_center": 2
-      }
+    "model": "api.person",
+    "pk": 5,
+    "fields": {
+      "username": "usertest2",
+      "password": "123",
+      "email": "usertest2@gmail.com",
+      "person_type": 3
+    }
   },
   {
-      "model": "api.car",
-      "pk": 3,
-      "fields": {
-          "patent": "HHH222",
-          "color": "yellow",
-          "car_model": 1,
-          "car_type": 2,
-          "cost_center": 1
-      }
+    "model": "api.car",
+    "pk": 1,
+    "fields": {
+        "patent": "TEST01",
+        "color": "red",
+        "car_model": "ferrari",
+        "car_type": 1,
+        "cost_center": 1
+    }
   },
   {
-      "model": "api.car",
-      "pk": 4,
-      "fields": {
-          "patent": "BFZS43",
-          "color": "verde",
-          "car_model": 1,
-          "car_type": 1,
-          "cost_center": 1
-      }
+    "model": "api.car",
+    "pk": 2,
+    "fields": {
+        "patent": "TEST02",
+        "color": "blue",
+        "car_model": "ferrari",
+        "car_type": 2,
+        "cost_center": 1
+    }
   },
   {
-      "model": "api.cartype",
-      "pk": 1,
-      "fields": {
-          "name": "Toyota"
-      }
+    "model": "api.car",
+    "pk": 3,
+    "fields": {
+        "patent": "TEST03",
+        "color": "yellow",
+        "car_model": "toyota",
+        "car_type": 2,
+        "cost_center": 2
+    }
   },
   {
-      "model": "api.cartype",
-      "pk": 2,
-      "fields": {
-          "name": "Mercedes benz"
-      }
+    "model": "api.car",
+    "pk": 4,
+    "fields": {
+        "patent": "TEST04",
+        "color": "verde",
+        "car_model": "toyota",
+        "car_type": 1,
+        "cost_center": 2
+    }
   },
   {
-      "model": "api.costcenter",
-      "pk": 1,
-      "fields": {
-          "name": "Depto. informatica",
-          "code": "J823JDEC8JR9EJASDI"
-      }
+    "model": "api.cartype",
+    "pk": 1,
+    "fields": {
+        "name": "Toyota"
+    }
   },
   {
-      "model": "api.costcenter",
-      "pk": 2,
-      "fields": {
-          "name": "Depto. logistica",
-          "code": "189EDJD9W8SCADFGDS"
-      }
+    "model": "api.cartype",
+    "pk": 2,
+    "fields": {
+        "name": "Mercedes benz"
+    }
   },
   {
-      "model": "api.costcenter",
-      "pk": 3,
-      "fields": {
-          "name": "Depto. armamento",
-          "code": "192DKASDK12ED11211"
-      }
+    "model": "api.costcenter",
+    "pk": 1,
+    "fields": {
+        "name": "costcenter test1",
+        "code": "J823JDEC8JR9EJASDI"
+    }
   },
   {
-      "model": "api.costcenter",
-      "pk": 4,
-      "fields": {
-          "name": "Depto. naval",
-          "code": "812EDNASSDHADASAS"
-      }
+    "model": "api.costcenter",
+    "pk": 2,
+    "fields": {
+        "name": "costcenter test2",
+        "code": "189EDJD9W8SCADFGDS"
+    }
   },
   {
-      "model": "api.persontype",
-      "pk": 1,
-      "fields": {
-          "name": "administrador"
-      }
+    "model": "api.costcenter",
+    "pk": 3,
+    "fields": {
+        "name": "Depto. armamento",
+        "code": "192DKASDK12ED11211"
+    }
   },
   {
-      "model": "api.persontype",
-      "pk": 2,
-      "fields": {
-          "name": "moderador"
-      }
+    "model": "api.costcenter",
+    "pk": 4,
+    "fields": {
+        "name": "Depto. naval",
+        "code": "812EDNASSDHADASAS"
+    }
   },
   {
-      "model": "api.persontype",
-      "pk": 3,
-      "fields": {
-          "name": "usuario"
-      }
+    "model": "api.personcostcenter",
+    "pk": 1,
+    "fields": {
+        "person": 2,
+        "cost_center": 1
+    }
+  },
+  {
+    "model": "api.personcostcenter",
+    "pk": 2,
+    "fields": {
+        "person": 3,
+        "cost_center": 1
+    }
+  },
+  {
+    "model": "api.personcostcenter",
+    "pk": 3,
+    "fields": {
+        "person": 4,
+        "cost_center": 2
+    }
+  },
+  {
+    "model": "api.personcostcenter",
+    "pk": 4,
+    "fields": {
+        "person": 5,
+        "cost_center": 2
+    }
+  },
+  {
+    "model": "api.persontype",
+    "pk": 1,
+    "fields": {
+        "name": "administrador"
+    }
+  },
+  {
+    "model": "api.persontype",
+    "pk": 2,
+    "fields": {
+        "name": "moderador"
+    }
+  },
+  {
+    "model": "api.persontype",
+    "pk": 3,
+    "fields": {
+        "name": "usuario"
+    }
   }
 ]

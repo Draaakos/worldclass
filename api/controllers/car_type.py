@@ -6,19 +6,6 @@ from api.models import CarType
 from ..utils.car_type import car_type_data
 
 class CarTypeView(View):
-    def get(self, request, **kwargs):
-        try:
-            return JsonResponse({
-                "data": car_type_data(),
-                "status": 200
-            })
-        except:
-            return JsonResponse({
-                "message": "error al obtener tipo de vehiculo",
-                "status": 500
-            })
-
-
     def post(self, request):
         data = json.loads(request.body)
         self._add_new_car_type(data)

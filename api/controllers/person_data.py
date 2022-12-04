@@ -4,22 +4,10 @@ from django.http import JsonResponse
 from api.models import Person
 
 class PersonDataView(View):
-    def get(self, request):
-        try:
-            return JsonResponse({
-                "person_list": [ person.to_json() for person in Person.objects.all()],
-                "status": 200
-            })
-        except:
-            return JsonResponse({
-                "message": "error al obtener los usuarios",
-                "status": 500
-            })
-
     def post(self, request):
         data = json.loads(request.body)
         person_type = request.session.get('person_type')
-        
+
         # try:
         self._create_person(data)
         return JsonResponse({
@@ -73,12 +61,12 @@ class PersonDataView(View):
         person.save()
 
         return person
-    
+
     def delete(self, data, id):
         try:
             person = Person.objects.get(id=id)
             person.delete()
-            
+
             return JsonResponse({
                 "message": "usuario eliminado correctamente",
                 "status": 200

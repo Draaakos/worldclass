@@ -38,6 +38,11 @@ class Person(models.Model):
         }
 
 
+class PersonCostCenter(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, null=False, blank=False)
+    cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
+
+
 class CarType(models.Model):
     name = models.CharField(max_length=30)
 
