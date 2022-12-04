@@ -4,6 +4,12 @@ const post = (url, data) => fetch(url, {
   body: JSON.stringify(data)
 });
 
+const _post = (url, data) => fetch(url, {
+  method: 'POST',
+  cache: 'no-cache',
+  body: data
+});
+
 const get = (url) => fetch(url, {
   method: 'GET',
   headers: { 'Content-Type': 'application/json' }
@@ -20,4 +26,4 @@ const onDelete = (url)  => fetch(url, {
   cache: 'no-cache',
 })
 
-export { post, get, put, onDelete };
+export { post, _post, get, put, onDelete };

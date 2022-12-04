@@ -68,7 +68,8 @@ class Car(models.Model):
             'carType': self.car_type.id,
             'color': self.color,
             'costCenter': self.cost_center.id,
-            'carModel': self.car_model
+            'carModel': self.car_model,
+            'documents': fetch_documents(self)
         }
 
 
@@ -76,7 +77,23 @@ class Document(models.Model):
     name = models.CharField(max_length=50)
     upload = models.FileField(upload_to=define_product_path)
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'path': f'/media/{self.name}'
+        }
 
-class DocumentCar(models.Model):
+
+class CarDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)
     car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False, blank=False)
+
+
+
+def fetch_documents(car):
+    document_list = []
+    for car_document in CarDocument.objects.filter(car=car):
+        document = Document.objects.get(pk=car_document.document.id)
+        document_list.append(document.to_json())
+    return document_list

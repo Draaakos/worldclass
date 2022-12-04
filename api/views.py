@@ -9,6 +9,7 @@ from .controllers.cost_center import CostCenterView
 from .controllers.person_data import PersonDataView
 from .controllers.person_type import PersonTypeView
 from .controllers.car_type import CarTypeView
+from .controllers.car_document import CarDocumentView
 
 
 class LogoutView(View):
@@ -30,3 +31,4 @@ cost_center = CostCenterView.as_view()
 person_data = PersonDataView.as_view()
 person_type = PersonTypeView.as_view()
 car_type = CarTypeView.as_view()
+car_document = CarDocumentView.as_view()

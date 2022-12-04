@@ -2,7 +2,7 @@ import json
 from django.views import View
 from django.http import JsonResponse
 from api.models import Person, PersonCostCenter
-from api.models import Car
+from api.models import Car, CarDocument, Document
 from api.models import CostCenter
 from ..utils.cost_center import cost_center_data
 from ..utils.car_type import car_type_data

@@ -1,4 +1,4 @@
-import { get, post, put, onDelete } from './fetchUtils.js';
+import { get, post,_post, put, onDelete } from './fetchUtils.js';
 
 const service = {
   fetchAllCostCenter() {
@@ -68,6 +68,12 @@ const service = {
     const url = `/api/v1/person/type/${id}`;
 
     return onDelete(url)
+      .then(response => response.json());
+  },
+  uploadDocument(form, carId) {
+    const url = `/api/v1/car/${carId}/document`;
+
+    return _post(url, form)
       .then(response => response.json());
   }
 }

@@ -36,6 +36,17 @@ const Row = ({ data, selectors, userType }) => {
     }
   };
 
+  const onSubmit = evt => {
+    evt.preventDefault();
+
+    const form = new FormData();
+    form.append('name', 'test');
+    form.append('upload',evt.target.files[0]);
+
+    service.uploadDocument(form, data.id)
+      .then(response => console.log(response))
+  }
+
   const isEditable = !!(userType == 1);
 
   return (
@@ -47,8 +58,16 @@ const Row = ({ data, selectors, userType }) => {
       <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
 
       <div className="car-table__options" >
-        <button>subir pdf</button>
-        <button>bajar pdf</button>
+        <form method="post" encType="multipart/form-data">
+          <label className="upload-button" htmlFor="hidden-upload">
+            <img src="/static/images/upload.svg" />
+          </label>
+          <input id="hidden-upload" type="file" onChange={onSubmit} />
+        </form>
+        <div className="download-button">
+          { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> }
+
+        </div>
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
       </div>

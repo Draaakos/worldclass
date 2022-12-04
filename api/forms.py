@@ -1,7 +1,6 @@
-# from django.forms import ModelForm
-# from .models import Person
+from django import forms
+from .models import Document
 
-# class UserForm(ModelForm):
-#     class Meta: 
-#         model = User
-#         fields = '__all__'
+class DocumentForm(forms.Form):
+    name = forms.CharField(max_length=50)
+    upload = forms.FileField()

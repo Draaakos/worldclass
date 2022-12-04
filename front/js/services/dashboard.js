@@ -1,4 +1,4 @@
-import { get } from './fetchUtils.js';
+import { get, post } from './fetchUtils.js';
 
 const service = {
   fetchDashboardData() {
