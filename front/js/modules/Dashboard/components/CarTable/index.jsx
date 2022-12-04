@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import { useState } from "react";
 
 const CarTable = ({ headers, data, selectors, userType }) => {
+  const [ currentData, setCurrentData ] = useState(data)
   const [ isModalActive, setIsModalActive ] = useState(false);
   const [ downloadFiles, setDownloadFiles ] = useState(false);
 
@@ -14,6 +15,12 @@ const CarTable = ({ headers, data, selectors, userType }) => {
       console.log(data);
     }
   }
+
+  const onFilter = (evt) => {
+    const search = data.filter(item => item.patent == evt.target.value)
+    setCurrentData(search)
+  };
+
 
   return (
     <div>
@@ -41,8 +48,12 @@ const CarTable = ({ headers, data, selectors, userType }) => {
         ) : null
       }
       <div className="car-table">
+        <div className="search" >
+          <label>Busqueda </label>
+          <input type="text" placeholder="buscar vehiculo"  onChange={onFilter} />
+        </div>
         <RowHead headers={headers} />
-        <RowBody data={data} selectors={selectors} userType={userType} onSelectDownloadModal={onSelectDownloadModal} />
+        <RowBody data={currentData} selectors={selectors} userType={userType} onSelectDownloadModal={onSelectDownloadModal} />
       </div>
     </div>
   );
