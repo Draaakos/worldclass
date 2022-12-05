@@ -8,17 +8,18 @@ class PersonDataView(View):
         data = json.loads(request.body)
         person_type = request.session.get('person_type')
 
-        # try:
-        self._create_person(data)
-        return JsonResponse({
-            "message": "usuario agregado correctamente",
-            "status": 200
-        })
-        # except:
-        #     return JsonResponse({
-        #         "message": "error al agregar usuario",
-        #         "status": 500
-        #     })
+        try:
+            person = self._create_person(data)
+            return JsonResponse({
+                "response": person.to_json(),
+                "message": "usuario agregado correctamente",
+                "status": 200
+            })
+        except:
+            return JsonResponse({
+                "message": "error al agregar usuario",
+                "status": 500
+            })
 
     def _create_person(self, data):
         username = data.get("username")
@@ -53,11 +54,13 @@ class PersonDataView(View):
         username = data.get('username')
         # password = data.get('password')
         email = data.get('email')
+        person_type = data.get('personType')
 
         person = Person.objects.get(id=id)
         person.username = username
         # person.password = password
         person.email = email
+        person.person_type_id = person_type
         person.save()
 
         return person

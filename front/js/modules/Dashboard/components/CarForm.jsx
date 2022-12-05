@@ -1,29 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import service from 'services/formData';
 
-const CarForm = () => {
-  const [costCenterOptions, setCostCenterOptions] = useState([]);
-  const [carTypeOptions, setcarTypeOptions] = useState([]);
+const CarForm = ({ selectors }) => {
   const patent = useRef(null);
   const color = useRef(null);
   const carModel = useRef(null);
   const carType = useRef(null);
   const costCenter = useRef(null);
 
-  useEffect(() => {
-    service.fetchAllCostCenter()
-      .then(response => {
-        setCostCenterOptions(response.data);
-        console.log(response.data)
-      });
-
-    service.fetchAllCarTypes()
-    .then(response => {
-      setcarTypeOptions(response.data);
-      console.log(response.data)
-    });
-  }, []);
-  
   const onSubmit = evt => {
     evt.preventDefault();
 
@@ -53,7 +37,7 @@ const CarForm = () => {
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
       { 
-        costCenterOptions
+        selectors.costCenter
           .map((option, index) => 
             <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
       }
@@ -64,7 +48,7 @@ const CarForm = () => {
     <select className="form-register__input" ref={carType}>
       <option value={null}>Seleccione</option>
       { 
-        carTypeOptions
+        selectors.carType
           .map((option, index) => 
             <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
       }

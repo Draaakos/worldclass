@@ -16,7 +16,8 @@ const Dashboard = () => {
   const [ isRegisterCar, setIsRegisterCar ] = useState(false);
   const [ dashboardData, setDashboardData ] = useState({
     personList: [],
-    carList: []
+    carList: [],
+    costCenterList: []
   });
 
   useEffect(() => {
@@ -31,9 +32,11 @@ const Dashboard = () => {
       })
   }, []);
 
+  // console.log('selectors', dashboardData.selectors)
+
 
   const modal = isRegisterCar && dashboardData.userType == 1
-    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm /></Modal>
+    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm selectors={dashboardData.selectors} /></Modal>
     : null;
 
 

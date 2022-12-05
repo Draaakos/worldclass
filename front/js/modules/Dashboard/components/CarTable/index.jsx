@@ -8,4 +8,12 @@ const CarTable = ({ headers, data, selectors, userType }) => (
   </div>
 );
 
+CarTable.defaultProps = {
+  selectors: {
+    carType: [],
+    costCenter: [],
+    userType: []
+  }
+}
+
 export default CarTable;

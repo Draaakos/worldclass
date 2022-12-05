@@ -29,7 +29,7 @@ class CardDataView(View):
         car_type_id = data.get('carType')
         car_model = data.get('carModel')
 
-        car = Car();
+        car = Car()
         car.patent = patent
         car.color = color
         car.car_type_id = car_type_id
@@ -44,17 +44,18 @@ class CardDataView(View):
         data = json.loads(request.body)
         id = kwargs.get('id')
 
-        try:
-            self._edit_car(data, id)
-            return JsonResponse({
-                "message": "vehiculo editado correctamente",
-                "status": 200
-            })
-        except:
-            return JsonResponse({
-                "message": "error al editar vehiculo",
-                "status": 500
-            })
+        # try:
+        car = self._edit_car(data, id)
+        return JsonResponse({
+            "car": car.to_json(),
+            "message": "vehiculo editado correctamente",
+            "status": 200
+        })
+        # except:
+        #     return JsonResponse({
+        #         "message": "error al editar vehiculo",
+        #         "status": 500
+        #     })
 
 
     def _edit_car(self, data, id):

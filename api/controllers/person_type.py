@@ -5,6 +5,12 @@ from django.http import JsonResponse
 from api.models import PersonType
 
 class PersonTypeView(View):
+
+    def get(self, request): 
+        return JsonResponse({
+            "response": [ person.to_json() for person in PersonType.objects.all() ]
+        })
+
     def post(self, request):
         data = json.loads(request.body)
         self._create_person_type(data)

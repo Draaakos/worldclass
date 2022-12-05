@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 const Selector = ({ data, onChange, value, valueKey, isEditable }) => {
   const options = data
@@ -11,7 +10,7 @@ const Selector = ({ data, onChange, value, valueKey, isEditable }) => {
     });
 
 
-  // TODO: REVISAR INCONSISTENCIA EN ITEM.ID CON ITEM.NAME, SIEMPRE DEVERIA VENIR UN TIPO DE VALOR EN "VALUE"
+  // TODO: REVISAR INCONSISTENCIA EN ITEM.ID CON ITEM.NAME, SIEMPRE DEBERIA VENIR UN TIPO DE VALOR EN "VALUE"
   // AHORA ESTA LLEGANDO EN ALGUNOS LUGARES UN ID Y EN OTROS NOMBRE
   return (
     isEditable

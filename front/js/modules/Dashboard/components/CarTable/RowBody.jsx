@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
 import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
@@ -7,7 +7,8 @@ import service from "../../../../services/formData";
 const Row = ({ data, selectors, userType }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
-
+  const [ carList, setCarList ] = useState([]);
+  
   const editableButtonClasses = classNames([
     'button',
     'button--info'

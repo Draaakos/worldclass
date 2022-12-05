@@ -26,8 +26,10 @@ const Users = () => {
       })
   }, []);
 
+  console.log('selector' ,userData.selectors)
+
   const modal = isRegisterModalOn
-    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm /></Modal>
+    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm selectors={userData.selectors} /></Modal>
     : null;
 
   const usersPage = (

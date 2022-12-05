@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import service from '../../../services/formData';
 
-const UserForm = () => {
-  const [costCenterOptions, setCostCenterOptions] = useState([]);
-  const [personTypeOptions, setPersonTypeOptions] = useState([]);
+const UserForm = ({selectors}) => {
+  // const [costCenterOptions, setCostCenterOptions] = useState([]);
+  // const [personTypeOptions, setPersonTypeOptions] = useState([]);
   const name = useRef(null);
   const email = useRef(null);
   const costCenter = useRef(null);
@@ -11,18 +11,19 @@ const UserForm = () => {
   const password2 = useRef(null);
   const personType = useRef(null);
 
-  useEffect(() => {
-    service.fetchAllCostCenter()
-      .then(response => {
-        setCostCenterOptions(response.data);
-      });
+  // useEffect(() => {
+  //   service.fetchAllCostCenter()
+  //     .then(response => {
+  //       setCostCenterOptions(response.data);
+  //       console.log('cost', costCenterOptions)
+  //     });
 
-    service.fetchAllPersonTypes()
-      .then(response => {
-        setPersonTypeOptions(response.personTypeData)
-        console.log(response.personTypeData)
-      })
-  }, []);
+  //   service.fetchAllPersonTypes()
+  //     .then(response => {
+  //       setPersonTypeOptions(response.personTypeData)
+  //       console.log(response.personTypeData)
+  //     })
+  // }, []);
 
   const onSubmit = evt => {
     evt.preventDefault();
@@ -51,14 +52,14 @@ const UserForm = () => {
     };
 
     service.registerUser(payload)
-      .then(response => alert(response.message))
+      .then(response => console.log('response message', response.message))
   }
 
   const costCenterSelector = (
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
       {
-        costCenterOptions
+        selectors.costCenter
           .map((option, index) =>
             <option key={`option-${index}`} value={option.code}>{option.name}</option>)
       }
@@ -69,7 +70,7 @@ const UserForm = () => {
     <select className="form-register__input" ref={personType}>
       <option value={null}>Seleccione</option>
       {
-        personTypeOptions
+        selectors.userType
           .map((option, index) =>
             <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
