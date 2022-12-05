@@ -7,14 +7,12 @@ import service from '../../../../services/formData';
 const Row = ({ data, selectors, userType }) => {
 	const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
-
   const editableButtonClasses = classNames([
     'button',
     'button--info'
   ], {
     'button--hidden': !editableActive
   });
-
 
   const onChange = (key, value) => {
     const _payload = { ...payload };
@@ -25,17 +23,17 @@ const Row = ({ data, selectors, userType }) => {
 
   const onEdit = id => {
     return () => {
-      service.updateUser(payload, id)
+      service.updateUser(payload, id);
       setEditableActive(false);
     }
-  }
+  };
 
   const onDelete = id => {
     return () => {
-      service.deleteUser(id)
+      service.deleteUser(id);
       setEditableActive(false);
     }
-  }
+  };
 
   const isEditable = !!(userType == 1 || userType == 2);
 
@@ -49,13 +47,13 @@ const Row = ({ data, selectors, userType }) => {
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
       </div>
     </div>
-  )
-}
+  );
+};
 
 const RowBody = ({ data, selectors, userType }) => (
   <div>
     { data.map((item, index) => <Row key={`row-${index}`} data={item} selectors={selectors} userType={userType} />) }
   </div>
-)
+);
 
 export default RowBody
