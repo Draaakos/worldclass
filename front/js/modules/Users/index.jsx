@@ -53,7 +53,7 @@ const Users = () => {
         />
       </div>
     </div>
-  )
+  );
 
   return (
     <TemplatePage navbarOptions={fetchNavbarByUserType(userType)}>

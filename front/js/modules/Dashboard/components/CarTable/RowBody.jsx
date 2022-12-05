@@ -8,7 +8,7 @@ const Row = ({ data, selectors, userType }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ carList, setCarList ] = useState([]);
-  
+
   const editableButtonClasses = classNames([
     'button',
     'button--info'
@@ -59,11 +59,11 @@ const Row = ({ data, selectors, userType }) => {
       <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
 
       <div className="car-table__options" >
-        <form method="post" encType="multipart/form-data">
-          <label className="upload-button" htmlFor="hidden-upload">
+        <form id={`form-${data.id}`} method="post" encType="multipart/form-data">
+          <label className="upload-button" htmlFor={`image-input-${data.id}`}>
             <img src="/static/images/upload.svg" />
           </label>
-          <input id="hidden-upload" type="file" onChange={onSubmit} />
+          <input id={`image-input-${data.id}`} className="hidden-upload" type="file" onChange={onSubmit} />
         </form>
         <div className="download-button">
           { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> }
