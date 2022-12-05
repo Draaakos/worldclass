@@ -19,8 +19,6 @@ const Row = ({ data, selectors, userType }) => {
   const onChange = (key, value) => {
     const _payload = { ...payload };
     _payload[key] = value;
-    console.log('key', key, value)
-    console.log('_payload', _payload)
     setPayload(_payload);
     setEditableActive(true);
   };
