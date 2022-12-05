@@ -1,7 +1,7 @@
 const fetchNavbarByUserType = (userType) => {
   const adminNavbarOptions = [
     {
-      'label': 'Autos',
+      'label': 'Vehiculos',
       'url': '/dashboard'
     },
     {
@@ -16,7 +16,7 @@ const fetchNavbarByUserType = (userType) => {
 
   const moderatorNavbarOptions = [
     {
-      'label': 'Autos',
+      'label': 'Vehiculos',
       'url': '/dashboard'
     },
     {
