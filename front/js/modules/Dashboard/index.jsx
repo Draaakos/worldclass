@@ -32,8 +32,6 @@ const Dashboard = () => {
       })
   }, []);
 
-  // console.log('selectors', dashboardData.selectors)
-
 
   const modal = isRegisterCar && dashboardData.userType == 1
     ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm selectors={dashboardData.selectors} /></Modal>

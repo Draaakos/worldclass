@@ -4,7 +4,7 @@ import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
 import service from "../../../../services/formData";
 
-const Row = ({ data, selectors, userType }) => {
+const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ carList, setCarList ] = useState([]);
@@ -66,8 +66,8 @@ const Row = ({ data, selectors, userType }) => {
           <input id={`image-input-${data.id}`} className="hidden-upload" type="file" onChange={onSubmit} />
         </form>
         <div className="download-button">
-          { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> }
-
+          {/* { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> } */}
+          { data.documents.length && <div onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></div> }
         </div>
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
@@ -77,10 +77,21 @@ const Row = ({ data, selectors, userType }) => {
 };
 
 
-const RowBody = ({ data, selectors, userType }) => (
-  <div>
-    { data.map((item, index) => <Row key={`row-${index}`} data={item} selectors={selectors} userType={userType} />) }
-  </div>
-);
+const RowBody = ({ data, selectors, userType, onSelectDownloadModal}) => {
+  return (
+    <div>
+      {
+        data.map((item, index) =>
+          <Row
+            key={`row-${index}`}
+            data={item}
+            selectors={selectors}
+            userType={userType}
+            onSelectDownloadModal={onSelectDownloadModal}
+          />)
+      }
+    </div>
+  );
+}
 
 export default RowBody;

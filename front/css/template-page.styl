@@ -15,7 +15,29 @@ body
 @require 'ui/hero'
 @require 'modules/table'
 
+.download-table
+    background-color white
+    color #333
+    padding 1em 2em 3em
+    width 50vw
+    max-width 700px
+    box-sizing border-box
+    font-size .9em
 
+    &__title
+        text-align center
+        font-size 1.8em
+        padding 1em 1em 3em
 
+    &__item
+        display flex
+        margin-bottom .5em
+        justify-content space-between
+        align-items center
+        border-bottom 1px solid #efefef
+        text-decoration none
+        color #333
 
-
+        &:hover
+            cursor pointer
+            background-color #efefef
