@@ -20,6 +20,7 @@ const Dashboard = () => {
     costCenterList: []
   });
 
+
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
@@ -44,6 +45,7 @@ const Dashboard = () => {
     </div>
   ) : null;
 
+
   const page = (
     <div>
       <div>
@@ -62,6 +64,7 @@ const Dashboard = () => {
       </div>
     </div>
   );
+
 
   const app = <TemplatePage navbarOptions={fetchNavbarByUserType(dashboardData.userType)}>{page}</TemplatePage>;
   const defaultMessage = <span>Debes iniciar sesión</span>;

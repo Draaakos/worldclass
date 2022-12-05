@@ -12,7 +12,6 @@ const CarTable = ({ headers, data, selectors, userType }) => {
     return () => {
       setIsModalActive(true);
       setDownloadFiles(data.documents);
-      console.log(data);
     }
   }
 
