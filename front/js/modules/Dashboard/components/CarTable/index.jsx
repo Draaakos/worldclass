@@ -17,10 +17,9 @@ const CarTable = ({ headers, data, selectors, userType }) => {
   }
 
   const onFilter = (evt) => {
-    const search = data.filter(item => item.patent == evt.target.value)
-    setCurrentData(search)
+    const search = data.filter(item => item.patent.toLowerCase() == evt.target.value.toLowerCase());
+    setCurrentData(search);
   };
-
 
   return (
     <div>
@@ -50,7 +49,7 @@ const CarTable = ({ headers, data, selectors, userType }) => {
       <div className="car-table">
         <div className="search" >
           <label>Busqueda </label>
-          <input type="text" placeholder="buscar vehiculo"  onChange={onFilter} />
+          <input type="text" placeholder="buscar vehiculo" onChange={onFilter} />
         </div>
         <RowHead headers={headers} />
         <RowBody data={currentData} selectors={selectors} userType={userType} onSelectDownloadModal={onSelectDownloadModal} />
