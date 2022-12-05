@@ -63,12 +63,14 @@ class CardDataView(View):
         cost_center = data.get('costCenter')
         car_model = data.get('carModel')
         car_type = data.get('carType')
+        status = data.get('status')
 
         car = Car.objects.get(pk=id)
         car.color = color
         car.car_model = car_model
         car.car_type_id = car_type
         car.cost_center_id = cost_center
+        car.status = status
         car.save()
 
         return car

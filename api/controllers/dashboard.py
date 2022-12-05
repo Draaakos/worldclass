@@ -27,7 +27,17 @@ class DashboardView(View):
                 'selectors': {
                     'carType': car_type_data(),
                     'costCenter': cost_center_data(),
-                    'userType': user_type_data(person_logged_id)
+                    'userType': user_type_data(person_logged_id),
+                    'carStatus': [
+                        {
+                            'name': 'disponible',
+                            'id': 1
+                        },
+                        {
+                            'name': 'no disponible',
+                            'id': 2
+                        }
+                    ]
                 }
             })
         else:

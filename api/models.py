@@ -58,6 +58,7 @@ class Car(models.Model):
     patent = models.CharField(max_length=6)
     color = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
+    status = models.IntegerField(default=1)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
 
@@ -69,7 +70,8 @@ class Car(models.Model):
             'color': self.color,
             'costCenter': self.cost_center.id,
             'carModel': self.car_model,
-            'documents': fetch_documents(self)
+            'documents': fetch_documents(self),
+            'status': self.status
         }
 
 

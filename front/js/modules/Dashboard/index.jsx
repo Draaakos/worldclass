@@ -9,7 +9,7 @@ import TemplatePage from '../Template';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
 
-const PLACE_OPTIONS = ['Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 'Opciones'];
+const PLACE_OPTIONS = ['Status', 'Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 'Opciones'];
 
 
 const Dashboard = () => {

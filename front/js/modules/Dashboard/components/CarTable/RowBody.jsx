@@ -52,6 +52,7 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
 
   return (
     <div className="car-table__row">
+      <div><Selector isEditable={isEditable} value={data.status} data={selectors.carStatus} onChange={onChange} valueKey="status"/></div>
       <div><EditableInput isEditable={isEditable} value={data.patent} onChange={onChange} valueKey="patent"/></div>
       <div><Selector isEditable={isEditable} value={data.carType} data={selectors.carType} onChange={onChange} valueKey="carType"/></div>
       <div><EditableInput isEditable={isEditable} value={data.color} onChange={onChange} valueKey="color"/></div>
@@ -59,12 +60,15 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
       <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
 
       <div className="car-table__options" >
-        <form id={`form-${data.id}`} method="post" encType="multipart/form-data">
-          <label className="upload-button" htmlFor={`image-input-${data.id}`}>
-            <img src="/static/images/upload.svg" />
-          </label>
-          <input id={`image-input-${data.id}`} className="hidden-upload" type="file" onChange={onSubmit} />
-        </form>
+        {
+          isEditable ? (
+            <form id={`form-${data.id}`} method="post" encType="multipart/form-data">
+            <label className="upload-button" htmlFor={`image-input-${data.id}`}>
+              <img src="/static/images/upload.svg" />
+            </label>
+            <input id={`image-input-${data.id}`} className="hidden-upload" type="file" onChange={onSubmit} />
+          </form>
+        ) : null }
         <div className="download-button">
           {/* { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> } */}
           { data.documents.length && <div onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></div> }
