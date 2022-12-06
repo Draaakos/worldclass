@@ -15,7 +15,7 @@ const NavBar = ({ navbarOptions }) => {
       <div className="navbar__wrapper-items">
         { navbarOptions.map((item, index) => <Item key={`nav-${index}`} url={item.url} label={item.label} />) }
         <div className="navbar__item" onClick={onLogout}>Cerrar Sesion</div>
-      </div>(
+      </div>
     </nav>
   );
 }
