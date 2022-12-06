@@ -36,11 +36,11 @@ const Dashboard = () => {
 
   const modal = isRegisterCar && dashboardData.userType == 1
     ? <Modal onCloseModal={() => setIsRegisterCar(false)}>
-        <CarForm 
-          selectors={dashboardData.selectors} 
+        <CarForm
+          selectors={dashboardData.selectors}
           setCarList={setCarList}
-          carList={carList} 
-          onCloseModal={() => setIsRegisterCar(false)} 
+          carList={carList}
+          onCloseModal={() => setIsRegisterCar(false)}
         />
       </Modal>
     : null;
@@ -80,7 +80,11 @@ const Dashboard = () => {
 
   const app = <TemplatePage navbarOptions={fetchNavbarByUserType(dashboardData.userType)}>{page}</TemplatePage>;
   const defaultMessage = <span>Debes iniciar sesión</span>;
-  const content = dashboardData.carList.length ? app : defaultMessage;
+  const content = dashboardData.carList.length
+    ? app
+    : (
+      dashboardData.userType ? <span>no hay informacion para este centro de costo</span> : defaultMessage
+    );
 
   return <div>{content}</div>
 };
