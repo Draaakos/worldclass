@@ -50,7 +50,7 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
       {
         selectors.costCenter
           .map((option, index) =>
-            <option key={`option-${index}`} value={option.code}>{option.name}</option>)
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
     </select>
   );

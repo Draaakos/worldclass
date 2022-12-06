@@ -3,6 +3,8 @@ from django.views import View
 from django.http import JsonResponse
 from api.models import Person
 
+
+# TODO: REVISAR ESTA VISTA PORQUE AL PARECER NO SE ESTA USANDO
 class PersonDataView(View):
     def post(self, request):
         data = json.loads(request.body)
