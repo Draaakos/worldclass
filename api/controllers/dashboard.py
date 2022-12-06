@@ -59,7 +59,9 @@ class DashboardView(View):
         elif person_type == PersonTypeEnum.MODERATOR.value:
             for person_cost_center_data in PersonCostCenter.objects.filter(cost_center=cost_center):
                 person = Person.objects.get(pk=person_cost_center_data.person.id)
-                person_list.append(person.to_json())
+
+                if person_logged_id != person.id:
+                    person_list.append(person.to_json())
         return person_list
 
     def _fetch_dashboard_car_data(self, person_type, cost_center):
