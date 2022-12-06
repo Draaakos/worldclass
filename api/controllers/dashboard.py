@@ -26,7 +26,7 @@ class DashboardView(View):
                 'carList': self._fetch_dashboard_car_data(person_type_id_logged, person_cost_center_id_logged),
                 'selectors': {
                     'carType': car_type_data(),
-                    'costCenter': cost_center_data(),
+                    'costCenter': cost_center_data(person_logged_id, person_cost_center_id_logged),
                     'userType': user_type_data(person_logged_id),
                     'carStatus': [
                         {
