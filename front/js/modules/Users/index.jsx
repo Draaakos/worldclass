@@ -21,7 +21,6 @@ const Users = () => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
-          console.log(response)
           setPersonList(response.personList);
           // setPersonList(response.personList)
           setUserType(response.userType)
@@ -35,13 +34,13 @@ const Users = () => {
     const _personList = personList.filter(item => item.id != id);
     setPersonList(_personList);
   }
- 
+
   const modal = isRegisterModalOn
     ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}>
-        <UserForm 
-          selectors={selectors} 
-          personList={personList} 
-          setPersonList={setPersonList} 
+        <UserForm
+          selectors={selectors}
+          personList={personList}
+          setPersonList={setPersonList}
           onCloseModal={() => setIsRegisterModalOn(false)}
         />
       </Modal>

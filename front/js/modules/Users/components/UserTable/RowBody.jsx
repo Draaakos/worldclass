@@ -53,7 +53,17 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
 const RowBody = ({ data, selectors, userType, onDeleteItem }) => (
   <div>
-    { data.map((item, index) => <Row key={`row-${index}`} data={item} selectors={selectors} userType={userType} onDeleteItem={onDeleteItem} />) }
+    {
+      data.map(item =>
+        <Row
+          key={item.id}
+          data={item}
+          selectors={selectors}
+          userType={userType}
+          onDeleteItem={onDeleteItem}
+        />
+      )
+    }
   </div>
 );
 

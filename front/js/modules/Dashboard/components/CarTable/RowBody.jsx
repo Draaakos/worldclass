@@ -86,9 +86,9 @@ const RowBody = ({ data, selectors, userType, onSelectDownloadModal}) => {
   return (
     <div>
       {
-        data.map((item, index) =>
+        data.map(item =>
           <Row
-            key={`row-${index}`}
+            key={item.id}
             data={item}
             selectors={selectors}
             userType={userType}
