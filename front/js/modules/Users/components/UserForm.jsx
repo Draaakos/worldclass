@@ -1,29 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import service from '../../../services/formData';
 
-const UserForm = ({selectors}) => {
-  // const [costCenterOptions, setCostCenterOptions] = useState([]);
-  // const [personTypeOptions, setPersonTypeOptions] = useState([]);
+const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
   const name = useRef(null);
   const email = useRef(null);
   const costCenter = useRef(null);
   const password1 = useRef(null);
   const password2 = useRef(null);
   const personType = useRef(null);
-
-  // useEffect(() => {
-  //   service.fetchAllCostCenter()
-  //     .then(response => {
-  //       setCostCenterOptions(response.data);
-  //       console.log('cost', costCenterOptions)
-  //     });
-
-  //   service.fetchAllPersonTypes()
-  //     .then(response => {
-  //       setPersonTypeOptions(response.personTypeData)
-  //       console.log(response.personTypeData)
-  //     })
-  // }, []);
 
   const onSubmit = evt => {
     evt.preventDefault();
@@ -52,7 +36,12 @@ const UserForm = ({selectors}) => {
     };
 
     service.registerUser(payload)
-      .then(response => console.log('response message', response.message))
+      .then(response => {
+        const _personList = [ ...personList ]
+        _personList.push(response.item.person)
+        setPersonList(_personList)
+        onCloseModal();
+      })
   }
 
   const costCenterSelector = (

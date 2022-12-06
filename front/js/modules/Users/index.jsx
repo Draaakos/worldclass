@@ -12,24 +12,39 @@ const PLACE_OPTIONS = ['Nombre', 'Email', 'Tipo de Usuario', 'Opciones'];
 
 const Users = () => {
   const [ isRegisterModalOn, setIsRegisterModalOn ] = useState(false);
-  const [ userData, setUserData ] = useState({ personList: [] });
+  const [ personList, setPersonList ] = useState([]);
   const [ userType, setUserType ] = useState(3);
+  const [ selectors, setSelectors ] = useState([]);
+  // const [ personList, setPersonList ] = useState([]);
 
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
-          setUserData(response);
+          console.log(response)
+          setPersonList(response.personList);
+          // setPersonList(response.personList)
           setUserType(response.userType)
+          setSelectors(response.selectors)
           return;
         }
       })
   }, []);
 
-  console.log('selector' ,userData.selectors)
-
+  const onDeleteItem = id => {
+    const _personList = personList.filter(item => item.id != id);
+    setPersonList(_personList);
+  }
+ 
   const modal = isRegisterModalOn
-    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}><UserForm selectors={userData.selectors} /></Modal>
+    ? <Modal onCloseModal={() => setIsRegisterModalOn(false)}>
+        <UserForm 
+          selectors={selectors} 
+          personList={personList} 
+          setPersonList={setPersonList} 
+          onCloseModal={() => setIsRegisterModalOn(false)}
+        />
+      </Modal>
     : null;
 
   const usersPage = (
@@ -47,9 +62,10 @@ const Users = () => {
 
         <UserTable
           headers={PLACE_OPTIONS}
-          data={userData.personList}
-          selectors={userData.selectors}
+          data={personList}
+          selectors={selectors}
           userType={userType}
+          onDeleteItem={onDeleteItem}
         />
       </div>
     </div>

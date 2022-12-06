@@ -4,7 +4,7 @@ import EditableInput from 'ui/EditableInput';
 import Selector from 'ui/Selector';
 import service from '../../../../services/formData';
 
-const Row = ({ data, selectors, userType }) => {
+const Row = ({ data, selectors, userType, onDeleteItem }) => {
 	const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const editableButtonClasses = classNames([
@@ -32,6 +32,7 @@ const Row = ({ data, selectors, userType }) => {
     return () => {
       service.deleteUser(id);
       setEditableActive(false);
+      onDeleteItem(id);
     }
   };
 
@@ -50,10 +51,10 @@ const Row = ({ data, selectors, userType }) => {
   );
 };
 
-const RowBody = ({ data, selectors, userType }) => (
+const RowBody = ({ data, selectors, userType, onDeleteItem }) => (
   <div>
-    { data.map((item, index) => <Row key={`row-${index}`} data={item} selectors={selectors} userType={userType} />) }
+    { data.map((item, index) => <Row key={`row-${index}`} data={item} selectors={selectors} userType={userType} onDeleteItem={onDeleteItem} />) }
   </div>
 );
 
-export default RowBody
+export default RowBody;

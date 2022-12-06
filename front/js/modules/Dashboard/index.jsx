@@ -14,10 +14,10 @@ const PLACE_OPTIONS = ['Status', 'Patente', 'Tipo', 'Color', 'Centro de costo', 
 
 const Dashboard = () => {
   const [ isRegisterCar, setIsRegisterCar ] = useState(false);
+  const [ carList, setCarList ] = useState([]);
   const [ dashboardData, setDashboardData ] = useState({
     personList: [],
     carList: [],
-    costCenterList: []
   });
 
 
@@ -26,6 +26,7 @@ const Dashboard = () => {
       .then(response => {
         if(response.status == 200) {
           setDashboardData(response);
+          setCarList(response.carList)
           return;
         }
 
@@ -33,9 +34,15 @@ const Dashboard = () => {
       })
   }, []);
 
-
   const modal = isRegisterCar && dashboardData.userType == 1
-    ? <Modal onCloseModal={() => setIsRegisterCar(false)}><CarForm selectors={dashboardData.selectors} /></Modal>
+    ? <Modal onCloseModal={() => setIsRegisterCar(false)}>
+        <CarForm 
+          selectors={dashboardData.selectors} 
+          setCarList={setCarList}
+          carList={carList} 
+          onCloseModal={() => setIsRegisterCar(false)} 
+        />
+      </Modal>
     : null;
 
 
@@ -45,6 +52,10 @@ const Dashboard = () => {
     </div>
   ) : null;
 
+  const onDeleteItem = id => {
+    const _carList = carList.filter(item => item.id != id)
+    setCarList(_carList);
+  }
 
   const page = (
     <div>
@@ -57,9 +68,10 @@ const Dashboard = () => {
 
         <CarTable
           headers={PLACE_OPTIONS}
-          data={dashboardData.carList}
+          data={carList}
           selectors={dashboardData.selectors}
           userType={dashboardData.userType}
+          onDeleteItem={onDeleteItem}
         />
       </div>
     </div>

@@ -11,7 +11,7 @@ class PersonDataView(View):
         try:
             person = self._create_person(data)
             return JsonResponse({
-                "response": person.to_json(),
+                "item": person.to_json(),
                 "message": "usuario agregado correctamente",
                 "status": 200
             })

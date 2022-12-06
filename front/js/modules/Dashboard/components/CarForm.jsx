@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import service from 'services/formData';
 
-const CarForm = ({ selectors }) => {
+const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
   const patent = useRef(null);
   const color = useRef(null);
   const carModel = useRef(null);
@@ -30,9 +30,14 @@ const CarForm = ({ selectors }) => {
     };
 
     service.registerCar(payload)
-      .then(response => alert(response.message))
+      .then(response => {
+        const _carList = [ ...carList ];
+        _carList.push(response.item);
+        console.log(_carList)
+        setCarList(_carList);
+        onCloseModal();
+      })
   }
-
   const costCenterSelector = (
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>

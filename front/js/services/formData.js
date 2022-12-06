@@ -65,7 +65,7 @@ const service = {
       .then(response => response.json());
   },
   deleteUser(id) {
-    const url = `/api/v1/person/type/${id}`;
+    const url = `/api/v1/person/${id}`;
 
     return onDelete(url)
       .then(response => response.json());

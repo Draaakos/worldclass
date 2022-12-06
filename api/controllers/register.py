@@ -20,7 +20,7 @@ class RegisterView(View):
             person = self._add_new_user(data, person_active)
             return JsonResponse({
                 'status': 200,
-                'person': person,
+                'item': person,
                 'msg': person['msg']
             })
         except:

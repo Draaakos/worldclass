@@ -10,9 +10,10 @@ class CardDataView(View):
     def post(self, request):
         data = json.loads(request.body)
 
-        self._add_new_car(data)
+        car = self._add_new_car(data)
         try:
             return JsonResponse({
+                "item": car.to_json(),
                 "message": "vehiculo agregado correctamente",
                 "status": 200
             })

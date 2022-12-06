@@ -34,6 +34,7 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
     return () => {
       service.deleteCar(id)
       setEditableActive(false);
+      onDeleteItem(id);
     }
   };
 
