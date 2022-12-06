@@ -30,7 +30,7 @@ class RegisterView(View):
             })
 
     def _add_new_user(self, data, person_active):
-        if person_active.person_type_id == PERSON_TYPES['ADMIN']:
+        if person_active.person_type_id == PERSON_TYPES['ADMIN'] or person_active.person_type_id == PERSON_TYPES['MODERATOR']:
             username = data.get('username')
             password = data.get('password')
             email = data.get('email')
