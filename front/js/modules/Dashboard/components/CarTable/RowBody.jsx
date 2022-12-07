@@ -3,11 +3,14 @@ import classNames from "classnames";
 import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
 import service from "../../../../services/formData";
+import DocumentForm from "./DocumentForm";
+import Modal from "../Modal";
 
 const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ carList, setCarList ] = useState([]);
+  const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
 
   const editableButtonClasses = classNames([
     'button',
@@ -49,6 +52,15 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
       .then(response => console.log(response))
   }
 
+  const modalDocument = isRegisterDocument ?
+    (
+      <Modal onCloseModal={() => setIsRegisterDocument(false)}>
+        <DocumentForm data={data} onSubmit={onsubmit}/>
+      </Modal>
+    )
+    : null;
+
+
   const isEditable = !!(userType == 1);
 
   return (
@@ -63,17 +75,12 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
       <div className="car-table__options" >
         {
           isEditable ? (
-            <form id={`form-${data.id}`} method="post" encType="multipart/form-data">
-            <label className="upload-button" htmlFor={`image-input-${data.id}`}>
-              <img src="/static/images/upload.svg" />
-            </label>
-            <input id={`image-input-${data.id}`} className="hidden-upload" type="file" onChange={onSubmit} />
-          </form>
+            <button onClick={() => setIsRegisterDocument(true)}>add document</button>
         ) : null }
         <div className="download-button">
-          {/* { data.documents.length && <a href={data.documents[0].path} download="file"><img src="/static/images/download.svg" /></a> } */}
           { data.documents.length && <div onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></div> }
         </div>
+        {modalDocument}
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
       </div>

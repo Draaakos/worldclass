@@ -78,7 +78,6 @@ class Car(models.Model):
 class Document(models.Model):
     name = models.CharField(max_length=50)
     upload = models.FileField(upload_to=define_product_path)
-    # expired_date = models.DateField()
 
     def to_json(self):
         return {

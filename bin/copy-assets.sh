@@ -13,3 +13,5 @@ mkdir -p static/fonts
 
 cp -rvf front/images/* static/images/
 cp -rvf front/fonts/* static/fonts/
+cp -rvf front/css/css/* static/css/
+
