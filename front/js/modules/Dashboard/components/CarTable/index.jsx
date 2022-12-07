@@ -13,7 +13,7 @@ const CarTable = ({ headers, data, selectors, userType }) => {
       setIsModalActive(true);
       setDownloadFiles(data.documents);
     }
-  }
+  };
 
   const onFilter = (evt) => {
     const search = data.filter(item => item.patent.toLowerCase() == evt.target.value.toLowerCase());
@@ -32,6 +32,7 @@ const CarTable = ({ headers, data, selectors, userType }) => {
                   return (
                     <a href={document.path} download="file" className="download-table__item">
                       <div>{document.name}</div>
+                      <div>{document.expiredDate}</div>
                       <div>
                         <div>
                           <img src="/static/images/download.svg" />

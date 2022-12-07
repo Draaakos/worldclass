@@ -41,21 +41,10 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
     }
   };
 
-  const onSubmit = evt => {
-    evt.preventDefault();
-
-    const form = new FormData();
-    form.append('name', 'test');
-    form.append('upload',evt.target.files[0]);
-
-    service.uploadDocument(form, data.id)
-      .then(response => console.log(response))
-  }
-
   const modalDocument = isRegisterDocument ?
     (
       <Modal onCloseModal={() => setIsRegisterDocument(false)}>
-        <DocumentForm data={data} onSubmit={onsubmit}/>
+        <DocumentForm data={data} />
       </Modal>
     )
     : null;

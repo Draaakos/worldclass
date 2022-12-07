@@ -72,6 +72,7 @@ const service = {
   },
   uploadDocument(form, carId) {
     const url = `/api/v1/car/${carId}/document`;
+    console.log(url)
 
     return _post(url, form)
       .then(response => response.json());

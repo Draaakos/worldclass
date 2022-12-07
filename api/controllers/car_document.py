@@ -7,19 +7,12 @@ from ..tools import define_product_path
 
 class CarDocumentView(View):
     def post(self, request, **kwargs):
-        form = DocumentForm(request.POST, request.FILES)
         car_id = kwargs.get('car_id')
+        form = DocumentForm(request.POST, request.FILES)
 
         if form.is_valid():
-            file_data = self.handle_uploaded_file(request.FILES['upload'])
-
+            document = form.save()
             car = Car.objects.get(pk=car_id)
-
-            document = Document()
-            document.name = file_data['filename']
-            document.upload = file_data['path']
-            document.save()
-
             car_document = CarDocument()
             car_document.document = document
             car_document.car = car
