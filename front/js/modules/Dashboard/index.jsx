@@ -58,7 +58,7 @@ const Dashboard = () => {
   }
 
   const page = (
-    <div>
+    <div className='content-table'>
       <div>
         {modal}
         <div className="hero-dual hero-primary">

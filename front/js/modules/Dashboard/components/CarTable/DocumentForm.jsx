@@ -22,7 +22,7 @@ function format(inputDate) {
 };
 
 
-const DocumentForm = ({ data }) => {
+const DocumentForm = ({ data, onCloseModal }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   const file = useRef(null);
@@ -37,7 +37,11 @@ const DocumentForm = ({ data }) => {
     form.append('expired_date', format(startDate))
 
     service.uploadDocument(form, data.id)
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+        onCloseModal()
+        alert("Imagen subida correctamente")
+      })
   };
 
 

@@ -44,7 +44,7 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
   const modalDocument = isRegisterDocument ?
     (
       <Modal onCloseModal={() => setIsRegisterDocument(false)}>
-        <DocumentForm data={data} />
+        <DocumentForm data={data} onCloseModal={() => setIsRegisterDocument(false)} />
       </Modal>
     )
     : null;

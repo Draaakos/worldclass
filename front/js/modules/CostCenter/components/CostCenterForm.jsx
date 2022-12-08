@@ -19,6 +19,7 @@ const CostCenterForm = ({ setCostCenterList, costCenterList, onCloseModal }) => 
         _costCenterList.push(response.item);
         setCostCenterList(_costCenterList);
         onCloseModal();
+        alert("Centro de costo credo correctamente")
       })
   }
 

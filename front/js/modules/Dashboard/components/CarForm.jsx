@@ -36,6 +36,7 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
         console.log(_carList)
         setCarList(_carList);
         onCloseModal();
+        alert("Se ha ingreaso el vehículo correctamente")
       })
   }
   const costCenterSelector = (

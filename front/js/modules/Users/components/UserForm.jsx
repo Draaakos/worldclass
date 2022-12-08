@@ -41,6 +41,7 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
         _personList.push(response.item.person)
         setPersonList(_personList)
         onCloseModal();
+        alert("Usuario creado correctamente")
       })
   }
 
