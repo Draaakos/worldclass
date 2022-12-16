@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import classNames from "classnames";
 import EditableInput from "ui/EditableInput";
 import Selector from "ui/Selector";
@@ -6,11 +6,11 @@ import service from "../../../../services/formData";
 import DocumentForm from "./DocumentForm";
 import Modal from "../Modal";
 
-const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
+const Row = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, onCloseModal }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
-  const [ carList, setCarList ] = useState([]);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
+  const [ documentList, setDocumentList ] = useState([]);
 
   const editableButtonClasses = classNames([
     'button',
@@ -41,14 +41,26 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
     }
   };
 
+  const onAddNewDocument = item => {
+    const _payload = { ...payload };
+    _payload.documents.push(item);
+    setPayload(_payload);
+  };
+
   const modalDocument = isRegisterDocument ?
     (
       <Modal onCloseModal={() => setIsRegisterDocument(false)}>
-        <DocumentForm data={data} onCloseModal={() => setIsRegisterDocument(false)} selectors={selectors} />
+        <DocumentForm
+          data={data}
+          onCloseModal={() => setIsRegisterDocument(false)}
+          documentList={documentList}
+          setDocumentList={setDocumentList}
+          onAddNewDocument={onAddNewDocument}
+          selectors={selectors}
+        />
       </Modal>
     )
     : null;
-
 
   const isEditable = !!(userType == 1);
 
@@ -64,12 +76,22 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
       <div className="car-table__options" >
         {
           isEditable ? (
-            <button onClick={() => setIsRegisterDocument(true)}>add document</button>
-        ) : null }
+              <button onClick={() => setIsRegisterDocument(true)}>add document</button>
+          ) : null
+        }
+
         <div className="download-button">
-          { data.documents.length && <div onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></div> }
+          {
+            payload.documents.length
+              ? <div onClick={onSelectDownloadModal(data)}>
+                  <img src="/static/images/download.svg" />
+                </div>
+              : null
+          }
         </div>
+
         {modalDocument}
+
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
       </div>
@@ -78,7 +100,7 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
 };
 
 
-const RowBody = ({ data, selectors, userType, onSelectDownloadModal}) => {
+const RowBody = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, onCloseModal }) => {
   return (
     <div>
       {
@@ -89,7 +111,10 @@ const RowBody = ({ data, selectors, userType, onSelectDownloadModal}) => {
             selectors={selectors}
             userType={userType}
             onSelectDownloadModal={onSelectDownloadModal}
-          />)
+            onDeleteItem={onDeleteItem}
+            onCloseModal={onCloseModal}
+          />
+        )
       }
     </div>
   );

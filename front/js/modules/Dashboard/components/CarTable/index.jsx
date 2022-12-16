@@ -5,7 +5,7 @@ import Modal from "../Modal";
 import Search from "./Seach";
 
 
-const CarTable = ({ headers, data, selectors, userType }) => {
+const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseModal }) => {
   const [ currentData, setCurrentData ] = useState(data)
   const [ isModalActive, setIsModalActive ] = useState(false);
   const [ downloadFiles, setDownloadFiles ] = useState(false);
@@ -59,6 +59,7 @@ const CarTable = ({ headers, data, selectors, userType }) => {
           selectors={selectors}
           userType={userType}
           onSelectDownloadModal={onSelectDownloadModal}
+          onDeleteItem={onDeleteItem}
         />
       </div>
     </div>

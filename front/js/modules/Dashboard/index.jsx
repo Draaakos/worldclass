@@ -15,18 +15,19 @@ const PLACE_OPTIONS = ['Status', 'Patente', 'Tipo', 'Color', 'Centro de costo', 
 const Dashboard = () => {
   const [ isRegisterCar, setIsRegisterCar ] = useState(false);
   const [ carList, setCarList ] = useState([]);
-  const [ dashboardData, setDashboardData ] = useState({
-    personList: [],
-    carList: [],
-  });
-
+  const [ selectors, setSelectors ] = useState([]);
+  const [ userType, setUserType ] = useState(3);
+  const [ documentList, setDocumentList ] = useState([]);
 
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
-          setDashboardData(response);
           setCarList(response.carList)
+          setSelectors(response.selectors)
+          setUserType(response.userType)
+          setDocumentList(response.carList)
+          console.log('documnet', documentList)
           return;
         }
 
@@ -34,10 +35,15 @@ const Dashboard = () => {
       })
   }, []);
 
-  const modal = isRegisterCar && dashboardData.userType == 1
+  const onDeleteItem = id => {
+    const _carList = carList.filter(item => item.id != id)
+    setCarList(_carList);
+  }
+
+  const modal = isRegisterCar && userType == 1
     ? <Modal onCloseModal={() => setIsRegisterCar(false)}>
         <CarForm
-          selectors={dashboardData.selectors}
+          selectors={selectors}
           setCarList={setCarList}
           carList={carList}
           onCloseModal={() => setIsRegisterCar(false)}
@@ -46,16 +52,11 @@ const Dashboard = () => {
     : null;
 
 
-  const buttonNewCar = dashboardData.userType == 1 ? (
+  const buttonNewCar = userType == 1 ? (
     <div>
       <Button text="Crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterCar(true)} />
     </div>
   ) : null;
-
-  const onDeleteItem = id => {
-    const _carList = carList.filter(item => item.id != id)
-    setCarList(_carList);
-  }
 
   const page = (
     <div className='content-table'>
@@ -67,10 +68,11 @@ const Dashboard = () => {
         </div>
 
         <CarTable
+          key={`car-table-${carList.length}`}
           headers={PLACE_OPTIONS}
           data={carList}
-          selectors={dashboardData.selectors}
-          userType={dashboardData.userType}
+          selectors={selectors}
+          userType={userType}
           onDeleteItem={onDeleteItem}
         />
       </div>
@@ -78,12 +80,12 @@ const Dashboard = () => {
   );
 
 
-  const app = <TemplatePage navbarOptions={fetchNavbarByUserType(dashboardData.userType)}>{page}</TemplatePage>;
+  const app = <TemplatePage navbarOptions={fetchNavbarByUserType(userType)}>{page}</TemplatePage>;
   const defaultMessage = <span>Debes iniciar sesión</span>;
-  const content = dashboardData.carList.length
+  const content = carList.length
     ? app
     : (
-      dashboardData.userType ? <span>no hay informacion para este centro de costo</span> : defaultMessage
+      userType ? <span>no hay informacion para este centro de costo</span> : defaultMessage
     );
 
   return <div>{content}</div>

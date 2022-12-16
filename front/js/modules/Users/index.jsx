@@ -15,16 +15,15 @@ const Users = () => {
   const [ personList, setPersonList ] = useState([]);
   const [ userType, setUserType ] = useState(3);
   const [ selectors, setSelectors ] = useState([]);
-  // const [ personList, setPersonList ] = useState([]);
 
   useEffect(() => {
     service.fetchDashboardData()
       .then(response => {
         if(response.status == 200) {
           setPersonList(response.personList);
-          // setPersonList(response.personList)
           setUserType(response.userType)
           setSelectors(response.selectors)
+          
           return;
         }
       })

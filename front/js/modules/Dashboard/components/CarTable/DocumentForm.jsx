@@ -23,9 +23,9 @@ function format(inputDate) {
 };
 
 
-const DocumentForm = ({ data, onCloseModal, selectors }) => {
-  const [ startDate, setStartDate ] = useState(new Date());
-  const [ documentType, setDocumentType ] = useState(null);
+const DocumentForm = ({ data, onCloseModal, selectors, documentList, setDocumentList, onAddNewDocument }) => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const file = useRef(null);
 
   const onChangeSelectorType = (_, value) => {
@@ -50,7 +50,6 @@ const DocumentForm = ({ data, onCloseModal, selectors }) => {
       alert('Debes seleccionar un tipo de archivo');
     }
   };
-
 
   return (
 		<form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >

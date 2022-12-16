@@ -19,7 +19,7 @@ class CarDocumentView(View):
             car_document.save()
 
             return JsonResponse({
-                'test': 'ok'
+                'data': document.to_json()
             })
         else:
             return JsonResponse({
