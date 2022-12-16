@@ -64,10 +64,10 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal }) => {
       <div className="car-table__options" >
         {
           isEditable ? (
-            <button onClick={() => setIsRegisterDocument(true)}>add document</button>
+            <button onClick={() => setIsRegisterDocument(true)}><img src="/static/images/upload.svg" /></button>
         ) : null }
         <div className="download-button">
-          { data.documents.length && <div onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></div> }
+          { data.documents.length && <button onClick={onSelectDownloadModal(data)}><img src="/static/images/download.svg" /></button>}
         </div>
         {modalDocument}
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }

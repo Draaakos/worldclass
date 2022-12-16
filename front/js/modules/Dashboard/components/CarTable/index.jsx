@@ -15,8 +15,11 @@ const CarTable = ({ headers, data, selectors, userType }) => {
     }
   };
 
+
   const onFilter = (evt) => {
-    const search = data.filter(item => item.patent.toLowerCase() == evt.target.value.toLowerCase());
+    const search = data.filter(
+      (item) => item.patent.toLowerCase().includes(evt.target.value.toLowerCase())
+    );
     setCurrentData(search);
   };
 
@@ -67,3 +70,6 @@ CarTable.defaultProps = {
 }
 
 export default CarTable;
+
+
+

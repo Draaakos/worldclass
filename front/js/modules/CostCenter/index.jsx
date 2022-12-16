@@ -8,6 +8,8 @@ import Button from 'ui/Button';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
 
+
+
 const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Opciones'];
 
 const CostCenter = () => {
@@ -32,38 +34,36 @@ const CostCenter = () => {
     setCostCenterList(_costCenterList);
   };
 
-
   const modal = isRegisterCostCenter
-    ? (
-      <Modal onCloseModal={() => setIsRegisterCostCenter(false)}>
-        <CostCenterForm
-          setCostCenterList={setCostCenterList}
-          costCenterList={costCenterList}
-          onCloseModal={() => setIsRegisterCostCenter(false)}
-        />
-      </Modal>
-    )
-    : null;
-
-  const costCenterPage = (
-    <div>
-      {modal}
-      <div>
-        <div className="hero-dual hero-primary">
-            <div>Lista de Centros de Costo</div>
-            <Button text="crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterCostCenter(true)}/>
-        </div>
-
-        <CostCenterTable
-          headers={PLACE_OPTIONS}
-          data={costCenterList}
-          userType={userType}
-          onDeleteItem={onDeleteItem}
-        />
-      </div>
-    </div>
+  ? (
+    <Modal onCloseModal={() => setIsRegisterCostCenter(false)}>
+      <CostCenterForm
+        setCostCenterList={setCostCenterList}
+        costCenterList={costCenterList}
+        onCloseModal={() => setIsRegisterCostCenter(false)}
+      />
+    </Modal>
   )
+  : null;
 
+const costCenterPage = (
+  <div>
+    {modal}
+    <div>
+      <div className="hero-dual hero-primary">
+          <div>Lista de Centros de Costo</div>
+          <Button text="Crear nuevo" classes="button--primary" onClick={() => setIsRegisterCostCenter(true)} onMouseOver={() => prompt('Con este botón puedes crear un nuevo vehiculo en la tabla')} onMouseOut={() => close()}/>
+      </div>
+
+      <CostCenterTable
+        headers={PLACE_OPTIONS}
+        data={costCenterList}
+        userType={userType}
+        onDeleteItem={onDeleteItem}
+      />
+    </div>
+  </div>
+)
   return (
     <TemplatePage navbarOptions={fetchNavbarByUserType(userType)}>
       {costCenterPage}
