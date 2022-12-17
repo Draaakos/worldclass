@@ -6,6 +6,8 @@
 @require 'modules/footer'
 @require 'ui/costcenter-table'
 @require 'ui/usertype-table'
+@require 'ui/search'
+
 
 body
     padding 0
@@ -41,8 +43,14 @@ body
         &:hover
             cursor pointer
             background-color #efefef
-            
 
-.content-table 
+
+.content-table
     min-height 80vh
 
+
+.search-section
+    margin 1em 0
+    display flex
+    align-items center
+    justify-content center

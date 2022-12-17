@@ -1,7 +1,9 @@
+import { useState } from "react";
 import RowBody from "./RowBody";
 import RowHead from "./RowHead";
 import Modal from "../Modal";
-import { useState } from "react";
+import Search from "./Seach";
+
 
 const CarTable = ({ headers, data, selectors, userType }) => {
   const [ currentData, setCurrentData ] = useState(data)
@@ -16,8 +18,9 @@ const CarTable = ({ headers, data, selectors, userType }) => {
   };
 
   const onFilter = (evt) => {
-    const search = data.filter(item => item.patent.toLowerCase() == evt.target.value.toLowerCase());
-    setCurrentData(search);
+    setCurrentData(data
+      .filter(item => item.patent.toLowerCase().includes(evt.target.value.toLowerCase()))
+    );
   };
 
   return (
@@ -47,12 +50,16 @@ const CarTable = ({ headers, data, selectors, userType }) => {
         ) : null
       }
       <div className="car-table">
-        <div className="search" >
-          <label>Busqueda </label>
-          <input type="text" placeholder="buscar vehiculo" onChange={onFilter} />
-        </div>
+        <section className="search-section">
+          <Search onFilter={onFilter} />
+        </section>
         <RowHead headers={headers} />
-        <RowBody data={currentData} selectors={selectors} userType={userType} onSelectDownloadModal={onSelectDownloadModal} />
+        <RowBody
+          data={currentData}
+          selectors={selectors}
+          userType={userType}
+          onSelectDownloadModal={onSelectDownloadModal}
+        />
       </div>
     </div>
   );
