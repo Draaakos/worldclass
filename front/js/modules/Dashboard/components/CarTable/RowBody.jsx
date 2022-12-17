@@ -53,7 +53,6 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, o
         <DocumentForm
           data={data}
           onCloseModal={() => setIsRegisterDocument(false)}
-          documentList={documentList}
           setDocumentList={setDocumentList}
           onAddNewDocument={onAddNewDocument}
           selectors={selectors}

@@ -23,8 +23,9 @@ function format(inputDate) {
 };
 
 
-const DocumentForm = ({ data, onCloseModal, selectors, documentList, setDocumentList, onAddNewDocument }) => {
-  const [startDate, setStartDate] = useState(new Date());
+const DocumentForm = ({ data, onCloseModal, selectors }) => {
+  const [ startDate, setStartDate ] = useState(new Date());
+  const [ documentType, setDocumentType ] = useState(null);
 
   const file = useRef(null);
 
