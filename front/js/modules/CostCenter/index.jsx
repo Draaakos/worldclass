@@ -51,7 +51,7 @@ const CostCenter = () => {
       <div>
         <div className="hero-dual hero-primary">
             <div>Lista de Centros de Costo</div>
-            <Button text="crear nuevo" classes="button--primary" onClick={() => setIsRegisterCostCenter(true)}/>
+            <Button text="crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterCostCenter(true)}/>
         </div>
 
         <CostCenterTable
