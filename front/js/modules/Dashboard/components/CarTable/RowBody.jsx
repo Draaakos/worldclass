@@ -81,15 +81,17 @@ const Row = ({
       <div className="car-table__options" >
         {
           isEditable ? (
-              <button onClick={() => setIsRegisterDocument(true)}>add document</button>
+              <div onClick={() => setIsRegisterDocument(true)} className="car-table__options__item">
+                <i className='fas fa-upload'></i>
+              </div>
           ) : null
         }
 
         <div className="download-button">
           {
             payload.documents.length
-              ? <div onClick={onSelectDownloadModal(data)}>
-                  <img src="/static/images/download.svg" />
+              ? <div onClick={onSelectDownloadModal(data)} className="car-table__options__item">
+                  <i className='fas fa-download'></i>
                 </div>
               : null
           }
@@ -97,8 +99,12 @@ const Row = ({
 
         {modalDocument}
 
-        { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
-        { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
+        { isEditable ? <div className={editableButtonClasses} onClick={onEdit(data.id)}>
+          <i className='fas fa-check-circle'></i>
+        </div> : null }
+        { isEditable ? <div className="button button--danger" onClick={onDelete(data.id)}>
+          <i className='fas fa-trash-alt'></i>
+        </div> : null }
       </div>
     </div>
   );
