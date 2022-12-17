@@ -23,7 +23,7 @@ function format(inputDate) {
 };
 
 
-const DocumentForm = ({ data, onCloseModal, selectors }) => {
+const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
   const [ startDate, setStartDate ] = useState(new Date());
   const [ documentType, setDocumentType ] = useState(null);
 
@@ -44,8 +44,10 @@ const DocumentForm = ({ data, onCloseModal, selectors }) => {
 
       service.uploadDocument(form, data.id)
         .then(response => {
-          onCloseModal();
+          console.log(response.data)
+          onAddNewDocument(response.data);
           alert("Archivo subido correctamente");
+          onCloseModal();
         })
     } else {
       alert('Debes seleccionar un tipo de archivo');

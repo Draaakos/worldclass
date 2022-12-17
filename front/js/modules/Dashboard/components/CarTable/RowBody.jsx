@@ -6,11 +6,16 @@ import service from "../../../../services/formData";
 import DocumentForm from "./DocumentForm";
 import Modal from "../Modal";
 
-const Row = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, onCloseModal }) => {
+const Row = ({
+  data,
+  selectors,
+  userType,
+  onSelectDownloadModal,
+  onDeleteItem
+}) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
-  const [ documentList, setDocumentList ] = useState([]);
 
   const editableButtonClasses = classNames([
     'button',
@@ -53,7 +58,8 @@ const Row = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, o
         <DocumentForm
           data={data}
           onCloseModal={() => setIsRegisterDocument(false)}
-          setDocumentList={setDocumentList}
+          setPayload={setPayload}
+          payload={payload}
           onAddNewDocument={onAddNewDocument}
           selectors={selectors}
         />
