@@ -7,6 +7,7 @@ from api.models import CostCenter
 from ..utils.cost_center import cost_center_data
 from ..utils.car_type import car_type_data
 from ..utils.user_type import user_type_data
+from ..utils.document_type import document_type_data
 from ..enum import PersonTypeEnum
 
 
@@ -28,6 +29,7 @@ class DashboardView(View):
                     'carType': car_type_data(),
                     'costCenter': cost_center_data(person_logged_id, person_cost_center_id_logged),
                     'userType': user_type_data(person_logged_id),
+                    'documentType': document_type_data(),
                     'carStatus': [
                         {
                             'name': 'disponible',

@@ -6,8 +6,8 @@ from api.models import CarDocument
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     ordering = ['id',]
-    list_display = ['id', 'name', 'upload']
-    list_editable = ['name', 'upload']
+    list_display = ['id', 'document_type', 'upload']
+    list_editable = ['document_type', 'upload']
 
 
 @admin.register(CarDocument)

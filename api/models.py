@@ -75,15 +75,25 @@ class Car(models.Model):
         }
 
 
-class Document(models.Model):
+class DocumentType(models.Model):
     name = models.CharField(max_length=50)
-    upload = models.FileField(upload_to=define_product_path)
-    expired_date = models.DateField()
 
     def to_json(self):
         return {
             'id': self.id,
-            'name': self.name,
+            'name': self.name
+        }
+
+
+class Document(models.Model):
+    upload = models.FileField(upload_to=define_product_path)
+    expired_date = models.DateField()
+    document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.document_type.name,
             'path': f'/media/{self.upload.name}',
             'expiredDate': self.expired_date.strftime("%d-%m-%Y")
         }

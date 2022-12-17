@@ -191,5 +191,19 @@
     "fields": {
         "name": "usuario"
     }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 1,
+    "fields": {
+        "name": "Revision tecnica"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 2,
+    "fields": {
+        "name": "Permiso de circulacion"
+    }
   }
 ]

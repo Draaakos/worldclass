@@ -9,6 +9,10 @@ const Selector = ({ data, onChange, value, valueKey, isEditable }) => {
       )
     });
 
+  if(!value) {
+    options.unshift(<option value={null}>seleccione</option>);
+  }
+
   // TODO: REVISAR INCONSISTENCIA EN ITEM.ID CON ITEM.NAME, SIEMPRE DEBERIA VENIR UN TIPO DE VALOR EN "VALUE"
   // AHORA ESTA LLEGANDO EN ALGUNOS LUGARES UN ID Y EN OTROS NOMBRE
   return (

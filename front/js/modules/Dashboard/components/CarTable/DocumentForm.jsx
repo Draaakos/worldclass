@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import DatePicker from "react-datepicker";
-import service from './../../../../services/formData.js';
+import Selector from "ui/Selector";
+import service from "./../../../../services/formData.js";
 
 
 function format(inputDate) {
@@ -22,34 +23,40 @@ function format(inputDate) {
 };
 
 
-const DocumentForm = ({ data, onCloseModal }) => {
-  const [startDate, setStartDate] = useState(new Date());
-
+const DocumentForm = ({ data, onCloseModal, selectors }) => {
+  const [ startDate, setStartDate ] = useState(new Date());
+  const [ documentType, setDocumentType ] = useState(null);
   const file = useRef(null);
-  const name = useRef(null);
+
+  const onChangeSelectorType = (_, value) => {
+    setDocumentType(value);
+  }
 
   const onSubmit = evt => {
     evt.preventDefault();
 
-    const form = new FormData();
-    form.append('name', name.current.value);
-    form.append('upload', file.current.files[0]);
-    form.append('expired_date', format(startDate))
+    if(documentType) {
+      const form = new FormData();
+      form.append('document_type', documentType);
+      form.append('upload', file.current.files[0]);
+      form.append('expired_date', format(startDate))
 
-    service.uploadDocument(form, data.id)
-      .then(response => {
-        console.log(response)
-        onCloseModal()
-        alert("Imagen subida correctamente")
-      })
+      service.uploadDocument(form, data.id)
+        .then(response => {
+          onCloseModal();
+          alert("Archivo subido correctamente");
+        })
+    } else {
+      alert('Debes seleccionar un tipo de archivo');
+    }
   };
 
 
   return (
 		<form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >
 			<div className="form-register__title">Subir documento</div>
-			<label className="form-register__label">Nombre del archivo</label>
-			<input ref={name} className="form-register__input"/>
+      <Selector data={selectors.documentType} valueKey="documentType" onChange={onChangeSelectorType} isEditable />
+
 			<label className="form-register__label" type="date">Fecha de expiracion</label>
 			<DatePicker
         className="form-register__input"
