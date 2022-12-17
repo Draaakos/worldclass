@@ -78,11 +78,11 @@ const Row = ({
       <div><Selector isEditable={isEditable} value={data.costCenter} data={selectors.costCenter} onChange={onChange} valueKey="costCenter"/></div>
       <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
 
-      <div className="car-table__options" >
+      <div className="car-table__options">
         {
           isEditable ? (
               <div onClick={() => setIsRegisterDocument(true)} className="car-table__options__item">
-                <i className='fas fa-upload'></i>
+                <i className="fas fa-upload"></i>
               </div>
           ) : null
         }
@@ -91,7 +91,7 @@ const Row = ({
           {
             payload.documents.length
               ? <div onClick={onSelectDownloadModal(data)} className="car-table__options__item">
-                  <i className='fas fa-download'></i>
+                  <i className="fas fa-download"></i>
                 </div>
               : null
           }
@@ -99,12 +99,20 @@ const Row = ({
 
         {modalDocument}
 
-        { isEditable ? <div className={editableButtonClasses} onClick={onEdit(data.id)}>
-          <i className='fas fa-check-circle'></i>
-        </div> : null }
-        { isEditable ? <div className="button button--danger" onClick={onDelete(data.id)}>
-          <i className='fas fa-trash-alt'></i>
-        </div> : null }
+        { 
+          isEditable 
+            ? <div className={editableButtonClasses} onClick={onEdit(data.id)}>
+                <i className="fas fa-check-circle"></i>
+              </div> 
+            : null 
+        }
+        { 
+          isEditable 
+            ? <div className="button button--danger" onClick={onDelete(data.id)}>
+                <i className="fas fa-trash-alt"></i>
+              </div> 
+            : null 
+        }
       </div>
     </div>
   );
