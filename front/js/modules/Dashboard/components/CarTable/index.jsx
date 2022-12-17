@@ -51,8 +51,8 @@ const CarTable = ({ headers, data, selectors, userType }) => {
       }
       <div className="car-table">
         <div className="search" >
-          <label>Busqueda </label>
-          <input type="text" placeholder="buscar vehiculo" onChange={onFilter} />
+          <input className="search__input" type="text" placeholder="buscar vehiculo" onChange={onFilter} />
+          <span className="search__icon"><i class="fa fa-search"></i></span>
         </div>
         <RowHead headers={headers} />
         <RowBody data={currentData} selectors={selectors} userType={userType} onSelectDownloadModal={onSelectDownloadModal} />
