@@ -3,7 +3,6 @@ import DatePicker from "react-datepicker";
 import Selector from "ui/Selector";
 import service from "./../../../../services/formData.js";
 
-
 function format(inputDate) {
   let date, month, year;
 
@@ -22,10 +21,10 @@ function format(inputDate) {
   return `${year}-${month}-${date}`;
 };
 
-
 const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
   const [ startDate, setStartDate ] = useState(new Date());
   const [ documentType, setDocumentType ] = useState(null);
+  const [isDateVisible, setIsDateVisible] = useState(false);
 
   const file = useRef(null);
 
@@ -37,6 +36,11 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
     evt.preventDefault();
 
     if(documentType) {
+      if (!file.current.files[0]) {
+        alert("Debes seleccionar un archivo");
+        return;
+      }
+
       const form = new FormData();
       form.append('document_type', documentType);
       form.append('upload', file.current.files[0]);
@@ -54,29 +58,26 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
     }
   };
 
-  const onChangeOpciones = (event) => {
-    if (event.target.value === "opcion1") {
-      document.querySelector(".form-register__label").style.display = "block";
-      document.querySelector(".form-register__input").style.display = "block";
-    } else {
-      document.querySelector(".form-register__label").style.display = "none";
-      document.querySelector(".form-register__input").style.display = "none";
-    }
-  };
-
-return (
-  <form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >
-    <div className="form-register__title">Subir documento</div>
+  return (
+    <form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >
+      <div className="form-register__title">Subir documento</div>
       <Selector data={selectors.documentType} valueKey="documentType" onChange={onChangeSelectorType} isEditable />
-
-    <label className="form-register__label" type="date">Fecha de expiración</label>
-    <DatePicker
-        className="form-register__input"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        dateFormat="dd/MM/yyyy"
-        minDate={new Date()} 
-    />
+      <div className="form-register__checkbox" >
+        <input
+          type="checkbox"
+          onChange={() => setIsDateVisible(!isDateVisible)}
+        />
+        <label>Con fecha de expiración</label>
+      </div>
+      <label style={{ display: isDateVisible ? 'block' : 'none' }} className="form-register__label" type="date">Fecha de expiración</label>
+      {isDateVisible && (
+        <DatePicker
+          className="form-register__input"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          dateFormat="dd/MM/yyyy"
+        />
+      )}
       <input ref={file} type="file" className="form-register__input"/>
 
       <button onClick={onSubmit} className="form-register__btn">Crear</button>
