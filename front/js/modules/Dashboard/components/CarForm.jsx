@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import service from 'services/formData';
 
-const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
+const CarForm = ({ selectors, carList, setCarList, onCloseModal, setNotification }) => {
   const patent = useRef(null);
   const color = useRef(null);
   const carModel = useRef(null);
@@ -31,21 +31,26 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
 
     service.registerCar(payload)
       .then(response => {
-        const _carList = [ ...carList ];
-        _carList.push(response.item);
-        console.log(_carList)
-        setCarList(_carList);
-        onCloseModal();
-        alert("Se ha ingreaso el vehículo correctamente")
+        if(response.status == 200) {
+          const _carList = [ ...carList ];
+          _carList.push(response.item);
+          setCarList(_carList);
+          setNotification(true)
+          onCloseModal();
+        }
+        else if(response.status == 500) {
+          setNotification(false)
+          onCloseModal();
+        }
       })
   }
   const costCenterSelector = (
     <select className="form-register__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
-      { 
+      {
         selectors.costCenter
-          .map((option, index) => 
-            <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
+          .map((option, index) =>
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
     </select>
   );
@@ -53,10 +58,10 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
   const carTypeSelector = (
     <select className="form-register__input" ref={carType}>
       <option value={null}>Seleccione</option>
-      { 
+      {
         selectors.carType
-          .map((option, index) => 
-            <option key={`option-${index}`} value={option.id}>{option.name}</option>) 
+          .map((option, index) =>
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
     </select>
   );
@@ -75,7 +80,7 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
       <label className="form-register__label">Tipo de vehiculo</label>
       {carTypeSelector}
       <input className="form-register__btn" type="submit" value="Registrar" />
-    </form>   
+    </form>
   );
 }
 
