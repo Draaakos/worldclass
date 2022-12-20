@@ -33,7 +33,9 @@ body
         padding 1em 1em 3em
 
     &__item
-        display flex
+        display grid
+        grid-template-columns repeat(3, 1fr)
+        gap 1em
         margin-bottom .5em
         justify-content space-between
         align-items center

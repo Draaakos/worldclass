@@ -54,22 +54,33 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
     }
   };
 
-  return (
-		<form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >
-			<div className="form-register__title">Subir documento</div>
+  const onChangeOpciones = (event) => {
+    if (event.target.value === "opcion1") {
+      document.querySelector(".form-register__label").style.display = "block";
+      document.querySelector(".form-register__input").style.display = "block";
+    } else {
+      document.querySelector(".form-register__label").style.display = "none";
+      document.querySelector(".form-register__input").style.display = "none";
+    }
+  };
+
+return (
+  <form className="form-register" id={`form-${data.id}`} encType="multipart/form-data" >
+    <div className="form-register__title">Subir documento</div>
       <Selector data={selectors.documentType} valueKey="documentType" onChange={onChangeSelectorType} isEditable />
 
-			<label className="form-register__label" type="date">Fecha de expiracion</label>
-			<DatePicker
+    <label className="form-register__label" type="date">Fecha de expiración</label>
+    <DatePicker
         className="form-register__input"
         selected={startDate}
         onChange={(date) => setStartDate(date)}
         dateFormat="dd/MM/yyyy"
-      />
-			<input ref={file} type="file" className="form-register__input"/>
+        minDate={new Date()} 
+    />
+      <input ref={file} type="file" className="form-register__input"/>
 
-			<button onClick={onSubmit} className="form-register__btn">Crear</button>
-		</form>
+      <button onClick={onSubmit} className="form-register__btn">Crear</button>
+    </form>
   );
 };
 

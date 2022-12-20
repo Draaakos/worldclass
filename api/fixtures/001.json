@@ -205,5 +205,12 @@
     "fields": {
         "name": "Permiso de circulacion"
     }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 3,
+    "fields": {
+        "name": "Seguro Obligatorio"
+    }
   }
 ]
