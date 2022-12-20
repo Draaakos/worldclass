@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import service from '../../../services/formData';
 
-const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
+const UserForm = ({ selectors, personList, setPersonList, onCloseModal, setNotification }) => {
   const name = useRef(null);
   const email = useRef(null);
   const costCenter = useRef(null);
@@ -37,11 +37,17 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
 
     service.registerUser(payload)
       .then(response => {
-        const _personList = [ ...personList ]
-        _personList.push(response.item.person)
-        setPersonList(_personList)
-        onCloseModal();
-        alert("Usuario creado correctamente")
+        if(response.status == 200) {
+          const _personList = [ ...personList ]
+          _personList.push(response.item.person)
+          setPersonList(_personList)
+          setNotification(true)
+          onCloseModal();
+        }
+        else if(response.status == 500) {
+          setNotification(false)
+          onCloseModal();
+        }
       })
   }
 

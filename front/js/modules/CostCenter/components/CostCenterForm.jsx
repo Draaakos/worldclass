@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import service from '../../../services/formData';
 
-const CostCenterForm = ({ setCostCenterList, costCenterList, onCloseModal }) => {
+const CostCenterForm = ({ setCostCenterList, costCenterList, onCloseModal, setNotification }) => {
   const name = useRef(null);
   const code = useRef(null);
 
@@ -15,11 +15,17 @@ const CostCenterForm = ({ setCostCenterList, costCenterList, onCloseModal }) => 
 
     service.registerCostCenter(payload)
       .then(response => {
-        const _costCenterList = [ ...costCenterList ];
-        _costCenterList.push(response.item);
-        setCostCenterList(_costCenterList);
-        onCloseModal();
-        alert("Centro de costo credo correctamente")
+        if(response.status == 200) {
+          const _costCenterList = [ ...costCenterList ];
+          _costCenterList.push(response.item);
+          setCostCenterList(_costCenterList);
+          setNotification(true);
+          onCloseModal();
+        }
+        else if(response.status == 500) {
+          setNotification(false)
+          onCloseModal();
+        }
       })
   }
 

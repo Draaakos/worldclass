@@ -6,7 +6,7 @@ import TemplatePage from "../Template";
 import CostCenterTable from "./components/CostCenterTable";
 import Button from 'ui/Button';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
-
+import Message from "../../ui/Message";
 
 const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Opciones'];
 
@@ -14,6 +14,7 @@ const CostCenter = () => {
   const [ isRegisterCostCenter, setIsRegisterCostCenter ] = useState(false);
   const [ costCenterList, setCostCenterList ] = useState([]);
   const [ userType, setUserType ] = useState(3);
+  const [ notification, setNotification ] = useState(null);
 
   useEffect(() => {
     service.fetchDashboardData()
@@ -26,12 +27,10 @@ const CostCenter = () => {
       })
   }, []);
 
-
   const onDeleteItem = id => {
     const _costCenterList = costCenterList.filter(item => item.id != id);
     setCostCenterList(_costCenterList);
   };
-
 
   const modal = isRegisterCostCenter
     ? (
@@ -40,6 +39,7 @@ const CostCenter = () => {
           setCostCenterList={setCostCenterList}
           costCenterList={costCenterList}
           onCloseModal={() => setIsRegisterCostCenter(false)}
+          setNotification={setNotification}
         />
       </Modal>
     )
@@ -49,6 +49,10 @@ const CostCenter = () => {
     <div>
       {modal}
       <div>
+        <Message
+          notification={notification}
+          setNotification={setNotification}
+        />
         <div className="hero-dual hero-primary">
             <div>Lista de Centros de Costo</div>
             <Button text="crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterCostCenter(true)}/>

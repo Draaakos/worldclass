@@ -7,6 +7,7 @@ import Button from 'ui/Button';
 import CarTable from './components/CarTable';
 import TemplatePage from '../Template';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
+import Message from '../../ui/Message';
 
 
 const PLACE_OPTIONS = ['Status', 'Patente', 'Tipo', 'Color', 'Centro de costo', 'Modelo', 'Opciones'];
@@ -18,6 +19,7 @@ const Dashboard = () => {
   const [ selectors, setSelectors ] = useState([]);
   const [ userType, setUserType ] = useState(3);
   const [ documentList, setDocumentList ] = useState([]);
+  const [ notification, setNotification ] = useState(null);
 
   useEffect(() => {
     service.fetchDashboardData()
@@ -27,7 +29,6 @@ const Dashboard = () => {
           setSelectors(response.selectors)
           setUserType(response.userType)
           setDocumentList(response.carList)
-          console.log('documnet', documentList)
           return;
         }
 
@@ -47,6 +48,8 @@ const Dashboard = () => {
           setCarList={setCarList}
           carList={carList}
           onCloseModal={() => setIsRegisterCar(false)}
+          notification={notification}
+          setNotification={setNotification}
         />
       </Modal>
     : null;
@@ -62,6 +65,12 @@ const Dashboard = () => {
     <div className='content-table'>
       <div>
         {modal}
+
+        <Message
+          notification={notification}
+          setNotification={setNotification}
+        />
+
         <div className="hero-dual hero-primary">
           <div>Lista de Vehiculos</div>
           { buttonNewCar }

@@ -1,0 +1,46 @@
+.fa-check-circle
+    font-size 2em
+    color green
+
+.fa-exclamation-circle
+    font-size 2em
+    color red
+
+.message--hidden
+    display none
+
+.message--active
+    max-width 350px
+    padding 1.5em
+    box-shadow rgba(0, 0, 0, 0.24) 0px 3px 8px
+    z-index 10
+    position fixed
+    background-color white
+    right 0
+    top 0
+    border-radius .5em 0 0 .5em
+
+    &__content
+        display flex
+        align-items center
+        justify-content center
+
+    &__text
+        font-size 1.2em
+        letter-spacing 1px
+        margin-left 1em
+
+    &__close
+        color color-secondary
+        font-size 1.2em
+        padding .3em
+        margin-left .5em
+
+        &:hover
+            cursor pointer
+            background-color rgb(220, 220, 220)
+            color #2b2b2b
+            border-radius 1em
+
+
+

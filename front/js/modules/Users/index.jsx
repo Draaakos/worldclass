@@ -6,6 +6,7 @@ import TemplatePage from "../Template";
 import UserTable from "./components/UserTable";
 import Button from 'ui/Button';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
+import Message from "../../ui/Message";
 
 
 const PLACE_OPTIONS = ['Nombre', 'Email', 'Tipo de Usuario', 'Opciones'];
@@ -15,6 +16,7 @@ const Users = () => {
   const [ personList, setPersonList ] = useState([]);
   const [ userType, setUserType ] = useState(3);
   const [ selectors, setSelectors ] = useState([]);
+  const [ notification, setNotification ] = useState(null);
 
   useEffect(() => {
     service.fetchDashboardData()
@@ -23,7 +25,7 @@ const Users = () => {
           setPersonList(response.personList);
           setUserType(response.userType)
           setSelectors(response.selectors)
-          
+
           return;
         }
       })
@@ -41,6 +43,8 @@ const Users = () => {
           personList={personList}
           setPersonList={setPersonList}
           onCloseModal={() => setIsRegisterModalOn(false)}
+          notification={notification}
+          setNotification={setNotification}
         />
       </Modal>
     : null;
@@ -48,6 +52,12 @@ const Users = () => {
   const usersPage = (
     <div>
       {modal}
+
+      <Message
+        notification={notification}
+        setNotification={setNotification}
+      />
+
       <div>
         <div className="hero-dual hero-primary">
           <div>
