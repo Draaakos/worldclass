@@ -97,14 +97,14 @@
     "model": "api.cartype",
     "pk": 1,
     "fields": {
-        "name": "Toyota"
+        "name": "Camioneta"
     }
   },
   {
     "model": "api.cartype",
     "pk": 2,
     "fields": {
-        "name": "Mercedes benz"
+        "name": "Camion"
     }
   },
   {

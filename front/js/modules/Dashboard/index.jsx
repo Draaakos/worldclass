@@ -53,7 +53,7 @@ const Dashboard = () => {
 
   const buttonNewCar = userType == 1 ? (
     <div>
-      <Button text="Crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterCar(true)} />
+      <Button text="Crear nuevo vehículo" classes="button--primary button--small" onClick={() => setIsRegisterCar(true)} />
     </div>
   ) : null;
 

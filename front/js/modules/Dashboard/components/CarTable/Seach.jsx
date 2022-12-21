@@ -4,7 +4,7 @@ const Search = ({ onFilter }) => {
       <div className="search__input">
         <input
           type="text"
-          placeholder="Buscar vehiculo"
+          placeholder="Buscar vehículo por patente"
           onChange={onFilter}
         />
 

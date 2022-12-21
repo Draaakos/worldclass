@@ -54,7 +54,7 @@ const Users = () => {
             Lista de usuarios
           </div>
           <div>
-            <Button text="Crear nuevo" classes="button--primary button--small" onClick={() => setIsRegisterModalOn(true)} />
+            <Button text="Crear nuevo usuario" classes="button--primary button--small" onClick={() => setIsRegisterModalOn(true)} />
           </div>
         </div>
 

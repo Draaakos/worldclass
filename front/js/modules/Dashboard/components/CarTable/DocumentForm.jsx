@@ -71,11 +71,12 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
       </div>
       <label style={{ display: isDateVisible ? 'block' : 'none' }} className="form-register__label" type="date">Fecha de expiración</label>
       {isDateVisible && (
-        <DatePicker
-          className="form-register__input"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          dateFormat="dd/MM/yyyy"
+         <DatePicker
+            className="form-register__input"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            dateFormat="dd/MM/yyyy"
+            minDate={new Date()} 
         />
       )}
       <input ref={file} type="file" className="form-register__input"/>

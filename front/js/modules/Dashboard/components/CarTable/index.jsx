@@ -35,9 +35,9 @@ const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseMod
                   return (
                     <a href={document.path} download="file" className="download-table__item">
                       <div>{document.name}</div>
-                      <div>{document.expiredDate}</div>
+                      <div className="download-table__date">{document.expiredDate}</div>
                       <div>
-                        <div>
+                        <div className="download-table__icon">
                           <img src="/static/images/download.svg" />
                         </div>
                       </div>
