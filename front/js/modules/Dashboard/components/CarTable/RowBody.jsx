@@ -6,6 +6,31 @@ import service from "../../../../services/formData";
 import DocumentForm from "./DocumentForm";
 import Modal from "../Modal";
 
+const verifyExpiredDocument = documents => {
+  const d = new Date();
+  d.setDate(d.getDate() + 30);
+
+  let hasExpiredDocument = false;
+
+  documents.forEach(document => {
+    const splitedDate = document.expiredDate.split('-');
+    const year = splitedDate[splitedDate.length - 1];
+    const month = parseInt(splitedDate[1]) - 1;
+    const date = splitedDate[0];
+    const _d = new Date(year, month, date);
+    console.log('fecha del documento', _d)
+    console.log('fecha de expiracion de cualquier documento', d)
+
+    if(_d.getTime() < d.getTime()) {
+      // console.log('este documento va a expirar')
+      console.log('esta por expirar')
+      hasExpiredDocument = true
+    }
+  })
+
+  return hasExpiredDocument;
+}
+
 const Row = ({
   data,
   selectors,
@@ -16,6 +41,9 @@ const Row = ({
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
+  const [ hasExpiredDocument, setHasExpiredDocument ] = useState(verifyExpiredDocument(data.documents));
+
+  console.log('aca', hasExpiredDocument)
 
   const editableButtonClasses = classNames([
     'button',
@@ -23,6 +51,11 @@ const Row = ({
   ], {
     'button--hidden': !editableActive
   });
+
+  const rowClasses = classNames({
+    'car-table__row': true,
+    'for-expired': hasExpiredDocument
+  })
 
   const onChange = (key, value) => {
     const _payload = { ...payload };
@@ -70,7 +103,7 @@ const Row = ({
   const isEditable = !!(userType == 1);
 
   return (
-    <div className="car-table__row">
+    <div className={rowClasses}>
       <div><Selector isEditable={isEditable} value={data.status} data={selectors.carStatus} onChange={onChange} valueKey="status"/></div>
       <div><EditableInput isEditable={isEditable} value={data.patent} onChange={onChange} valueKey="patent"/></div>
       <div><Selector isEditable={isEditable} value={data.carType} data={selectors.carType} onChange={onChange} valueKey="carType"/></div>
@@ -99,19 +132,19 @@ const Row = ({
 
         {modalDocument}
 
-        { 
-          isEditable 
+        {
+          isEditable
             ? <div className={editableButtonClasses} onClick={onEdit(data.id)}>
                 <i className="fas fa-check-circle"></i>
-              </div> 
-            : null 
+              </div>
+            : null
         }
-        { 
-          isEditable 
+        {
+          isEditable
             ? <div className="button button--danger" onClick={onDelete(data.id)}>
                 <i className="fas fa-trash-alt"></i>
-              </div> 
-            : null 
+              </div>
+            : null
         }
       </div>
     </div>
@@ -119,7 +152,14 @@ const Row = ({
 };
 
 
-const RowBody = ({ data, selectors, userType, onSelectDownloadModal, onDeleteItem, onCloseModal }) => {
+const RowBody = ({
+  data,
+  selectors,
+  userType,
+  onSelectDownloadModal,
+  onDeleteItem,
+  onCloseModal
+}) => {
   return (
     <div>
       {

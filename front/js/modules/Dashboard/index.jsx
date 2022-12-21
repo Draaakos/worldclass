@@ -27,7 +27,6 @@ const Dashboard = () => {
           setSelectors(response.selectors)
           setUserType(response.userType)
           setDocumentList(response.carList)
-          console.log('documnet', documentList)
           return;
         }
 

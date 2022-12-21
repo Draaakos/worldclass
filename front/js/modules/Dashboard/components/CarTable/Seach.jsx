@@ -9,7 +9,7 @@ const Search = ({ onFilter }) => {
         />
 
         <div className="search__icon">
-          <span className="icon"><i class="fa fa-search" /></span>
+          <span className="icon"><i className="fa fa-search" /></span>
         </div>
       </div>
     </div>
