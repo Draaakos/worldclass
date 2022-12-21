@@ -3,8 +3,8 @@ from .tools import define_product_path
 
 
 class CostCenter(models.Model):
-    name = models.CharField(max_length=100)
-    code = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
+    code = models.CharField(max_length=100, unique=True)
 
     def to_json(self):
         return {
