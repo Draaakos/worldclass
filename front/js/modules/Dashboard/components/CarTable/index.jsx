@@ -30,6 +30,11 @@ const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseMod
           <Modal onCloseModal={() => setIsModalActive(false)}>
             <div className="download-table">
               <div className="download-table__title">Lista de archivos</div>
+              <div className="download-table__head">
+                <h4>Tipo de documento</h4>
+                <h4>Fecha de expiración</h4>
+                <h4>Descarga de documento</h4>
+              </div>    
               {
                 downloadFiles.map(document => {
                   return (

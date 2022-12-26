@@ -31,9 +31,11 @@ const Row = ({ data, userType, onDeleteItem }) => {
 
   const onDelete = id => {
     return () => {
-      service.deleteCostCenter(id)
-      setEditableActive(false);
-      onDeleteItem(id);
+      if (confirm("¿Estás seguro de que quieres eliminar este centro de costo?")) {
+        service.deleteCostCenter(id)
+        setEditableActive(false);
+        onDeleteItem(id);
+      }
     }
   }
 

@@ -9,9 +9,13 @@ const NavBar = ({ navbarOptions }) => {
     window.location.assign("/")
   }
 
+  const onTitleClick = () => {
+    window.location.assign("/dashboard");
+  }
+
   return (
     <nav className="navbar">
-      <h2 className="navbar__title">Worldclass</h2>
+      <h2 className="navbar__title" onClick={onTitleClick}>Worldclass</h2>
       <div className="navbar__wrapper-items">
         { navbarOptions.map((item, index) => <Item key={`nav-${index}`} url={item.url} label={item.label} />) }
         <div className="navbar__item" onClick={onLogout}>Cerrar Sesion</div>

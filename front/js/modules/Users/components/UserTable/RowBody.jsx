@@ -30,9 +30,11 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
   const onDelete = id => {
     return () => {
-      service.deleteUser(id);
-      setEditableActive(false);
-      onDeleteItem(id);
+      if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
+        service.deleteUser(id)
+        setEditableActive(false);
+        onDeleteItem(id);
+      }
     }
   };
 

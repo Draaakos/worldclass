@@ -16,7 +16,11 @@ const Banner = () => (
 const Info = () => (
   <React.Fragment>
     <div className="main-info__container">
-      <div className="main-info__container__body">2022</div>
+      <div className="main-info__container__body">
+        <a href="https://worldclassms.cl/">
+          <img src="./static/images/logo01.jpg" alt="logo" />
+        </a>
+      </div>
     </div>
     <div className="main-info__container">
       <div>

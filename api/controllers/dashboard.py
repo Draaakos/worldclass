@@ -8,7 +8,7 @@ from ..utils.cost_center import cost_center_data
 from ..utils.car_type import car_type_data
 from ..utils.user_type import user_type_data
 from ..utils.document_type import document_type_data
-from ..enum import PersonTypeEnum
+from ..enum_1 import PersonTypeEnum
 
 
 class DashboardView(View):

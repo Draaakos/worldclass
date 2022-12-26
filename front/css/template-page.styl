@@ -17,6 +17,9 @@ body
 @require 'ui/hero'
 @require 'modules/table'
 
+.navbar__item
+    cursor pointer
+
 .download-table
     background-color white
     color #333
@@ -30,6 +33,10 @@ body
         text-align center
         font-size 1.8em
         padding 1em 1em 3em
+
+    &__head
+        display grid
+        grid-template-columns repeat(3, 1fr)
 
     &__item
         display grid
@@ -47,18 +54,18 @@ body
             background-color #efefef
     
     &__icon
-        text-align right
+        text-align left
     
     &__date
-        text-align right 
-
-
+        text-align left
+    
+    
 .content-table
     min-height 80vh
 
 
 .search-section
-    margin 1em 0
+    margin 1.5em 0
     display flex
     align-items center
     justify-content center

@@ -3,7 +3,7 @@ from django.views import View
 from django.http import JsonResponse
 from api.models import Car
 from django.contrib.auth.decorators import login_required
-from ..enum import PersonTypeEnum
+from ..enum_1 import PersonTypeEnum
 
 
 class CardDataView(View):

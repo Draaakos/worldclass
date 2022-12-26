@@ -1,5 +1,5 @@
 from api.models import CostCenter
-from ..enum import PersonTypeEnum
+from ..enum_1 import PersonTypeEnum
 
 def cost_center_data(person_type_logged, person_cost_center_id_logged):
     if PersonTypeEnum.ADMIN.value == person_type_logged:

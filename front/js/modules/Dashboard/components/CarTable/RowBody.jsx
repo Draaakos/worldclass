@@ -73,9 +73,11 @@ const Row = ({
 
   const onDelete = id => {
     return () => {
-      service.deleteCar(id)
-      setEditableActive(false);
-      onDeleteItem(id);
+      if (confirm("¿Estás seguro de que quieres eliminar este vehículo?")) {
+        service.deleteCar(id)
+        setEditableActive(false);
+        onDeleteItem(id);
+      }
     }
   };
 
