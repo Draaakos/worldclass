@@ -12,17 +12,20 @@ const verifyExpiredDocument = documents => {
 
   let hasExpiredDocument = false;
 
-  documents.forEach(document => {
-    const splitedDate = document.expiredDate.split('-');
-    const year = splitedDate[splitedDate.length - 1];
-    const month = parseInt(splitedDate[1]) - 1;
-    const date = splitedDate[0];
-    const _d = new Date(year, month, date);
+  documents
+    .filter(document => document.hasExpired)
+    .forEach(document => {
+      console.log(document)
+      const splitedDate = document.expiredDate.split('-');
+      const year = splitedDate[splitedDate.length - 1];
+      const month = parseInt(splitedDate[1]) - 1;
+      const date = splitedDate[0];
+      const _d = new Date(year, month, date);
 
-    if(_d.getTime() < d.getTime()) {
-      hasExpiredDocument = true
-    }
-  })
+      if(_d.getTime() < d.getTime()) {
+        hasExpiredDocument = true
+      }
+    })
 
   return hasExpiredDocument;
 }
