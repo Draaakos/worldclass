@@ -24,13 +24,13 @@ function format(inputDate) {
 const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
   const [ startDate, setStartDate ] = useState(new Date());
   const [ documentType, setDocumentType ] = useState(null);
-  const [isDateVisible, setIsDateVisible] = useState(false);
+  const [ isExpired, setIsExpired ] = useState(false);
 
   const file = useRef(null);
 
   const onChangeSelectorType = (_, value) => {
     setDocumentType(value);
-  }
+  };
 
   const onSubmit = evt => {
     evt.preventDefault();
@@ -44,7 +44,8 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
       const form = new FormData();
       form.append('document_type', documentType);
       form.append('upload', file.current.files[0]);
-      form.append('expired_date', format(startDate))
+      form.append('expired_date', format(startDate));
+      form.append('has_expired', isExpired);
 
       service.uploadDocument(form, data.id)
         .then(response => {
@@ -65,18 +66,18 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
       <div className="form-register__checkbox" >
         <input
           type="checkbox"
-          onChange={() => setIsDateVisible(!isDateVisible)}
+          onChange={() => setIsExpired(!isExpired)}
         />
         <label>Con fecha de expiración</label>
       </div>
-      <label style={{ display: isDateVisible ? 'block' : 'none' }} className="form-register__label" type="date">Fecha de expiración</label>
-      {isDateVisible && (
+      <label style={{ display: isExpired ? 'block' : 'none' }} className="form-register__label" type="date">Fecha de expiración</label>
+      {isExpired && (
          <DatePicker
             className="form-register__input"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             dateFormat="dd/MM/yyyy"
-            minDate={new Date()} 
+            minDate={new Date()}
         />
       )}
       <input ref={file} type="file" className="form-register__input"/>

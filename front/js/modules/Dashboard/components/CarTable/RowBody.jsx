@@ -18,12 +18,8 @@ const verifyExpiredDocument = documents => {
     const month = parseInt(splitedDate[1]) - 1;
     const date = splitedDate[0];
     const _d = new Date(year, month, date);
-    console.log('fecha del documento', _d)
-    console.log('fecha de expiracion de cualquier documento', d)
 
     if(_d.getTime() < d.getTime()) {
-      // console.log('este documento va a expirar')
-      console.log('esta por expirar')
       hasExpiredDocument = true
     }
   })
@@ -42,8 +38,6 @@ const Row = ({
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
   const [ hasExpiredDocument, setHasExpiredDocument ] = useState(verifyExpiredDocument(data.documents));
-
-  console.log('aca', hasExpiredDocument)
 
   const editableButtonClasses = classNames([
     'button',

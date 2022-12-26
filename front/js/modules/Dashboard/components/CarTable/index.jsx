@@ -34,13 +34,17 @@ const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseMod
                 <h4>Tipo de documento</h4>
                 <h4>Fecha de expiración</h4>
                 <h4>Descarga de documento</h4>
-              </div>    
+              </div>
               {
                 downloadFiles.map(document => {
                   return (
                     <a href={document.path} download="file" className="download-table__item">
                       <div>{document.name}</div>
-                      <div className="download-table__date">{document.expiredDate}</div>
+                      {
+                        document.hasExpired
+                          ? <div className="download-table__date">{document.expiredDate}</div>
+                          : 'sin expiración'
+                      }
                       <div>
                         <div className="download-table__icon">
                           <img src="/static/images/download.svg" />

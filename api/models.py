@@ -88,6 +88,7 @@ class DocumentType(models.Model):
 class Document(models.Model):
     upload = models.FileField(upload_to=define_product_path)
     expired_date = models.DateField()
+    has_expired = models.BooleanField(default=False)
     document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
 
     def to_json(self):
@@ -95,7 +96,8 @@ class Document(models.Model):
             'id': self.id,
             'name': self.document_type.name,
             'path': f'/media/{self.upload.name}',
-            'expiredDate': self.expired_date.strftime("%d-%m-%Y")
+            'expiredDate': self.expired_date.strftime("%d-%m-%Y"),
+            'hasExpired': self.has_expired
         }
 
 
