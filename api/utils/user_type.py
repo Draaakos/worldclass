@@ -1,5 +1,5 @@
 from api.models import PersonType
-from ..enum_1 import PersonTypeEnum
+from ..enum import PersonTypeEnum
 
 def user_type_data(person_type_logged):
     if PersonTypeEnum.ADMIN.value == person_type_logged:
