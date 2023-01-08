@@ -63,8 +63,10 @@ const Row = ({
 
   const onEdit = id => {
     return () => {
-      service.updateCar(payload, id)
-      setEditableActive(false);
+      if (confirm("¿Estás seguro que deseas editar este vehículo?")) {
+        service.updateCar(payload, id)
+        setEditableActive(false);
+      }  
     }
   };
 

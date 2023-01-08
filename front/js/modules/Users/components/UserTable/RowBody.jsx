@@ -23,8 +23,10 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
   const onEdit = id => {
     return () => {
-      service.updateUser(payload, id);
-      setEditableActive(false);
+      if (confirm("¿Estás seguro que deseas editar este usuario?")) {
+        service.updateUser(payload, id);
+        setEditableActive(false);
+      }
     }
   };
 

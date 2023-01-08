@@ -26,9 +26,6 @@ class CarDocumentView(View):
                 'msg': 'error'
             })
 
-
-
-
     def handle_uploaded_file(self, f):
         filename = define_product_path('', f.name)
         path = f'media/{filename}'
@@ -40,3 +37,4 @@ class CarDocumentView(View):
             'path': path,
             'filename': filename
         }
+

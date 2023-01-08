@@ -17,8 +17,10 @@ const Row = ({ data, userType, onDeleteItem }) => {
 
   const onEdit = id => {
     return () => {
-      service.updateCostCenter(payload, id)
-      setEditableActive(false);
+      if (confirm("¿Estás seguro que deseas editar este centro de costo?")) {
+        service.updateCostCenter(payload, id)
+        setEditableActive(false);
+      }
     }
   }
 
