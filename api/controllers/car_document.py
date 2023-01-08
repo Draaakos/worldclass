@@ -26,15 +26,7 @@ class CarDocumentView(View):
                 'msg': 'error'
             })
 
-    def handle_uploaded_file(self, f):
-        filename = define_product_path('', f.name)
-        path = f'media/{filename}'
-        with open(path, 'wb+') as destination:
-            for chunk in f.chunks():
-                destination.write(chunk)
-
-        return {
-            'path': path,
-            'filename': filename
-        }
-
+    def delete(self, request, **kwargs):
+        return JsonResponse({
+            'msg': 'borrando'
+        })
