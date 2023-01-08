@@ -76,6 +76,13 @@ const service = {
 
     return _post(url, form)
       .then(response => response.json());
+  },
+  deleteDocument(carId) {
+    const url = `/api/v1/car/${carId}/document`;
+    console.log(url)
+
+    return onDelete(url)
+      .then(response => response.json());
   }
 }
 

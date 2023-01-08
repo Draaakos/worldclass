@@ -196,21 +196,239 @@
     "model": "api.documenttype",
     "pk": 1,
     "fields": {
-        "name": "Revision tecnica"
+        "name": "Revisión tecnica"
     }
   },
   {
     "model": "api.documenttype",
     "pk": 2,
     "fields": {
-        "name": "Permiso de circulacion"
+        "name": "Permiso de circulación"
     }
   },
   {
     "model": "api.documenttype",
     "pk": 3,
     "fields": {
-        "name": "Seguro Obligatorio"
+        "name": "SOAP"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 4,
+    "fields": {
+        "name": "Primera Inscripción"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 5,
+    "fields": {
+        "name": "Padrón"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 6,
+    "fields": {
+        "name": "Certificado cabina 5 estrellas"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 7,
+    "fields": {
+        "name": "Certificado barra anti-vuelco"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 8,
+    "fields": {
+        "name": "Certificado Homologación"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 9,
+    "fields": {
+        "name": "Certificado lamina de seguridad"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 10,
+    "fields": {
+        "name": "Certificado instalación movon (3er ojo)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 11,
+    "fields": {
+        "name": "Certificado sensor de somnolencia"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 12,
+    "fields": {
+        "name": "Certificado malla protección luneta"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 13,
+    "fields": {
+        "name": "Certificado cuña"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 14,
+    "fields": {
+        "name": "Certificado GPS"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 15,
+    "fields": {
+        "name": "Certificado mantención (10.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 16,
+    "fields": {
+        "name": "Certificado mantención (20.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 17,
+    "fields": {
+        "name": "Certificado mantención (30.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 18,
+    "fields": {
+        "name": "Certificado mantención (40.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 19,
+    "fields": {
+        "name": "Certificado mantención (50.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 20,
+    "fields": {
+        "name": "Certificado mantención (60.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 21,
+    "fields": {
+        "name": "Certificado mantención (70.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 22,
+    "fields": {
+        "name": "Certificado mantención (80.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 23,
+    "fields": {
+        "name": "Certificado mantención (90.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 24,
+    "fields": {
+        "name": "Certificado mantención (100.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 25,
+    "fields": {
+        "name": "Certificado mantención (110.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 26,
+    "fields": {
+        "name": "Certificado mantención (120.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 27,
+    "fields": {
+        "name": "Certificado mantención (130.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 28,
+    "fields": {
+        "name": "Certificado mantención (140.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 29,
+    "fields": {
+        "name": "Certificado mantención (150.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 30,
+    "fields": {
+        "name": "Certificado mantención (160.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 31,
+    "fields": {
+        "name": "Certificado mantención (170.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 32,
+    "fields": {
+        "name": "Certificado mantención (180.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 33,
+    "fields": {
+        "name": "Certificado mantención (190.000)"
+    }
+  },
+  {
+    "model": "api.documenttype",
+    "pk": 34,
+    "fields": {
+        "name": "Certificado mantención (200.000)"
     }
   }
+  
 ]

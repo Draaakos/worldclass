@@ -36,28 +36,33 @@ body
 
     &__head
         display grid
-        grid-template-columns repeat(3, 1fr)
+        grid-template-columns repeat(4, 1fr)
 
     &__item
         display grid
-        grid-template-columns repeat(3, 1fr)
-        gap 1em
+        grid-template-columns repeat(4, 1fr)
         margin-bottom .5em
-        justify-content space-between
         align-items center
         border-bottom 1px solid #efefef
         text-decoration none
         color #333
 
-        &:hover
-            cursor pointer
-            background-color #efefef
+        // &:hover
+        //     cursor pointer
+        //     background-color #efefef
     
     &__icon
-        text-align left
+
+        img
+            padding-left 50px
+        :hover
+            cursor pointer
     
     &__date
-        text-align left
+        text-align center
+    
+    &__noExpired
+        text-align center
     
     
 .content-table

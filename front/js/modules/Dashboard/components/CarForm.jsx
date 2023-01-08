@@ -66,8 +66,8 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
       <h2 className="form-register__title">Agregar un nuevo vehiculo</h2>
       <label className="form-register__label" >Patente</label>
       <input className="form-register__input" ref={patent} type="text" placeholder="patente" required />
-      <label className="form-register__label" >Modelo de vehiculo</label>
-      <input className="form-register__input" ref={carModel} type="text" placeholder="modelo(opcional)" />
+      <label className="form-register__label" >Modelo y marca de vehículo</label>
+      <input className="form-register__input" ref={carModel} type="text" placeholder="modelo y marca (opcional)" />
       <label className="form-register__label" >Color</label>
       <input className="form-register__input" ref={color} type="text" placeholder="color del vehiculo" required />
       <label className="form-register__label">Centro de Costo</label>
