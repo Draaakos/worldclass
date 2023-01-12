@@ -62,6 +62,9 @@ class Car(models.Model):
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
 
+    def __str__(self):
+        return f'{self.patent}'
+
     def to_json(self):
         return {
             'id': self.id,
@@ -78,6 +81,10 @@ class Car(models.Model):
 class DocumentType(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.name}'
+
+
     def to_json(self):
         return {
             'id': self.id,
@@ -90,6 +97,9 @@ class Document(models.Model):
     expired_date = models.DateField()
     has_expired = models.BooleanField(default=False)
     document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return self.document_type.name
 
     def to_json(self):
         return {
@@ -104,6 +114,7 @@ class Document(models.Model):
 class CarDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)
     car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False, blank=False)
+
 
 
 
