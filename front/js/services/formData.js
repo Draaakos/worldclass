@@ -76,7 +76,13 @@ const service = {
 
     return _post(url, form)
       .then(response => response.json());
-  }
+  },
+  deleteDocument(carId, documentId) {
+    const url = `/api/v1/car/${carId}/document/${documentId}`;
+    console.log(url);
+  
+    return onDelete(url).then(response => response.json());
+  },
 }
 
 export default service;

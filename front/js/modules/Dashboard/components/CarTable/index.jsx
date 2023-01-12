@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RowBody from "./RowBody";
 import RowHead from "./RowHead";
 import Modal from "../Modal";
@@ -8,21 +8,33 @@ import service from '../../../../services/formData';
 const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseModal }) => {
   const [ currentData, setCurrentData ] = useState(data)
   const [ isModalActive, setIsModalActive ] = useState(false);
-  const [ downloadFiles, setDownloadFiles ] = useState(false);
+  const [ downloadFiles, setDownloadFiles ] = useState([]);
+  const [ activeCarId, setActiveCarId ] = useState(null)
+  const [activeDocumentId, setActiveDocumentId] = useState(null);
+
+//   useEffect(() => {
+//     if (activeDocumentId) {
+//         const updatedDocs = downloadFiles.filter(doc => doc.id !== activeDocumentId);
+//         setDownloadFiles(updatedDocs);
+//         setActiveDocumentId(null);
+//     }
+// }, [activeDocumentId, downloadFiles])
 
   const onSelectDownloadModal = data => {
     return () => {
       setIsModalActive(true);
       setDownloadFiles(data.documents);
+      setActiveCarId(data.id)
     }
   };
 
-  const onDelete = carId => {
+  const onDelete = (carId, documentId) => {
     return () => {
       if (confirm("¿Estás seguro de que quieres eliminar este documento?")) {
-        service.deleteDocument(carId)
-        setEditableActive(false);
-        onDeleteItem(carId);
+        service.deleteDocument(carId, documentId)
+        // setActiveDocumentId(documentId);
+        const newDownloadFiles = downloadFiles.filter(doc => doc.id !== documentId)
+        setDownloadFiles(newDownloadFiles)
       }
     }
   };
@@ -49,7 +61,7 @@ const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseMod
               {
                 downloadFiles.map(document => {
                   return (
-                    <div className="download-table__item" >
+                    <div className="download-table__item" key={`item-${downloadFiles.length}-${document.id}`}>
                       <div>{document.name}</div>
                       {
                         document.hasExpired
@@ -61,7 +73,7 @@ const CarTable = ({ headers, data, selectors, userType, onDeleteItem, onCloseMod
                           <img src="/static/images/download.svg" onClick={() => window.open(document.path, '_blank')}/>
                         </div>
                       </div>
-                      <div className="button button--danger" onClick={onDelete(data.carId)}>
+                      <div className="button button--danger" onClick={onDelete(activeCarId, document.id)}>
                         <i className="fas fa-trash-alt"></i>
                       </div>
                     </div>
