@@ -2,6 +2,14 @@ from django.contrib import admin
 from api.models import Document
 from api.models import DocumentType
 from api.models import CarDocument
+from api.models import Person
+
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    ordering = ['id',]
+    list_display = ['id', 'username', 'email', 'person_type']
+    list_editable = ['username', 'email', 'person_type']
+
 
 @admin.register(DocumentType)
 class DocumentTypeAdmin(admin.ModelAdmin):
