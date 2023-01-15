@@ -15,7 +15,7 @@ const NavBar = ({ navbarOptions }) => {
 
   return (
     <nav className="navbar">
-      <h2 className="navbar__title" onClick={onTitleClick}>Worldclass</h2>
+      <img src={"../static/images/logo_black.png"} className="navbar__title" onClick={onTitleClick} alt="Worldclass logo" />
       <div className="navbar__wrapper-items">
         { navbarOptions.map((item, index) => <Item key={`nav-${index}`} url={item.url} label={item.label} />) }
         <div className="navbar__item" onClick={onLogout}>Cerrar Sesion</div>
