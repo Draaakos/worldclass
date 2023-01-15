@@ -8,26 +8,26 @@ class LoginView(View):
     def post(self, request):
         data = json.loads(request.body)
 
-        try:
-            person = self._is_authenticated(data)
+        person = self._is_authenticated(data)
 
+        if len(person):
             request.session['is_logged'] = 1
-            request.session['person_logged_id'] = person.id
-            request.session['person_type_id'] = person.person_type.id
+            request.session['person_logged_id'] = person[0].id
+            request.session['person_type_id'] = person[0].person_type.id
 
-            person_cost_center = PersonCostCenter.objects.filter(person_id=person.id)
-            request.session['person_cost_center_id'] = person_cost_center[0].cost_center.id
+            person_cost_center = PersonCostCenter.objects.filter(person_id=person[0].id)
+            request.session['person_cost_center_id'] = person_cost_center[0].cost_center.id if len(person_cost_center) > 0 else "ADMIN"
 
             return JsonResponse({
                 "msg": "Usuario autenticado correctamente",
                 "status": 200,
                 "user": {
-                    "name": person.username,
-                    "email": person.email,
-                    'id': person.id
+                    "name": person[0].username,
+                    "email": person[0].email,
+                    'id': person[0].id
                 }
             })
-        except:
+        else:
             return JsonResponse({
                 "msg": "Usuario y/o contraseña incorrectos",
                 "status": 500
@@ -37,7 +37,7 @@ class LoginView(View):
         username = data.get('username')
         password = data.get('password')
 
-        return Person.objects.get(
+        return Person.objects.filter(
             username=username.lower(),
             password=password
         )

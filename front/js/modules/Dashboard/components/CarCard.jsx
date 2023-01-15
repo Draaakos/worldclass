@@ -2,15 +2,10 @@ import { useState } from "react";
 import service from "../../../services/formData";
 
 const CarCard = ({carModel, patent, carType, costCenter, color}) => {
-  
-  // service.deleteCar(patent)
-  //   .then(response => console.log(response.message))
-
   function show (patent) {
     alert('desea eliminar este vehiculo?')
-    console.log(patent)
   }
-  
+
   return (
     <>
       <div className="row">
@@ -24,7 +19,7 @@ const CarCard = ({carModel, patent, carType, costCenter, color}) => {
           <div>Editar</div>
         </div>
       </div>
-    </> 
+    </>
   )
 }
 

@@ -49,7 +49,6 @@ const DocumentForm = ({ data, onCloseModal, selectors, onAddNewDocument }) => {
 
       service.uploadDocument(form, data.id)
         .then(response => {
-          console.log(response.data)
           onAddNewDocument(response.data);
           alert("Archivo subido correctamente");
           onCloseModal();

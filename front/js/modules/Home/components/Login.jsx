@@ -15,13 +15,12 @@ const Login = () => {
 
     service.login(username, password)
       .then(response => {
-        console.log(response)
 
-        if(response.status) {
+        if(response.status == 200) {
           window.location.assign('/dashboard');
           return;
         }
-        
+
         alert(response.msg);
       })
   };
@@ -48,5 +47,5 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;
 

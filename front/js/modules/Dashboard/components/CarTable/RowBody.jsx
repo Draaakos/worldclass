@@ -15,7 +15,6 @@ const verifyExpiredDocument = documents => {
   documents
     .filter(document => document.hasExpired)
     .forEach(document => {
-      console.log(document)
       const splitedDate = document.expiredDate.split('-');
       const year = splitedDate[splitedDate.length - 1];
       const month = parseInt(splitedDate[1]) - 1;
@@ -112,7 +111,7 @@ const Row = ({
 
       <div className="car-table__options">
         {
-          isEditable ? (
+          isEditable || userType == 2 ? (
               <div onClick={() => setIsRegisterDocument(true)} className="car-table__options__item">
                 <i className="fas fa-upload"></i>
               </div>
