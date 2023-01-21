@@ -12,6 +12,7 @@
             padding .5em
             display flex
             align-items center
+            justify-content space-evenly
 
     &__options
         justify-content space-between
@@ -45,13 +46,21 @@
     &:hover
         cursor pointer
 
-
-.for-expired
-    // background-color rgba(255, 174, 0, 0.5)
-    background-color #ffc30026
+.for-has-expired
+    background-color gray
     border 1px solid rgba(245, 13, 13, 0.6)
 
+.for-very-near-expired
+    background-color red
+    border 1px solid rgba(245, 13, 13, 0.6)
 
+.for-near-expired
+    background-color yellow
+    border 1px solid rgba(245, 13, 13, 0.6)
+
+.for-expired
+    background-color green
+    border 1px solid rgba(245, 13, 13, 0.6)
 
 @media screen and (min-width: viewport)
 

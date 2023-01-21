@@ -23,7 +23,7 @@ const Info = () => (
     </div>
     <div className="main-info__container">
       <div>
-        <div className="main-info__container__title"> Información para Hsec</div>
+        <div className="main-info__container__title">Información para Hsec</div>
         <div className="main-info__container__body-title">Información para Hsec</div>
       </div>
     </div>

@@ -6,11 +6,66 @@ import service from "../../../../services/formData";
 import DocumentForm from "./DocumentForm";
 import Modal from "../Modal";
 
+// const verifyExpiredDocument = documents => {
+//   const d = new Date();
+//   d.setDate(d.getDate() + 30);
+
+//   let hasExpiredDocument = false;
+
+//   documents
+//     .filter(document => document.hasExpired)
+//     .forEach(document => {
+//       const splitedDate = document.expiredDate.split('-');
+//       const year = splitedDate[splitedDate.length - 1];
+//       const month = parseInt(splitedDate[1]) - 1;
+//       const date = splitedDate[0];
+//       const _d = new Date(year, month, date);
+
+//       if(_d.getTime() < d.getTime()) {
+//         hasExpiredDocument = true
+//       }
+//     })
+
+//   return hasExpiredDocument;
+// }
+
+// const Row = ({
+//   data,
+//   selectors,
+//   userType,
+//   onSelectDownloadModal,
+//   onDeleteItem
+// }) => {
+//   const [ payload, setPayload ] = useState(data);
+//   const [ editableActive, setEditableActive ] = useState(false);
+//   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
+//   const [ hasExpiredDocument, setHasExpiredDocument ] = useState(verifyExpiredDocument(data.documents));
+
+//   const editableButtonClasses = classNames([
+//     'button',
+//     'button--info'
+//   ], {
+//     'button--hidden': !editableActive
+//   });
+
+//   const rowClasses = classNames({
+//     'car-table__row': true,
+//     'for-expired': hasExpiredDocument
+//   })
+
 const verifyExpiredDocument = documents => {
   const d = new Date();
-  d.setDate(d.getDate() + 30);
+  const sixtyDays = new Date();
+  sixtyDays.setDate(sixtyDays.getDate() + 60);
+  const fortyDays = new Date();
+  fortyDays.setDate(fortyDays.getDate() + 40);
+  const twentyDays = new Date();
+  twentyDays.setDate(twentyDays.getDate() + 20);
 
   let hasExpiredDocument = false;
+  let nearExpiredDocument = false;
+  let veryNearExpiredDocument = false;
+  let expiredDocument = false;
 
   documents
     .filter(document => document.hasExpired)
@@ -20,13 +75,18 @@ const verifyExpiredDocument = documents => {
       const month = parseInt(splitedDate[1]) - 1;
       const date = splitedDate[0];
       const _d = new Date(year, month, date);
-
-      if(_d.getTime() < d.getTime()) {
-        hasExpiredDocument = true
+      if(_d.getTime() < d.getTime()){
+          expiredDocument = true;
+      }else if(_d.getTime() < sixtyDays.getTime()){
+          nearExpiredDocument = true;
+      }else if(_d.getTime() < fortyDays.getTime()){
+          veryNearExpiredDocument = true;
+      }else if(_d.getTime() < twentyDays.getTime()){
+          hasExpiredDocument = true;
       }
     })
 
-  return hasExpiredDocument;
+  return { expiredDocument, nearExpiredDocument, veryNearExpiredDocument, hasExpiredDocument};
 }
 
 const Row = ({
@@ -39,7 +99,7 @@ const Row = ({
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
-  const [ hasExpiredDocument, setHasExpiredDocument ] = useState(verifyExpiredDocument(data.documents));
+  const { expiredDocument, nearExpiredDocument, veryNearExpiredDocument, hasExpiredDocument } = verifyExpiredDocument(data.documents);
 
   const editableButtonClasses = classNames([
     'button',
@@ -50,8 +110,11 @@ const Row = ({
 
   const rowClasses = classNames({
     'car-table__row': true,
-    'for-expired': hasExpiredDocument
-  })
+    'for-expired': expiredDocument,
+    'for-near-expired': nearExpiredDocument,
+    'for-very-near-expired': veryNearExpiredDocument,
+    'for-has-expired': hasExpiredDocument
+  });
 
   const onChange = (key, value) => {
     const _payload = { ...payload };

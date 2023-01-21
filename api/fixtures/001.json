@@ -108,6 +108,27 @@
     }
   },
   {
+    "model": "api.cartype",
+    "pk": 3,
+    "fields": {
+        "name": "Furgon"
+    }
+  },
+  {
+    "model": "api.cartype",
+    "pk": 4,
+    "fields": {
+        "name": "Mini Bus"
+    }
+  },
+  {
+    "model": "api.cartype",
+    "pk": 5,
+    "fields": {
+        "name": "Grua Horquilla"
+    }
+  },
+  {
     "model": "api.costcenter",
     "pk": 1,
     "fields": {
