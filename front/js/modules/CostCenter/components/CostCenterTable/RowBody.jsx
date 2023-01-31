@@ -47,7 +47,7 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
     <div className="costcenter-table__row">
       <div><EditableInput isEditable={isEditable} value={data.code} valueKey="code" onChange={onChange}/></div>
       <div><EditableInput isEditable={isEditable} value={data.name} valueKey="name" onChange={onChange}/></div>
-      <div><Selector isEditable={isEditable} value={data.mining_service} data={selectors.mining} valueKey="mining_service" onChange={onChange} /></div>
+      <div><Selector isEditable={isEditable} value={data.mining} data={selectors.mining} valueKey="mining" onChange={onChange} /></div>
       <div className="costcenter-table__options">
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
@@ -60,17 +60,17 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
 const RowBody = ({ data, selectors, userType, onDeleteItem }) => (
   <div>
 
-    { 
-    
-    data.map(item=> 
-        <Row 
-        key={item.id} 
-        data={item} 
-        selectors={selectors} 
-        userType={userType} 
-        onDeleteItem={onDeleteItem} 
+    {
+
+    data.map(item=>
+        <Row
+        key={item.id}
+        data={item}
+        selectors={selectors}
+        userType={userType}
+        onDeleteItem={onDeleteItem}
         />
-      ) 
+      )
     }
 
   </div>

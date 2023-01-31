@@ -149,7 +149,8 @@
     "pk": 1,
     "fields": {
         "name": "costcenter test1",
-        "code": "J823JDEC8JR9EJASDI"
+        "code": "J823JDEC8JR9EJASDI",
+        "mining": 1
     }
   },
   {
@@ -157,7 +158,8 @@
     "pk": 2,
     "fields": {
         "name": "costcenter test2",
-        "code": "189EDJD9W8SCADFGDS"
+        "code": "189EDJD9W8SCADFGDS",
+        "mining": 1
     }
   },
   {
@@ -165,7 +167,8 @@
     "pk": 3,
     "fields": {
         "name": "Depto. armamento",
-        "code": "192DKASDK12ED11211"
+        "code": "192DKASDK12ED11211",
+        "mining": 1
     }
   },
   {
@@ -173,7 +176,8 @@
     "pk": 4,
     "fields": {
         "name": "Depto. naval",
-        "code": "812EDNASSDHADASAS"
+        "code": "812EDNASSDHADASAS",
+        "mining": 1
     }
   },
   {

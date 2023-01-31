@@ -1,10 +1,15 @@
 import json
 from django.views import View
 from django.http import JsonResponse
-from api.models import CostCenter
+from api.models import CostCenter, Mining
 from ..utils.cost_center import cost_center_data
 
 class CostCenterView(View):
+    def get(self, request):
+        return JsonResponse({
+            "response": [ cost_center.to_json() for cost_center in CostCenter.objects.all() ]
+        })
+
     def post(self, request):
         data = json.loads(request.body)
         cost_center = self._add_new_cost_center(data)
@@ -24,10 +29,10 @@ class CostCenterView(View):
     def _add_new_cost_center(self, data):
         name = data.get('name')
         code = data.get('code')
-
         cost_center = CostCenter()
         cost_center.name = name
         cost_center.code = code
+        cost_center.mining = Mining.objects.get(pk=data.get('mining'))
         cost_center.save()
 
         return cost_center

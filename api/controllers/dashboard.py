@@ -6,7 +6,7 @@ from api.models import Car, CarDocument, Document
 from api.models import CostCenter
 from api.models import Mining
 from ..utils.cost_center import cost_center_data
-from ..utils.mining_service import mining_service_data
+from ..utils.mining import mining_data
 from ..utils.car_type import car_type_data
 from ..utils.user_type import user_type_data
 from ..utils.document_type import document_type_data
@@ -77,11 +77,10 @@ class DashboardView(View):
 
     def _fetch_cost_center_data(self, person_type, cost_center):
         return [ cost_center.to_json() for cost_center in CostCenter.objects.all() ] if person_type == PersonTypeEnum.ADMIN.value else []
-   
+
     def _fetch_mining_data(self):
         mining_list = []
         for mining in Mining.objects.all():
             mining_list.append(mining.to_json())
         return mining_list
 
-            

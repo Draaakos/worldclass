@@ -18,6 +18,6 @@ urlpatterns = [
     path('person/<int:id>', views.person_data, name='person_data'),
     path('person/type', views.person_type, name='person_type'),
     path('person/type/<int:id>', views.person_type, name='person_type'),
-    path('mining', views.mining_service, name='mining_service'),
-    path('mining/<int:id>', views.mining_service, name='mining_service'),
+    path('mining', views.mining, name='mining'),
+    path('mining/<int:id>', views.mining, name='mining'),
 ]
