@@ -129,6 +129,22 @@
     }
   },
   {
+    "model": "api.mining",
+    "pk": 1,
+    "fields": {
+        "name": "mining test1",
+        "code": "JAJAJ12345"
+    }
+  },
+  {
+    "model": "api.mining",
+    "pk": 2,
+    "fields": {
+        "name": "mining test2",
+        "code": "JUUJUJU12345"
+    }
+  },
+  {
     "model": "api.costcenter",
     "pk": 1,
     "fields": {

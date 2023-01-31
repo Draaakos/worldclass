@@ -10,6 +10,7 @@ from .controllers.person_data import PersonDataView
 from .controllers.person_type import PersonTypeView
 from .controllers.car_type import CarTypeView
 from .controllers.car_document import CarDocumentView
+from .controllers.mining_service import MiningView
 
 
 class LogoutView(View):
@@ -28,6 +29,7 @@ logout = LogoutView.as_view()
 dashboard = DashboardView.as_view()
 car_data = CardDataView.as_view()
 cost_center = CostCenterView.as_view()
+mining_service = MiningView.as_view()
 person_data = PersonDataView.as_view()
 person_type = PersonTypeView.as_view()
 car_type = CarTypeView.as_view()

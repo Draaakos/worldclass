@@ -8,7 +8,8 @@ const getJSConfig = (env = { mode: 'development' }) => {
       home: createAppPath('home'),
       dashboard: createAppPath('dashboard'),
       costCenter: createAppPath('costCenter'),
-      user: createAppPath('user')
+      user: createAppPath('user'),
+      mining: createAppPath('mining')
     },
     output: {
       path: path.join(__dirname, '/static/js'),

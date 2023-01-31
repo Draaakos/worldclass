@@ -11,6 +11,10 @@ const fetchNavbarByUserType = (userType) => {
     {
       'label': 'Centro de costo',
       'url': '/dashboard/costcenter'
+    },
+    {
+      'label': 'Faena',
+      'url': '/dashboard/mining'
     }
   ];
 

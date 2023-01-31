@@ -10,6 +10,18 @@ class CostCenter(models.Model):
         return {
             'id': self.id,
             'code': self.code,
+            'name': self.name,
+        }
+
+class Mining(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=100)
+    cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=True, blank=True)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'code': self.code,
             'name': self.name
         }
 
@@ -47,6 +59,11 @@ class PersonCostCenter(models.Model):
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
 
 
+# class PersonMining(models.Model):
+#     person = models.ForeignKey(Person, on_delete=models.CASCADE, null=False, blank=False)
+#     mining_service = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
+
+
 class CarType(models.Model):
     name = models.CharField(max_length=30)
 
@@ -64,17 +81,20 @@ class Car(models.Model):
     status = models.IntegerField(default=1)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
+    # mining_service = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
         return f'{self.patent}'
 
     def to_json(self):
+        
         return {
             'id': self.id,
             'patent': self.patent,
             'carType': self.car_type.id,
             'color': self.color,
             'costCenter': self.cost_center.id,
+            # 'mining': self.mining_service.id,
             'carModel': self.car_model,
             'documents': fetch_documents(self),
             'status': self.status

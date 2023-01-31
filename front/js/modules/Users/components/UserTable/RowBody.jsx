@@ -38,6 +38,7 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
     }
   };
 
+
   const isEditable = !!(userType == 1 || userType == 2);
 
   return (

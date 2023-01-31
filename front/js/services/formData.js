@@ -12,6 +12,29 @@ const service = {
     return post(url, payload)
       .then(response => response.json());
   },
+  fetchAllMining() {
+    const url = '/api/v1/mining';
+
+    return get(url).then(response => response.json());
+  },
+  registerMining(payload) {
+    const url = '/api/v1/mining';
+
+    return post(url, payload)
+      .then(response => response.json());
+  },
+  updateMining(payload, id) {
+    const url = `/api/v1/mining/${id}`;
+
+    return put(url, payload)
+      .then(response => response.json());
+  },
+  deleteMining(id) {
+    const url = `/api/v1/mining/${id}`;
+
+    return onDelete(url)
+      .then(response => response.json());
+  },
   fetchAllPersonTypes() {
     const url = '/api/v1/person/type';
 

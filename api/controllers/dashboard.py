@@ -4,11 +4,14 @@ from django.http import JsonResponse
 from api.models import Person, PersonCostCenter
 from api.models import Car, CarDocument, Document
 from api.models import CostCenter
+from api.models import Mining
 from ..utils.cost_center import cost_center_data
+from ..utils.mining_service import mining_service_data
 from ..utils.car_type import car_type_data
 from ..utils.user_type import user_type_data
 from ..utils.document_type import document_type_data
 from ..enum import PersonTypeEnum
+
 
 
 class DashboardView(View):
@@ -24,10 +27,12 @@ class DashboardView(View):
                 'userType': person_type_id_logged,
                 'personList': self._fetch_dashboard_person_data(person_type_id_logged, person_cost_center_id_logged, person_logged_id),
                 'costCenterList': self._fetch_cost_center_data(person_type_id_logged, person_cost_center_id_logged),
+                'miningList': self._fetch_mining_data(),
                 'carList': self._fetch_dashboard_car_data(person_type_id_logged, person_cost_center_id_logged),
                 'selectors': {
                     'carType': car_type_data(),
                     'costCenter': cost_center_data(person_logged_id, person_cost_center_id_logged),
+                    'mining': self._fetch_mining_data(),
                     'userType': user_type_data(person_logged_id),
                     'documentType': document_type_data(),
                     'carStatus': [
@@ -47,7 +52,8 @@ class DashboardView(View):
                 'status': 500,
                 'personList': [],
                 'carList': [],
-                'costcenterList': []
+                'costcenterList': [],
+                'miningList' : []
             })
 
 
@@ -71,3 +77,11 @@ class DashboardView(View):
 
     def _fetch_cost_center_data(self, person_type, cost_center):
         return [ cost_center.to_json() for cost_center in CostCenter.objects.all() ] if person_type == PersonTypeEnum.ADMIN.value else []
+   
+    def _fetch_mining_data(self):
+        mining_list = []
+        for mining in Mining.objects.all():
+            mining_list.append(mining.to_json())
+        return mining_list
+
+            
