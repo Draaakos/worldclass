@@ -4,7 +4,8 @@ import EditableInput from 'ui/EditableInput';
 import Selector from 'ui/Selector';
 import service from '../../../../services/formData';
 
-const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
+
+const Row = ({ data, selectors, userType, onDeleteItem }) => {
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const editableButtonClasses = classNames([
@@ -13,7 +14,6 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
   ], {
     'button--hidden': !editableActive
   });
-
 
   const onEdit = id => {
     return () => {
@@ -37,9 +37,7 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
         onDeleteItem(id);
       }
     }
-  }
-
-  console.log("aquiii", mining)
+  };
 
   const isEditable = !!(userType == 1);
 
@@ -47,7 +45,7 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
     <div className="costcenter-table__row">
       <div><EditableInput isEditable={isEditable} value={data.code} valueKey="code" onChange={onChange}/></div>
       <div><EditableInput isEditable={isEditable} value={data.name} valueKey="name" onChange={onChange}/></div>
-      <div><Selector isEditable={isEditable} value={data.mining} data={selectors.mining} valueKey="mining" onChange={onChange} /></div>
+      <div><Selector isEditable={isEditable} value={data.mining.id} data={selectors.mining} valueKey="mining" onChange={onChange} /></div>
       <div className="costcenter-table__options">
         { isEditable ? <button className={editableButtonClasses} onClick={onEdit(data.id)}>Editar</button> : null }
         { isEditable ? <button className="button button--danger" onClick={onDelete(data.id)}>Eliminar</button> : null }
@@ -56,24 +54,21 @@ const Row = ({ data, selectors, mining, userType, onDeleteItem }) => {
   )
 };
 
-
 const RowBody = ({ data, selectors, userType, onDeleteItem }) => (
   <div>
-
     {
-
-    data.map(item=>
+      data.map(item =>
         <Row
-        key={item.id}
-        data={item}
-        selectors={selectors}
-        userType={userType}
-        onDeleteItem={onDeleteItem}
+          key={item.id}
+          data={item}
+          selectors={selectors}
+          userType={userType}
+          onDeleteItem={onDeleteItem}
         />
       )
     }
-
   </div>
 );
+
 
 export default RowBody;
