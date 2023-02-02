@@ -41,7 +41,7 @@ const Mining = () => {
         <MiningForm
           setMiningList={setMiningList}
           miningList={miningList}
-          onCloseModal={() => setIsRegisterCostCenter(false)}
+          onCloseModal={() => setIsRegisterMining(false)}
         />
       </Modal>
     )

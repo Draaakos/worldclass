@@ -55,10 +55,12 @@ class CostCenterView(View):
     def _edit_cost_center(self, data, id):
         name = data.get("name")
         code = data.get("code")
+        mining = data.get('mining')
 
         cost_center = CostCenter.objects.get(id=id)
         cost_center.name = name
         cost_center.code = code
+        cost_center.mining_id = mining
         cost_center.save()
 
         return cost_center

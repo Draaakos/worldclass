@@ -17,7 +17,9 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
   const onEdit = id => {
     return () => {
+      console.log(payload)
       service.updateCostCenter(payload, id)
+
       setEditableActive(false);
     }
   }

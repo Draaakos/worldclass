@@ -78,12 +78,11 @@ class CarType(models.Model):
 
 class Car(models.Model):
     patent = models.CharField(max_length=6)
-    color = models.CharField(max_length=100)
+    mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
     car_model = models.CharField(max_length=100)
     status = models.IntegerField(default=1)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
-    # mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
         return f'{self.patent}'
@@ -94,9 +93,8 @@ class Car(models.Model):
             'id': self.id,
             'patent': self.patent,
             'carType': self.car_type.id,
-            'color': self.color,
             'costCenter': self.cost_center.id,
-            # 'mining': self.mining.id,
+            'mining': self.mining.id,
             'carModel': self.car_model,
             'documents': fetch_documents(self),
             'status': self.status

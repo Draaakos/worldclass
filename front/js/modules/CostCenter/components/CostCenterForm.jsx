@@ -23,10 +23,11 @@ const CostCenterForm = ({ selectors, setCostCenterList, costCenterList, onCloseM
     service.registerCostCenter(payload)
       .then(response => {
         const _costCenterList = [ ...costCenterList ];
-        _costCenterList.push(response.item.person);
+        console.log(response)
+        _costCenterList.push(response.item);
         setCostCenterList(_costCenterList);
         onCloseModal();
-        alert("Centro de costo credo correctamente")
+        alert("Centro de costo creado correctamente")
       })
   }
 

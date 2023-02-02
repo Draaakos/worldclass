@@ -110,6 +110,7 @@ CarTable.defaultProps = {
   selectors: {
     carType: [],
     costCenter: [],
+    mining: [],
     userType: []
   }
 }
