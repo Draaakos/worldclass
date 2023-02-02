@@ -54,7 +54,6 @@
     "pk": 1,
     "fields": {
         "patent": "TEST01",
-        "color": "red",
         "car_model": "ferrari",
         "car_type": 1,
         "cost_center": 1
@@ -65,7 +64,6 @@
     "pk": 2,
     "fields": {
         "patent": "TEST02",
-        "color": "blue",
         "car_model": "ferrari",
         "car_type": 2,
         "cost_center": 1
@@ -76,7 +74,6 @@
     "pk": 3,
     "fields": {
         "patent": "TEST03",
-        "color": "yellow",
         "car_model": "toyota",
         "car_type": 2,
         "cost_center": 2
@@ -87,7 +84,6 @@
     "pk": 4,
     "fields": {
         "patent": "TEST04",
-        "color": "verde",
         "car_model": "toyota",
         "car_type": 1,
         "cost_center": 2

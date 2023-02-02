@@ -78,7 +78,6 @@ class CarType(models.Model):
 
 class Car(models.Model):
     patent = models.CharField(max_length=6)
-    mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
     car_model = models.CharField(max_length=100)
     status = models.IntegerField(default=1)
     car_type = models.ForeignKey(CarType, on_delete=models.CASCADE, null=False, blank=False)
@@ -94,7 +93,7 @@ class Car(models.Model):
             'patent': self.patent,
             'carType': self.car_type.id,
             'costCenter': self.cost_center.id,
-            'mining': self.mining.id,
+            'mining': self.cost_center.mining.name,
             'carModel': self.car_model,
             'documents': fetch_documents(self),
             'status': self.status
