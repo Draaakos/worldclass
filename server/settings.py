@@ -142,9 +142,8 @@ FIXTURE_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-try:
-    from .dev import *
-    DATABASES = configure_db_instance(BASE_DIR)
-    print('dev file was loaded')
-except ModuleNotFoundError:
-    print('load file error')
+# try:
+#     from .dev import *
+#     print('dev file was loaded')
+# except ModuleNotFoundError:
+#     print('load file error')

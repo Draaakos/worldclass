@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+    app:
+        build: .
+        ports:
+            - 8000:8000
+        networks:
+            - controlworldclass
+        volumes:
+            - ./static-root/:/app/static-root/
+            - ./media/:/app/media/
+
+    nginx:
+        image: nginx:1.19.3
+        container_name: controlworldclass-nginx
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+            - controlworldclass
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./static-root/:/app/static-root/
+            - ./media/:/app/media/
+            - ./nginx/certificate/www.controlworldclass.cl.crt:/certificate/www.controlworldclass.cl.crt
+            - ./nginx/certificate/www.controlworldclass.cl.key:/certificate/www.controlworldclass.cl.key
+
+networks:
+    controlworldclass:
