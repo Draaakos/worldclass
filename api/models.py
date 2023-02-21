@@ -46,24 +46,16 @@ class Person(models.Model):
     password = models.CharField(max_length=30)
     email = models.CharField(max_length=100)
     person_type = models.ForeignKey(PersonType, on_delete=models.CASCADE, null=False, blank=False)
+    mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
 
     def to_json(self):
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'personType': self.person_type.name
+            'personType': self.person_type.name,
+            'mining': self.mining.to_json()
         }
-
-
-class PersonCostCenter(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE, null=False, blank=False)
-    cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
-
-
-# class PersonMining(models.Model):
-#     person = models.ForeignKey(Person, on_delete=models.CASCADE, null=False, blank=False)
-#     mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
 
 
 class CarType(models.Model):
@@ -92,7 +84,7 @@ class Car(models.Model):
             'id': self.id,
             'patent': self.patent,
             'carType': self.car_type.id,
-            'costCenter': self.cost_center.id,
+            'costCenter': self.cost_center.to_json(),
             'mining': self.cost_center.mining.name,
             'carModel': self.car_model,
             'documents': fetch_documents(self),

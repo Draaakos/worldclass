@@ -168,8 +168,8 @@ const Row = ({
       <div><Selector isEditable={isEditable} value={data.status} data={selectors.carStatus} onChange={onChange} valueKey="status"/></div>
       <div><EditableInput isEditable={isEditable} value={data.patent} onChange={onChange} valueKey="patent"/></div>
       <div><Selector isEditable={isEditable} value={data.carType} data={selectors.carType} onChange={onChange} valueKey="carType"/></div>
-      <div><EditableInput isEditable={isEditable} value={data.mining} data={selectors.mining} onChange={onChange} valueKey="mining"/></div>
-      <div><Selector isEditable={isEditable} value={data.costCenter} data={selectors.costCenter} onChange={onChange} valueKey="costCenter"/></div>
+      <div><Selector isEditable={isEditable} value={data.mining} data={selectors.mining} onChange={onChange} valueKey="mining"/></div>
+      <div><Selector isEditable={isEditable} value={data.costCenter.name} data={selectors.costCenter} onChange={onChange} valueKey="costCenter"/></div>
       <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
 
       <div className="car-table__options">

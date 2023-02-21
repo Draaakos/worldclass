@@ -2,7 +2,7 @@ import json
 from django.views import View
 from django.http import JsonResponse
 # from .forms import UserForm
-from api.models import Person, PersonCostCenter
+from api.models import Person
 
 PERSON_TYPES = {
     'ADMIN': 1,
@@ -36,18 +36,16 @@ class RegisterView(View):
             email = data.get('email')
             person_type = data.get('personType')
             cost_center = data.get('costCenter')
+            mining = data.get('mining')
 
             person = Person()
             person.username = username.lower()
             person.password = password
             person.email = email
             person.person_type_id = person_type
+            person.mining_id = mining
             person.save()
 
-            person_cost_center = PersonCostCenter()
-            person_cost_center.cost_center_id = cost_center
-            person_cost_center.person = person
-            person_cost_center.save()
 
             return {
                 'person': person.to_json(),
