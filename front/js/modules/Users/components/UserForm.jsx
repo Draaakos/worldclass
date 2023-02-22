@@ -4,7 +4,7 @@ import service from '../../../services/formData';
 const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
   const name = useRef(null);
   const email = useRef(null);
-  const costCenter = useRef(null);
+  const mining = useRef(null);
   const password1 = useRef(null);
   const password2 = useRef(null);
   const personType = useRef(null);
@@ -12,7 +12,7 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
   const onSubmit = evt => {
     evt.preventDefault();
 
-    if(costCenter.current.value === 'Seleccione') {
+    if(mining.current.value === 'Seleccione') {
       alert("Debes seleccionar un centro de costo");
       return;
     }
@@ -30,7 +30,7 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
     const payload = {
       username: name.current.value,
       email: email.current.value,
-      costCenter: costCenter.current.value,
+      mining: mining.current.value,
       password: password1.current.value,
       personType: personType.current.value
     };
@@ -45,11 +45,11 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
       })
   }
 
-  const costCenterSelector = (
-    <select className="form-register__input" ref={costCenter}>
+  const miningSelector = (
+    <select className="form-register__input" ref={mining}>
       <option value={null}>Seleccione</option>
       {
-        selectors.costCenter
+        selectors.mining
           .map((option, index) =>
             <option key={`option-${index}`} value={option.id}>{option.name}</option>)
       }
@@ -74,8 +74,8 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
       <input className="form-register__input" ref={name} type="text" placeholder="Nombre completo" required />
       <label className="form-register__label" >Correo Electronico</label>
       <input className="form-register__input" ref={email} type="email" placeholder="Correo Electronico" required />
-      <label className="form-register__label">Centro de Costo</label>
-      {costCenterSelector}
+      <label className="form-register__label">Faena</label>
+      {miningSelector}
       <label className="form-register__label">Tipo de Usuario</label>
       {personTypeSelector}
       <label className="form-register__label">Contraseña</label>
