@@ -25,14 +25,14 @@ class CardDataView(View):
 
     def _add_new_car(self, data):
         patent = data.get('patent')
-        mining = data.get('mining_id')
+        mining = data.get('mining')
         cost_center_id = data.get('costCenter')
         car_type_id = data.get('carType')
         car_model = data.get('carModel')
 
         car = Car()
         car.patent = patent
-        car.mining = mining.id
+        car.mining = mining
         car.car_type_id = car_type_id
         car.cost_center_id = cost_center_id
         car.car_model = car_model
