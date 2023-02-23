@@ -52,6 +52,14 @@ const CarTable = ({
   };
 
 
+  const isEditable = !!(userType == 1);
+  const deleteButton = (
+    <div className="button button--danger" onClick={onDelete(activeCarId, document.id)}>
+      <i className="fas fa-trash-alt"></i>
+    </div>
+  );
+
+
   const downloadFilesActives = downloadFiles.map((document, index) => (
     <div className="download-table__item" key={`item-${index}`}>
       <div>{document.name}</div>
@@ -65,9 +73,9 @@ const CarTable = ({
           <img src="/static/images/download.svg" onClick={() => window.open(document.path, '_blank')}/>
         </div>
       </div>
-      <div className="button button--danger" onClick={onDelete(activeCarId, document.id)}>
-        <i className="fas fa-trash-alt"></i>
-      </div>
+
+      { isEditable ? deleteButton : null }
+
     </div>
   ));
 

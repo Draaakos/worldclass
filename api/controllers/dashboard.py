@@ -33,7 +33,7 @@ class DashboardView(View):
                     'carType': car_type_data(),
                     'costCenter': cost_center_data(person_logged_id, mining_id),
                     'mining': self._fetch_mining_data(),
-                    'userType': user_type_data(person_logged_id),
+                    'userType': user_type_data(person_type_id_logged),
                     'documentType': document_type_data(),
                     'carStatus': [
                         {
@@ -59,20 +59,16 @@ class DashboardView(View):
 
     def _fetch_dashboard_person_data(self, person_type, mining_id, person_logged_id):
         person_list = []
-        for person in Person.objects.all():
-            if person_logged_id != person.id:
-                person_list.append(person.to_json())
-        # if person_type == PersonTypeEnum.ADMIN.value:
-        #     person_list = []
-        #     for person in Person.objects.all():
-        #         if person_logged_id != person.id:
-        #             person_list.append(person.to_json())
-        # elif person_type == PersonTypeEnum.MODERATOR.value:
-        #     for person_cost_center_data in PersonCostCenter.objects.filter(cost_center=cost_center):
-        #         person = Person.objects.get(pk=person_cost_center_data.person.id)
 
-        #         if person_logged_id != person.id:
-        #             person_list.append(person.to_json())
+        if person_type == PersonTypeEnum.ADMIN.value:
+            person_list = []
+            for person in Person.objects.all():
+                if person_logged_id != person.id:
+                    person_list.append(person.to_json())
+        elif person_type == PersonTypeEnum.MODERATOR.value:
+            for person in Person.objects.filter(mining_id=mining_id):
+                if person_logged_id != person.id and person.person_type.id == PersonTypeEnum.USER.value:
+                    person_list.append(person.to_json())
         return person_list
 
     def _fetch_dashboard_car_data(self, person_type, mining_id):
