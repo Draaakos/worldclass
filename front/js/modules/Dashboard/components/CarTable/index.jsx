@@ -27,8 +27,9 @@ const CarTable = ({
   };
 
 
-  const onDelete = (carId, documentId) => {
+  const onDeleteDocument = (carId, documentId) => {
     return () => {
+      console.log(documentId)
       if (confirm("¿Estás seguro de que quieres eliminar este documento?")) {
         service.deleteDocument(carId, documentId)
         const newDownloadFiles = downloadFiles.filter(doc => doc.id !== documentId);
@@ -52,32 +53,32 @@ const CarTable = ({
   };
 
 
-  const isEditable = !!(userType == 1);
-  const deleteButton = (
-    <div className="button button--danger" onClick={onDelete(activeCarId, document.id)}>
-      <i className="fas fa-trash-alt"></i>
-    </div>
-  );
-
-
-  const downloadFilesActives = downloadFiles.map((document, index) => (
-    <div className="download-table__item" key={`item-${index}`}>
-      <div>{document.name}</div>
-      {
-        document.hasExpired
-          ? <div className="download-table__date">{document.expiredDate}</div>
-          : <div className="download-table__noExpired">sin expiración</div>
-      }
-      <div>
-        <div className="download-table__icon">
-          <img src="/static/images/download.svg" onClick={() => window.open(document.path, '_blank')}/>
-        </div>
+  const downloadFilesActives = downloadFiles.map((document, index) => {
+    const isEditable = !!(userType == 1);
+    const deleteButton = (
+      <div className="button button--danger" onClick={onDeleteDocument(activeCarId, document.id)}>
+        <i className="fas fa-trash-alt"></i>
       </div>
+    );
 
-      { isEditable ? deleteButton : null }
+    return (
+      <div className="download-table__item" key={`item-${index}`}>
+        <div>{document.name}</div>
+        {
+          document.hasExpired
+            ? <div className="download-table__date">{document.expiredDate}</div>
+            : <div className="download-table__noExpired">sin expiración</div>
+        }
+        <div>
+          <div className="download-table__icon">
+            <img src="/static/images/download.svg" onClick={() => window.open(document.path, '_blank')}/>
+          </div>
+        </div>
 
-    </div>
-  ));
+        { isEditable ? deleteButton : null }
+      </div>
+    )
+  });
 
   return (
     <div>
