@@ -109,6 +109,8 @@ class DocumentType(models.Model):
 class Document(models.Model):
     upload = models.FileField(upload_to=define_product_path)
     expired_date = models.DateField()
+    # expired_date_2 = models.DateField()
+    # expired_date_3 = models.DateField()
     has_expired = models.BooleanField(default=False)
     document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
 
@@ -121,9 +123,10 @@ class Document(models.Model):
             'name': self.document_type.name,
             'path': f'/media/{self.upload.name}',
             'expiredDate': self.expired_date.strftime("%d-%m-%Y"),
+            # 'expiredDate2': self.expired_date_2.strftime("%d-%m-%Y"),
+            # 'expiredDate3': self.expired_date_3.strftime("%d-%m-%Y"),
             'hasExpired': self.has_expired
         }
-
 
 class CarDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)

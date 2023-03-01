@@ -99,6 +99,15 @@ const CarTable = ({
         ) : null
       }
       <div className="car-table">
+      <div className="symbology">
+        <h1 className="title_symbology">Simbologia</h1>
+        <ul>
+          <span className="square"></span>60 días por expirar un documento
+          <span className="square"></span>40 días por expirar un documento
+          <span className="square"></span>20 días por expirar un documento
+          <span className="square"></span>Documento expirado
+        </ul>
+      </div>
         <section className="search-section">
           <Search onFilter={onFilter} />
         </section>
