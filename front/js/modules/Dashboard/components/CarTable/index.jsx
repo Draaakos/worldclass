@@ -3,7 +3,7 @@ import RowBody from "./RowBody";
 import RowHead from "./RowHead";
 import Modal from "../Modal";
 import Search from "./Seach";
-import service from '../../../../services/formData';
+import service from "../../../../services/formData";
 
 const CarTable = ({
   headers,
@@ -12,10 +12,10 @@ const CarTable = ({
   userType,
   onDeleteItem
 }) => {
-  const [ currentData, setCurrentData ] = useState(data)
+  const [ currentData, setCurrentData ] = useState(data);
   const [ isModalActive, setIsModalActive ] = useState(false);
   const [ downloadFiles, setDownloadFiles ] = useState([]);
-  const [ activeCarId, setActiveCarId ] = useState(null)
+  const [ activeCarId, setActiveCarId ] = useState(null);
 
 
   const onSelectDownloadModal = datasSelected => {
