@@ -4,6 +4,9 @@ import RowHead from "./RowHead";
 import Modal from "../Modal";
 import Search from "./Seach";
 import service from "../../../../services/formData";
+import getExpiredType from 'utils/getExpiredType.js';
+import classNames from "classnames";
+
 
 const CarTable = ({
   headers,
@@ -17,7 +20,6 @@ const CarTable = ({
   const [ downloadFiles, setDownloadFiles ] = useState([]);
   const [ activeCarId, setActiveCarId ] = useState(null);
 
-
   const onSelectDownloadModal = datasSelected => {
     return () => {
       setIsModalActive(true);
@@ -26,10 +28,8 @@ const CarTable = ({
     }
   };
 
-
   const onDeleteDocument = (carId, documentId) => {
     return () => {
-      console.log(documentId)
       if (confirm("¿Estás seguro de que quieres eliminar este documento?")) {
         service.deleteDocument(carId, documentId)
         const newDownloadFiles = downloadFiles.filter(doc => doc.id !== documentId);
@@ -37,14 +37,15 @@ const CarTable = ({
           if(carData.id == activeCarId) {
             carData.documents = newDownloadFiles;
           }
+
           return carData;
-        })
+        });
+
         setCurrentData(_currentData);
         setDownloadFiles(newDownloadFiles)
       }
     }
   };
-
 
   const onFilter = (evt) => {
     setCurrentData(data
@@ -52,8 +53,17 @@ const CarTable = ({
     );
   };
 
-
   const downloadFilesActives = downloadFiles.map((document, index) => {
+    const typeExpired = getExpiredType(document.expiredDate);
+
+    const classes = classNames({
+      'document-box': true,
+      'document-box--green': document.hasExpired && typeExpired == 3,
+      'document-box--yellow': document.hasExpired && typeExpired == 2,
+      'document-box--red': document.hasExpired && typeExpired == 1,
+      'document-box--gray': document.hasExpired && typeExpired == 0
+    });
+
     const isEditable = !!(userType == 1);
     const deleteButton = (
       <div className="button button--danger" onClick={onDeleteDocument(activeCarId, document.id)}>
@@ -63,6 +73,7 @@ const CarTable = ({
 
     return (
       <div className="download-table__item" key={`item-${index}`}>
+        <div><span className={classes}></span></div>
         <div>{document.name}</div>
         {
           document.hasExpired
@@ -88,6 +99,7 @@ const CarTable = ({
             <div className="download-table">
               <div className="download-table__title">Lista de archivos</div>
               <div className="download-table__head">
+                <h4></h4>
                 <h4>Tipo de documento</h4>
                 <h4>Fecha de expiración</h4>
                 <h4>Descarga Documento</h4>

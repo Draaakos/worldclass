@@ -5,62 +5,37 @@ import Selector from "ui/Selector";
 import service from "../../../../services/formData";
 import DocumentForm from "./DocumentForm";
 import Modal from "../Modal";
+import getExpiredType from 'utils/getExpiredType.js';
 
-// const verifyExpiredDocument = documents => {
-//   const d = new Date();
-//   d.setDate(d.getDate() + 30);
 
-//   let hasExpiredDocument = false;
 
-//   documents
-//     .filter(document => document.hasExpired)
-//     .forEach(document => {
-//       const splitedDate = document.expiredDate.split('-');
-//       const year = splitedDate[splitedDate.length - 1];
-//       const month = parseInt(splitedDate[1]) - 1;
-//       const date = splitedDate[0];
-//       const _d = new Date(year, month, date);
+const countForExpiredDocument = documents => {
+  let count = 0;
 
-//       if(_d.getTime() < d.getTime()) {
-//         hasExpiredDocument = true
-//       }
-//     })
+  documents.forEach(item => {
+    if(item.hasExpired) {
+      if(getExpiredType(item.expiredDate) != 4) {
+        count += 1;
+      }
+    }
+  });
 
-//   return hasExpiredDocument;
-// }
+  return count;
+}
 
-// const Row = ({
-//   data,
-//   selectors,
-//   userType,
-//   onSelectDownloadModal,
-//   onDeleteItem
-// }) => {
-//   const [ payload, setPayload ] = useState(data);
-//   const [ editableActive, setEditableActive ] = useState(false);
-//   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
-//   const [ hasExpiredDocument, setHasExpiredDocument ] = useState(verifyExpiredDocument(data.documents));
 
-//   const editableButtonClasses = classNames([
-//     'button',
-//     'button--info'
-//   ], {
-//     'button--hidden': !editableActive
-//   });
-
-//   const rowClasses = classNames({
-//     'car-table__row': true,
-//     'for-expired': hasExpiredDocument
-//   })
 
 const verifyExpiredDocument = documents => {
   const d = new Date();
+
   const sixtyDays = new Date();
-  sixtyDays.setDate(sixtyDays.getDate() + 60);
+  sixtyDays.setUTCDate(sixtyDays.getUTCDate() + 60);
+
   const fortyDays = new Date();
-  fortyDays.setDate(fortyDays.getDate() + 40);
+  fortyDays.setUTCDate(fortyDays.getUTCDate() + 40);
+
   const twentyDays = new Date();
-  twentyDays.setDate(twentyDays.getDate() + 20);
+  twentyDays.setUTCDate(twentyDays.getUTCDate() + 20);
 
   let hasExpiredDocument = false;
   let nearExpiredDocument = false;
@@ -86,7 +61,12 @@ const verifyExpiredDocument = documents => {
       }
     })
 
-  return { expiredDocument, nearExpiredDocument, veryNearExpiredDocument, hasExpiredDocument};
+  return {
+    expiredDocument,
+    nearExpiredDocument,
+    veryNearExpiredDocument,
+    hasExpiredDocument
+  };
 }
 
 const Row = ({
@@ -99,12 +79,19 @@ const Row = ({
   const [ payload, setPayload ] = useState(data);
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
-  const { expiredDocument, nearExpiredDocument, veryNearExpiredDocument, hasExpiredDocument } = verifyExpiredDocument(data.documents);
+
+  const {
+    expiredDocument,
+    nearExpiredDocument,
+    veryNearExpiredDocument,
+    hasExpiredDocument
+  } = verifyExpiredDocument(data.documents);
 
   const editableButtonClasses = classNames([
     'button',
     'button--info'
-  ], {
+  ],
+  {
     'button--hidden': !editableActive
   });
 
@@ -165,12 +152,64 @@ const Row = ({
 
   return (
     <div className={rowClasses}>
-      <div><Selector isEditable={isEditable} value={data.status} data={selectors.carStatus} onChange={onChange} valueKey="status"/></div>
-      <div><EditableInput isEditable={isEditable} value={data.patent} onChange={onChange} valueKey="patent"/></div>
-      <div><Selector isEditable={isEditable} value={data.carType} data={selectors.carType} onChange={onChange} valueKey="carType"/></div>
-      <div><Selector isEditable={isEditable} value={data.mining} data={selectors.mining} onChange={onChange} valueKey="mining"/></div>
-      <div><Selector isEditable={isEditable} value={data.costCenter.name} data={selectors.costCenter} onChange={onChange} valueKey="costCenter"/></div>
-      <div><EditableInput isEditable={isEditable} value={data.carModel} onChange={onChange} valueKey="carModel"/></div>
+      <div>{countForExpiredDocument(data.documents)}</div>
+      <div>
+        <Selector
+          isEditable={isEditable}
+          value={data.status}
+          data={selectors.carStatus}
+          onChange={onChange}
+          valueKey="status"
+        />
+      </div>
+
+      <div>
+        <EditableInput
+          isEditable={isEditable}
+          value={data.patent}
+          onChange={onChange}
+          valueKey="patent"
+        />
+      </div>
+
+      <div>
+        <Selector
+          isEditable={isEditable}
+          value={data.carType}
+          data={selectors.carType}
+          onChange={onChange}
+          valueKey="carType"
+        />
+      </div>
+
+      <div>
+        <Selector
+          isEditable={isEditable}
+          value={data.mining}
+          data={selectors.mining}
+          onChange={onChange}
+          valueKey="mining"
+        />
+      </div>
+
+      <div>
+        <Selector
+          isEditable={isEditable}
+          value={data.costCenter.name}
+          data={selectors.costCenter}
+          onChange={onChange}
+          valueKey="costCenter"
+        />
+      </div>
+
+      <div>
+        <EditableInput
+          isEditable={isEditable}
+          value={data.carModel}
+          onChange={onChange}
+          valueKey="carModel"
+        />
+      </div>
 
       <div className="car-table__options">
         {

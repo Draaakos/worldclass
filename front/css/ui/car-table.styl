@@ -5,14 +5,14 @@
 
     &__row
         display grid
-        grid-template-columns repeat(7, 1fr)
+        grid-template-columns .4fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
 
         & > div
             border 1px solid #efefef
             padding .5em
             display flex
             align-items center
-            justify-content space-evenly
+            // justify-content space-evenly
 
     &__options
         justify-content space-between
@@ -46,42 +46,41 @@
     &:hover
         cursor pointer
 
-.for-expired
-    background-color grey
-    border 1px solid rgba(245, 13, 13, 0.6)
+// .for-expired
+//     background-color grey
+//     border 1px solid rgba(245, 13, 13, 0.6)
 
-    select,
-    input
-        background-color grey
+//     select,
+//     input
+//         background-color grey
 
-.for-has-expired
-    background-color red
-    border 1px solid rgba(245, 13, 13, 0.6)
+// .for-has-expired
+//     background-color red
+//     border 1px solid rgba(245, 13, 13, 0.6)
 
-    select,
-    input
-        background-color red
+//     select,
+//     input
+//         background-color red
 
 
-.for-very-near-expired
-    background-color yellow
-    border 1px solid rgba(245, 13, 13, 0.6)
+// .for-very-near-expired
+//     background-color yellow
+//     border 1px solid rgba(245, 13, 13, 0.6)
 
-    select,
-    input
-        background-color yellow
+//     select,
+//     input
+//         background-color yellow
 
-.for-near-expired
-    background-color rgba(0, 128, 0, 0.4)
-    border 1px solid rgba(245, 13, 13, 0.6)
+// .for-near-expired
+//     background-color rgba(0, 128, 0, 0.4)
+//     border 1px solid rgba(245, 13, 13, 0.6)
 
-    select,
-    input
-        background-color rgba(0, 128, 0, 0)
+//     select,
+//     input
+//         background-color rgba(0, 128, 0, 0)
 
 
 @media screen and (min-width: viewport)
-
     .car-table
         &__options
             max-width 270px

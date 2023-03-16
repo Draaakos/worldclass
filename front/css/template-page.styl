@@ -37,11 +37,11 @@ body
 
     &__head
         display grid
-        grid-template-columns repeat(4, 1fr)
+        grid-template-columns .2fr 1fr 1fr 1fr 1fr
 
     &__item
         display grid
-        grid-template-columns repeat(4, 1fr)
+        grid-template-columns .2fr 1fr 1fr 1fr 1fr
         gap 1em
         margin-bottom .5em
         justify-content space-between
@@ -67,29 +67,35 @@ body
 .content-table
     min-height 80vh
 
+
 .symbology
     width 320px
+
 
 .title_symbology
     text-align center
 
-.square 
+.square
   display inline-block
   width 15px
   height 15px
   margin-right 10px
   border 1px solid #ccc
 
-.square:nth-of-type(1) 
+
+.square:nth-of-type(1)
   background-color: green
 
-.square:nth-of-type(2) 
+
+.square:nth-of-type(2)
   background-color yellow
 
-.square:nth-of-type(3) 
+
+.square:nth-of-type(3)
   background-color red
 
-.square:nth-of-type(4) 
+
+.square:nth-of-type(4)
   background-color grey
 
 
@@ -104,3 +110,23 @@ body
     height 700px
     overflow-y scroll
     background-color white
+
+
+.document-box
+    display block
+    // border 1px solid gray
+    width 18px
+    height 18px
+    border-radius 50%
+
+    &--green
+        background-color #00d1b2
+
+    &--yellow
+        background-color #ffd257
+
+    &--red
+        background-color #f14668
+
+    &--gray
+        background-color #363636
