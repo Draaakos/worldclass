@@ -12,7 +12,6 @@ from .controllers.car_type import CarTypeView
 from .controllers.car_document import CarDocumentView
 from .controllers.mining import MiningView
 
-
 class LogoutView(View):
     def get(self, request):
         request.session['is_logged'] = 0
@@ -21,7 +20,6 @@ class LogoutView(View):
         return JsonResponse({
             'msg': 'sesion finalizada'
         })
-
 
 register = RegisterView.as_view()
 login = LoginView.as_view()

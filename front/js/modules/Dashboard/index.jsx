@@ -9,7 +9,7 @@ import TemplatePage from '../Template';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
 
-const PLACE_OPTIONS = ['Por expirar', 'Status', 'Patente', 'Tipo', 'Faena', 'Centro de costo', 'Modelo', 'Opciones'];
+const PLACE_OPTIONS = ['Docs\. a Expirar', 'Status', 'Patente', 'Tipo', 'Faena', 'Centro de costo', 'Modelo', 'Opciones'];
 
 
 const Dashboard = () => {

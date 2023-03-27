@@ -4,9 +4,15 @@ import EditableInput from 'ui/EditableInput';
 import Selector from 'ui/Selector';
 import service from '../../../../services/formData';
 
+const processInitialData = data => {
+  return {
+    ...data, 
+    mining: data.mining.id
+  }
+}
 
 const Row = ({ data, selectors, userType, onDeleteItem }) => {
-  const [ payload, setPayload ] = useState(data);
+  const [ payload, setPayload ] = useState(processInitialData(data));
   const [ editableActive, setEditableActive ] = useState(false);
   const editableButtonClasses = classNames([
     'button',
@@ -17,9 +23,7 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
   const onEdit = id => {
     return () => {
-      console.log(payload)
       service.updateCostCenter(payload, id)
-
       setEditableActive(false);
     }
   }

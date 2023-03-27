@@ -3,7 +3,6 @@ from django.views import View
 from django.http import JsonResponse
 from api.models import Person
 
-
 # TODO: REVISAR ESTA VISTA PORQUE AL PARECER NO SE ESTA USANDO
 class PersonDataView(View):
     def post(self, request):
@@ -36,7 +35,8 @@ class PersonDataView(View):
 
         return person
 
-    def put(self, request, id):
+    def put(self, request, **kwargs):
+        id = kwargs.get("id")
         data = json.loads(request.body)
         self._edit_person(data, id)
 
@@ -67,7 +67,7 @@ class PersonDataView(View):
 
         return person
 
-    def delete(self, data, id):
+    def delete(self, data, **kwargs):
         try:
             person = Person.objects.get(id=id)
             person.delete()

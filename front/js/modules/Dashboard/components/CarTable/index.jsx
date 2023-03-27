@@ -7,7 +7,6 @@ import service from "../../../../services/formData";
 import getExpiredType from 'utils/getExpiredType.js';
 import classNames from "classnames";
 
-
 const CarTable = ({
   headers,
   data,
@@ -98,6 +97,29 @@ const CarTable = ({
           <Modal onCloseModal={() => setIsModalActive(false)}>
             <div className="download-table">
               <div className="download-table__title">Lista de archivos</div>
+              <div className="symbology">
+                <div className="title_symbology">Vencimiento de documentos</div>
+                <div className="symbology-row">
+                  <div className="symbology-item">
+                    <span className="square green"></span>
+                    <span className="symbology-text">60 días por expirar</span>
+                  </div>
+                  <div className="symbology-item">
+                    <span className="square yellow"></span>
+                    <span className="symbology-text">40 días por expirar</span>
+                  </div>
+                </div>
+                <div className="symbology-row">
+                  <div className="symbology-item">
+                    <span className="square red"></span>
+                    <span className="symbology-text">20 días por expirar</span>
+                  </div>
+                  <div className="symbology-item">
+                    <span className="square gray"></span>
+                    <span className="symbology-text">Documento vencido</span>
+                  </div>
+                </div>
+              </div>
               <div className="download-table__head">
                 <h4></h4>
                 <h4>Tipo de documento</h4>
@@ -111,15 +133,6 @@ const CarTable = ({
         ) : null
       }
       <div className="car-table">
-      <div className="symbology">
-        <h1 className="title_symbology">Simbologia</h1>
-        <ul>
-          <span className="square"></span>60 días por expirar un documento
-          <span className="square"></span>40 días por expirar un documento
-          <span className="square"></span>20 días por expirar un documento
-          <span className="square"></span>Documento expirado
-        </ul>
-      </div>
         <section className="search-section">
           <Search onFilter={onFilter} />
         </section>

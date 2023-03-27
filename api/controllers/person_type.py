@@ -35,8 +35,8 @@ class PersonTypeView(View):
 
         return person_type
 
-
-    def put(self, request, id):
+    def put(self, request, **kwargs):
+        id = kwargs.get("id")
         data = json.loads(request.body)
         self._edit_person_type(data, id)
 
@@ -55,11 +55,10 @@ class PersonTypeView(View):
         name = data.get('name')
 
         person_type = PersonType.objects.get(id=id)
-        person_type.name = name
+        person_type.name = name["id"]
         person_type.save()
 
         return person_type
-
 
     def delete(self, request, **kwargs):
         id = kwargs.get('id')

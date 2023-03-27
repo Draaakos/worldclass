@@ -26,7 +26,6 @@ class CarDocumentView(View):
                 'msg': 'error'
             })
 
-
     def delete(self, request, **kwargs):
         document_id = kwargs.get('document_id')
         car_id = kwargs.get('car_id')

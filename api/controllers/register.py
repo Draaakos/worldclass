@@ -46,7 +46,6 @@ class RegisterView(View):
             person.mining_id = mining
             person.save()
 
-
             return {
                 'person': person.to_json(),
                 'msg': 'Usuario creado correctamente'

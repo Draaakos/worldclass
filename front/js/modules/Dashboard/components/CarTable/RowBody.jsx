@@ -215,7 +215,7 @@ const Row = ({
         {
           isEditable || userType == 2 ? (
               <div onClick={() => setIsRegisterDocument(true)} className="car-table__options__item">
-                <i className="fas fa-upload"></i>
+                <i className="fas fa-upload" title="Subir un Documento"></i>
               </div>
           ) : null
         }
@@ -224,7 +224,7 @@ const Row = ({
           {
             payload.documents.length
               ? <div onClick={onSelectDownloadModal(data)} className="car-table__options__item">
-                  <i className="fas fa-download"></i>
+                  <i className="fas fa-download" title="Visualización de Documentos"></i>
                 </div>
               : null
           }
@@ -235,14 +235,14 @@ const Row = ({
         {
           isEditable
             ? <div className={editableButtonClasses} onClick={onEdit(data.id)}>
-                <i className="fas fa-check-circle"></i>
+                <i className="fas fa-check-circle" title="Editar"></i>
               </div>
             : null
         }
         {
           isEditable
             ? <div className="button button--danger" onClick={onDelete(data.id)}>
-                <i className="fas fa-trash-alt"></i>
+                <i className="fas fa-trash-alt" title="Eliminar un Vehículo"></i>
               </div>
             : null
         }

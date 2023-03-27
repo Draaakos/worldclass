@@ -12,14 +12,11 @@ from ..utils.user_type import user_type_data
 from ..utils.document_type import document_type_data
 from ..enum import PersonTypeEnum
 
-
-
 class DashboardView(View):
     def get(self, request, **kwargs):
         person_logged_id = request.session.get('person_logged_id')
         person_type_id_logged = request.session.get('person_type_id')
         mining_id = request.session.get('mining_id')
-
 
         if person_logged_id:
             return JsonResponse({
@@ -55,7 +52,6 @@ class DashboardView(View):
                 'costcenterList': [],
                 'miningList' : []
             })
-
 
     def _fetch_dashboard_person_data(self, person_type, mining_id, person_logged_id):
         person_list = []

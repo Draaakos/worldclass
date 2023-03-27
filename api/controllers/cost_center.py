@@ -37,7 +37,8 @@ class CostCenterView(View):
 
         return cost_center
 
-    def put(self, request, id):
+    def put(self, request, **kwargs):
+        id = kwargs.get("id")
         data = json.loads(request.body)
         self._edit_cost_center(data, id)
 
@@ -55,7 +56,7 @@ class CostCenterView(View):
     def _edit_cost_center(self, data, id):
         name = data.get("name")
         code = data.get("code")
-        mining = data.get('mining')
+        mining = data.get("mining")
 
         cost_center = CostCenter.objects.get(id=id)
         cost_center.name = name

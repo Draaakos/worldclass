@@ -1,7 +1,6 @@
 from django.db import models
 from .tools import define_product_path
 
-
 class Mining(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
@@ -12,7 +11,6 @@ class Mining(models.Model):
             'code': self.code,
             'name': self.name
         }
-
 
 class CostCenter(models.Model):
     name = models.CharField(max_length=100)
@@ -27,7 +25,6 @@ class CostCenter(models.Model):
             'mining': self.mining.to_json()
         }
 
-
 class PersonType(models.Model):
     name = models.CharField(max_length=70)
 
@@ -39,7 +36,6 @@ class PersonType(models.Model):
             'id': self.id,
             'name': self.name
         }
-
 
 class Person(models.Model):
     username = models.CharField(max_length=50, unique=True)
@@ -57,7 +53,6 @@ class Person(models.Model):
             'mining': self.mining.to_json()
         }
 
-
 class CarType(models.Model):
     name = models.CharField(max_length=30)
 
@@ -66,7 +61,6 @@ class CarType(models.Model):
             'id': self.id,
             'name': self.name
         }
-
 
 class Car(models.Model):
     patent = models.CharField(max_length=6)
@@ -91,13 +85,11 @@ class Car(models.Model):
             'status': self.status
         }
 
-
 class DocumentType(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return f'{self.name}'
-
 
     def to_json(self):
         return {
@@ -105,12 +97,9 @@ class DocumentType(models.Model):
             'name': self.name
         }
 
-
 class Document(models.Model):
     upload = models.FileField(upload_to=define_product_path)
     expired_date = models.DateField()
-    # expired_date_2 = models.DateField()
-    # expired_date_3 = models.DateField()
     has_expired = models.BooleanField(default=False)
     document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
 
@@ -123,17 +112,12 @@ class Document(models.Model):
             'name': self.document_type.name,
             'path': f'/media/{self.upload.name}',
             'expiredDate': self.expired_date.strftime("%d-%m-%Y"),
-            # 'expiredDate2': self.expired_date_2.strftime("%d-%m-%Y"),
-            # 'expiredDate3': self.expired_date_3.strftime("%d-%m-%Y"),
             'hasExpired': self.has_expired
         }
 
 class CarDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)
     car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False, blank=False)
-
-
-
 
 def fetch_documents(car):
     document_list = []

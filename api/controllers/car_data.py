@@ -5,7 +5,6 @@ from api.models import Car
 from django.contrib.auth.decorators import login_required
 from ..enum import PersonTypeEnum
 
-
 class CardDataView(View):
     def post(self, request):
         data = json.loads(request.body)
@@ -40,7 +39,6 @@ class CardDataView(View):
 
         return car
 
-
     def put(self, request, **kwargs):
         data = json.loads(request.body)
         id = kwargs.get('id')
@@ -57,7 +55,6 @@ class CardDataView(View):
         #         "message": "error al editar vehiculo",
         #         "status": 500
         #     })
-
 
     def _edit_car(self, data, id):
         mining = data.get('mining')

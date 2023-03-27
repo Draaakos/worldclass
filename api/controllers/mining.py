@@ -4,7 +4,6 @@ from django.http import JsonResponse
 from api.models import Mining
 from ..utils.mining import mining_data
 
-
 class MiningView(View):
      def post(self, request):
         data = json.loads(request.body)
@@ -33,12 +32,10 @@ class MiningView(View):
 
         return mining
 
-
      def get(self, request):
         return JsonResponse({
             "response": [ mining.to_json() for mining in Mining.objects.all() ]
         })
-
 
      def put(self, request, id):
         data = json.loads(request.body)
@@ -59,7 +56,6 @@ class MiningView(View):
         name = data.get("name")
         code = data.get("code")
         cost_center = data.get('cost_center')
-
 
         mining = Mining.objects.get(pk=id)
         mining.name = name

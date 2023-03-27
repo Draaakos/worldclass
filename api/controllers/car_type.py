@@ -30,7 +30,6 @@ class CarTypeView(View):
 
         return car_type
 
-
     def put(self, request, id):
         data = json.loads(request.body)
         self._edit_car_type(data, id)
@@ -54,7 +53,6 @@ class CarTypeView(View):
         car_type.save()
 
         return car_type
-
 
     def delete(self, request, id):
         car_type = CarType.objects.get(id=id)

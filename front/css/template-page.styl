@@ -9,7 +9,6 @@
 @require 'ui/search'
 @require 'ui/mining-table'
 
-
 body
     padding 0
     border 0
@@ -32,8 +31,7 @@ body
 
     &__title
         text-align center
-        font-size 1.8em
-        padding 1em 1em 3em
+        font-size 2em
 
     &__head
         display grid
@@ -63,41 +61,52 @@ body
     &__noExpired
         text-align center
 
-
 .content-table
     min-height 80vh
 
+.symbology 
+  width 320px
 
-.symbology
-    width 320px
+.title_symbology 
+  text-align center
+  font-size 1.5em
+  padding 1em
 
+.symbology-row 
+  display flex
+  padding-left 30px
+  flex-direction row
+  justify-content space-between
+  margin-bottom 10px
 
-.title_symbology
-    text-align center
+.symbology-item 
+  display flex
+  flex-direction row
+  align-items center
 
-.square
+.square 
+  width 10px
+  height 10px
+  margin-right 5px
   display inline-block
-  width 15px
-  height 15px
-  margin-right 10px
-  border 1px solid #ccc
+
+.green 
+  background-color green
 
 
-.square:nth-of-type(1)
-  background-color: green
+.yellow 
+  background-color #ffd257
 
-
-.square:nth-of-type(2)
-  background-color yellow
-
-
-.square:nth-of-type(3)
+.red 
   background-color red
 
+.gray 
+  background-color #333
 
-.square:nth-of-type(4)
-  background-color grey
-
+li 
+  list-style none
+  margin-bottom 10px
+  margin-left 20px
 
 .search-section
     margin 1.5em 0
@@ -105,12 +114,10 @@ body
     align-items center
     justify-content center
 
-
 .download-table
     height 700px
     overflow-y scroll
     background-color white
-
 
 .document-box
     display block
@@ -120,13 +127,13 @@ body
     border-radius 50%
 
     &--green
-        background-color #00d1b2
+        background-color green
 
     &--yellow
         background-color #ffd257
 
     &--red
-        background-color #f14668
+        background-color red
 
     &--gray
         background-color #363636

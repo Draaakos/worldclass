@@ -7,7 +7,6 @@ import CostCenterTable from "./components/CostCenterTable";
 import Button from 'ui/Button';
 import fetchNavbarByUserType from '../../utils/fetchNavbarByUserType.js';
 
-
 const PLACE_OPTIONS = ['Codigo', 'Nombre', 'Faena', 'Opciones'];
 
 const CostCenter = () => {
@@ -29,12 +28,10 @@ const CostCenter = () => {
       })
   }, []);
 
-
   const onDeleteItem = id => {
     const _costCenterList = costCenterList.filter(item => item.id != id);
     setCostCenterList(_costCenterList);
   };
-
 
   const modal = isRegisterCostCenter
     ? (
