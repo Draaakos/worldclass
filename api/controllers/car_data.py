@@ -43,7 +43,6 @@ class CardDataView(View):
         data = json.loads(request.body)
         id = kwargs.get('id')
 
-        # try:
         car = self._edit_car(data, id)
         return JsonResponse({
             "car": car.to_json(),
@@ -63,8 +62,10 @@ class CardDataView(View):
         car_type = data.get('carType')
         status = data.get('status')
 
+        print('mining', mining)
+
         car = Car.objects.get(pk=id)
-        car.mining = mining
+        car.mining_id = mining
         car.car_model = car_model
         car.car_type_id = car_type
         car.cost_center_id = cost_center

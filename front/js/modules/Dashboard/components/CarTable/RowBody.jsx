@@ -8,6 +8,14 @@ import Modal from "../Modal";
 import getExpiredType from 'utils/getExpiredType.js';
 
 
+const processInitialData = (data) => {
+  return {
+    ...data,
+    costCenter: data.costCenter.id
+  }
+}
+
+
 
 const countForExpiredDocument = documents => {
   let count = 0;
@@ -22,7 +30,6 @@ const countForExpiredDocument = documents => {
 
   return count;
 }
-
 
 
 const verifyExpiredDocument = documents => {
@@ -76,7 +83,7 @@ const Row = ({
   onSelectDownloadModal,
   onDeleteItem
 }) => {
-  const [ payload, setPayload ] = useState(data);
+  const [ payload, setPayload ] = useState(processInitialData(data));
   const [ editableActive, setEditableActive ] = useState(false);
   const [ isRegisterDocument, setIsRegisterDocument ] = useState(false);
 
@@ -114,6 +121,7 @@ const Row = ({
     return () => {
       service.updateCar(payload, id)
       setEditableActive(false);
+      window.location.reload();
     }
   };
 
@@ -183,8 +191,9 @@ const Row = ({
       </div>
 
       <div>
+        <div></div>
         <Selector
-          isEditable={isEditable}
+          isEditable={false}
           value={data.mining}
           data={selectors.mining}
           onChange={onChange}
