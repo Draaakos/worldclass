@@ -4,15 +4,17 @@ import EditableInput from 'ui/EditableInput';
 import Selector from 'ui/Selector';
 import service from '../../../../services/formData';
 
-const processInitialData = data => {
+
+const processInitialData = (data, selectors) => {
   return {
-    ...data, 
-    person: data.personType.id
+    ...data,
+    personType: selectors.find(item => item.name == data.personType).id
   }
 }
 
 const Row = ({ data, selectors, userType, onDeleteItem }) => {
-	const [ payload, setPayload ] = useState(processInitialData(data));
+	const [ payload, setPayload ] = useState(processInitialData(data, selectors.userType));
+
   const [ editableActive, setEditableActive ] = useState(false);
   const editableButtonClasses = classNames([
     'button',
@@ -50,7 +52,7 @@ const Row = ({ data, selectors, userType, onDeleteItem }) => {
 
   return (
     <div className="usertype-table__row">
-      <div><EditableInput isEditable={isEditable} value={data.username} valueKey="name" onChange={onChange} /></div>
+      <div><EditableInput isEditable={isEditable} value={data.username} valueKey="username" onChange={onChange} /></div>
 			<div><EditableInput isEditable={isEditable} value={data.email} valueKey="email" onChange={onChange} /></div>
 			<div><Selector isEditable={isEditable} value={data.personType} data={selectors.userType} valueKey="personType" onChange={onChange} /></div>
       <div className="usertype-table__options">
