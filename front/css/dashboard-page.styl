@@ -1,20 +1,47 @@
-// @require 'ui/config'
-// @require 'modules/user_form'
-// @require 'modules/nav_bar'
-// @require 'modules/car_card'
-// @require 'ui/modal'
-// @require 'ui/table'
-// @require 'modules/footer'
+@require 'ui/config'
+@require 'modules/user_form'
+@require 'modules/nav_bar'
+@require 'ui/modal'
+@require 'ui/car-table'
+@require 'modules/footer'
+@require 'ui/costcenter-table'
+@require 'ui/usertype-table'
+@require 'ui/search'
+@require 'ui/mining-table'
 
-// body
-//     padding 0
-//     border 0
-//     margin 0
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
 
-// @require 'modules/user_table'
-// @require 'modules/costcenter_table'
+body
+    padding 0
+    border 0
+    margin 0
 
+.template-page
+    &__title
+        background-color #1A227D
+        color white
+        font-size 3.3em
+        font-family 'Roboto'
+        padding: 0.5em 1.7em
 
+.dashboard
+    display flex
 
+    &__wrapper
+        margin 18em auto
+        text-align center
+        color #999999
 
+    &__message
+        padding-top 1em
+        font-size 1.8em
+        text-align center
 
+.head-wrapper
+    background-color #0C1252
+
+.search-section
+    padding 1em

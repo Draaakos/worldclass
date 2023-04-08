@@ -2,30 +2,36 @@ const fetchNavbarByUserType = (userType) => {
   const adminNavbarOptions = [
     {
       'label': 'Vehiculos',
-      'url': '/dashboard'
+      'url': '/dashboard',
+      'icon': '../../static/images/car.svg'
     },
     {
       'label': 'Usuarios',
-      'url': '/dashboard/user'
+      'url': '/dashboard/user',
+      'icon': '../../static/images/person.svg'
     },
     {
       'label': 'Centro de costo',
-      'url': '/dashboard/costcenter'
+      'url': '/dashboard/costcenter',
+      'icon': '../../static/images/document.svg'
     },
     {
       'label': 'Faena',
-      'url': '/dashboard/mining'
+      'url': '/dashboard/mining',
+      'icon': '../../static/images/costcenter.svg'
     }
   ];
 
   const moderatorNavbarOptions = [
     {
       'label': 'Vehiculos',
-      'url': '/dashboard'
+      'url': '/dashboard',
+      'icon': '../../static/images/car.svg'
     },
     {
       'label': 'Usuarios',
-      'url': '/dashboard/user'
+      'url': '/dashboard/user',
+      'icon': '../../static/images/person.svg'
     }
   ];
 
