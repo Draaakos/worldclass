@@ -8,6 +8,7 @@
 @require 'ui/usertype-table'
 @require 'ui/search'
 @require 'ui/mining-table'
+@require 'ui/added-message'
 
 @font-face {
     font-family: "Roboto";
@@ -21,7 +22,7 @@ body
 
 .template-page
     &__title
-        background-color #1A227D
+        background-color #009895
         color white
         font-size 3.3em
         font-family 'Roboto'
@@ -41,7 +42,22 @@ body
         text-align center
 
 .head-wrapper
-    background-color #0C1252
+    background-color #167780
 
 .search-section
     padding 1em
+
+.button-new-card
+    position absolute
+    right 30px
+    top 65px
+
+.add
+    border none
+    font-size 2.3em
+    box-shadow rgba(0, 0, 0, 0.35) 0px 5px 15px
+    transition all .2s ease
+
+    &:hover
+        font-size 2.4em
+        transition all .2s ease

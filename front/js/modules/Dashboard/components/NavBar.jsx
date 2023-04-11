@@ -3,17 +3,6 @@ import { useState } from "react";
 import classNames from "classnames";
 
 const NavBar = ({ navbarOptions }) => {
-  const [ showSideBar, setShowSideBar] = useState(false)
-
-  const activeAndDesactive = classNames ({
-    'sidebar active': showSideBar,
-    'sidebar': !showSideBar
-  });
-
-  const handleClick = () => {
-    setShowSideBar(!showSideBar)
-  };
-
   const Item = ({ url, label, logo}) => {
     return (
       <a className="options__item" href={url}>
@@ -24,13 +13,10 @@ const NavBar = ({ navbarOptions }) => {
   }
 
   return (
-    <aside className={activeAndDesactive}>
+    <aside className='sidebar'>
       <div className="head">
         <div className="head__company">
           <img src="../static/images/logo_black.png" />
-        </div>
-        <div className="head__menu" onClick={handleClick}>
-          <img src="../static/images/menu.svg" />
         </div>
       </div>
 

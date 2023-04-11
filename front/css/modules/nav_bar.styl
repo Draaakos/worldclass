@@ -1,21 +1,31 @@
-.sidebar.active
-    transition all .4s ease
-    width 300px
+// .sidebar
+//     &:hover
+//         transition all .4s ease
+//         width 300px
+//         z-index 1
 
-    .head__company
-        display block
+//         .head__company
+//             display block
 
-    .options__text
-        display block
+//         .options__text
+//             display block
 
 .sidebar
-    background-color #030849
+    background-color #1f1e1d
     height 100vh
     position fixed
     color white
     width 70px
     transition all .4s ease
+    z-index 1
     top 0
+
+    &:hover
+        transition all .4s ease
+        width 250px
+
+    &:hover .options__text
+        display block
 
     .head__company
         display none
@@ -25,6 +35,7 @@
 
     .options__text
         display none
+
 
 .head
     display flex

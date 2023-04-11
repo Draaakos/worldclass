@@ -9,6 +9,7 @@ const UserForm = ({ selectors, personList, setPersonList, onCloseModal }) => {
   const password2 = useRef(null);
   const personType = useRef(null);
 
+
   const onSubmit = evt => {
     evt.preventDefault();
 
