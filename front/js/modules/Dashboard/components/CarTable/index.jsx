@@ -7,6 +7,12 @@ import service from "../../../../services/formData";
 import getExpiredType from 'utils/getExpiredType.js';
 import classNames from "classnames";
 
+// const CarTable = () => {
+//   return (
+//     <div>CarTable</div>
+//   )
+// }
+
 const CarTable = ({
   headers,
   data,
@@ -133,9 +139,11 @@ const CarTable = ({
         ) : null
       }
       <div className="car-table">
-        <section className="search-section">
-          <Search onFilter={onFilter} />
-        </section>
+        <div className="head-wrapper">
+          <section className="search-section">
+            <Search onFilter={onFilter} />
+          </section>
+        </div>
         <RowHead headers={headers} />
         <RowBody
           data={currentData}

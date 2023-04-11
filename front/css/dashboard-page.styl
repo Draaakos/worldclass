@@ -1,20 +1,63 @@
-// @require 'ui/config'
-// @require 'modules/user_form'
-// @require 'modules/nav_bar'
-// @require 'modules/car_card'
-// @require 'ui/modal'
-// @require 'ui/table'
-// @require 'modules/footer'
+@require 'ui/config'
+@require 'modules/user_form'
+@require 'modules/nav_bar'
+@require 'ui/modal'
+@require 'ui/car-table'
+@require 'modules/footer'
+@require 'ui/costcenter-table'
+@require 'ui/usertype-table'
+@require 'ui/search'
+@require 'ui/mining-table'
+@require 'ui/added-message'
 
-// body
-//     padding 0
-//     border 0
-//     margin 0
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
 
-// @require 'modules/user_table'
-// @require 'modules/costcenter_table'
+body
+    padding 0
+    border 0
+    margin 0
 
+.template-page
+    &__title
+        background-color #009895
+        color white
+        font-size 3.3em
+        font-family 'Roboto'
+        padding: 0.5em 1.7em
 
+.dashboard
+    display flex
 
+    &__wrapper
+        margin 18em auto
+        text-align center
+        color #999999
 
+    &__message
+        padding-top 1em
+        font-size 1.8em
+        text-align center
 
+.head-wrapper
+    background-color #167780
+
+.search-section
+    padding 1em
+
+.button-new-card
+    position absolute
+    right 30px
+    top 65px
+
+.add
+    border none
+    font-size 2.3em
+    box-shadow rgba(0, 0, 0, 0.35) 0px 5px 15px
+    transition all .2s ease
+
+    &:hover
+        font-size 2.4em
+        transition all .2s ease

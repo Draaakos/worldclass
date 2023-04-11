@@ -1,15 +1,15 @@
 import React from 'react'
 import NavBar from './Dashboard/components/NavBar';
-import Footer from './Dashboard/components/Footer';
+// import Footer from './Dashboard/components/Footer';
 
-const TemplatePage = ({ navbarOptions, children }) => {
+const TemplatePage = ({ navbarOptions, children, title }) => {
   return (
     <div className='template-page'>
+      <div className='template-page__title'>{title}</div>
       <NavBar navbarOptions={navbarOptions} />
       {children}
-      <Footer />
     </div>
   )
-};
+}
 
 export default TemplatePage;

@@ -1,26 +1,87 @@
-.navbar
-	background-color #252525
-	display flex
-	align-items center
-	justify-content space-between
+// .sidebar
+//     &:hover
+//         transition all .4s ease
+//         width 300px
+//         z-index 1
 
-	&__wrapper-items
-		display flex
+//         .head__company
+//             display block
 
-	&__item
-		text-decoration none
-		margin-right 1em
-		color white
+//         .options__text
+//             display block
 
-	&__title
-		width 200px
-		height 70px
+.sidebar
+    background-color #1f1e1d
+    height 100vh
+    position fixed
+    color white
+    width 70px
+    transition all .4s ease
+    z-index 1
+    top 0
 
-		&:hover
-			cursor pointer
+    &:hover
+        transition all .4s ease
+        width 250px
+
+    &:hover .options__text
+        display block
+
+    .head__company
+        display none
+
+    .options__item
+        padding 1.7em .5em
+
+    .options__text
+        display none
 
 
+.head
+    display flex
+    justify-content space-around
+    align-items center
+    padding-top 2em
+
+    &__company
+        max-width 120px
+        max-height 40px
+
+        img
+            width 100%
+            height 100%
+
+    &__menu
+        &:hover
+            cursor pointer
 
 
+.options
+    padding 7em .5em
 
+    a
+        text-decoration none
+        color white
+
+
+    &__item
+        padding 1.7em
+        display flex
+        align-items center
+
+        &:hover
+            cursor pointer
+            border-radius .6em
+            background-color rgba(255, 255, 255, 0.254)
+            transition all .4s ease-in-out
+
+    &__text
+        padding-left .5em
+
+.logout-wrapper
+    padding-top 8em
+
+    a
+        text-decoration none
+        color white
 

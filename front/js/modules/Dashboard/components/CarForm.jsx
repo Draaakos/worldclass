@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import service from 'services/formData';
+import AddMessage from "./Message";
 
-const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
+const CarForm = ({ selectors, carList, setCarList, onCloseModal, setShowMessage }) => {
   const patent = useRef(null);
   const mining = useRef(null);
   const carModel = useRef(null);
@@ -38,12 +39,24 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
         const _carList = [ ...carList ];
         _carList.push(response.item);
         setCarList(_carList);
+        setShowMessage(true)
         onCloseModal();
-        alert("Se ha ingreaso el vehículo correctamente")
       })
   }
+
+  const miningSelector = (
+    <select className="form-add__input" ref={mining}>
+      <option value={null}>Seleccione</option>
+      {
+        selectors.mining
+          .map((option, index) =>
+            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
+      }
+    </select>
+  )
+
   const costCenterSelector = (
-    <select className="form-register__input" ref={costCenter}>
+    <select className="form-add__input" ref={costCenter}>
       <option value={null}>Seleccione</option>
       {
         selectors.costCenter
@@ -54,7 +67,7 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
   );
 
   const carTypeSelector = (
-    <select className="form-register__input" ref={carType}>
+    <select className="form-add__input" ref={carType}>
       <option value={null}>Seleccione</option>
       {
         selectors.carType
@@ -64,33 +77,39 @@ const CarForm = ({ selectors, carList, setCarList, onCloseModal }) => {
     </select>
   );
 
-  const miningSelector = (
-    <select className="form-register__input" ref={mining}>
-      <option value={null}>Seleccione</option>
-      {
-        selectors.mining
-          .map((option, index) =>
-            <option key={`option-${index}`} value={option.id}>{option.name}</option>)
-      }
-    </select>
-  );
-
-  return(
-    <form className="form-register" onSubmit={onSubmit}>
-      <h2 className="form-register__title">Agregar un nuevo vehiculo</h2>
-      <label className="form-register__label" >Patente</label>
-      <input className="form-register__input" ref={patent} type="text" placeholder="patente" required />
-      <label className="form-register__label" >Modelo de vehiculo</label>
-      <input className="form-register__input" ref={carModel} type="text" placeholder="modelo(opcional)" />
-      <label className="form-register__label" >Faena</label>
-      {miningSelector}
-      <label className="form-register__label">Centro de Costo</label>
-      {costCenterSelector}
-      <label className="form-register__label">Tipo de vehiculo</label>
-      {carTypeSelector}
-      <input className="form-register__btn" type="submit" value="Registrar" />
+  return (
+    <form className="form-add" onSubmit={onSubmit}>
+      <div className="form-wrapper form-add__first-section">
+        <div className="form-add__title">Agregar un vehiculo</div>
+        <div className="form-add__buttons">
+          <button className="form-add__button transparent">Cancelar</button>
+          <button className="form-add__button color" type="submit">Agregar</button>
+        </div>
+      </div>
+      <div className="form-wrapper form-add__second-section">
+        <div className="form-add__input-wrapper">
+          <label className="form-add__label" >Patente</label>
+          <input className="form-add__input" ref={patent} type="text" placeholder="patente" required />
+        </div>
+        <div className="form-add__input-wrapper">
+          <label className="form-add__label" >Modelo de vehiculo</label>
+          <input className="form-add__input" ref={carModel} type="text" placeholder="modelo(opcional)" />
+        </div>
+        <div className="form-add__input-wrapper">
+          <label className="form-add__label" >Faena</label>
+          {miningSelector}
+        </div>
+        <div className="form-add__input-wrapper">
+          <label className="form-add__label">Centro de Costo</label>
+          {costCenterSelector}
+        </div>
+        <div className="form-add__input-wrapper">
+          <label className="form-add__label">Tipo de vehiculo</label>
+          {carTypeSelector}
+        </div>
+      </div>
     </form>
-  );
+  )
 }
 
 export default CarForm;

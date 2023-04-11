@@ -1,52 +1,143 @@
-.form-register
-    color #699361
-    border 1px solid #ccc
-    padding 20px
-    background-color white
-    max-width 400px
-    width 80vw
-
-    &__title
-        text-align center
+.form-add
+    display flex
+    width 750px
+    box-shadow rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+    color white
+    margin-left 4.4em
+    padding 1em
 
     &__label
-        font-size 12px
-        display block
-        width 100%
+        color black
+        font-size .7em
 
-    &__input
-        margin-bottom 20px
-        width 100%
-        padding 10px
-        box-sizing border-box
-        border 1px solid #ccc
+    &__first-section
+        background-color #1f1e1d
+        width 45%
+        padding 1em
 
-    &__btn
-        width 100%
-        padding 10px
-        background #699361
-        color #fff
+    &__second-section
+        background-color white
+        width 55%
+        display grid
+        justify-content center
+        align-items center
+
+    &__title
+        font-size 1.5em
+        padding 2em 1em
+        text-align center
+
+    &__input-wrapper
+        display grid
+        gap .4em
+        width 250px
+
+        input
+            border 1px solid #eaeaea
+            box-shadow rgba(0, 0, 0, 0.24) 0px 2px 6px
+            padding .5em
+
+            &:focus
+                outline none
+
+        select
+            border 1px solid #eaeaea
+            box-shadow rgba(0, 0, 0, 0.24) 0px 2px 6px
+            background-color transparent
+            padding .5em
+
+            &:focus
+                outline none
+
+
+    &__buttons
+        padding-top 15em
+        display grid
+        justify-content center
+        align-items center
+        gap .7em
+        padding-bottom 2em
+
+    &__button
         border none
+        padding 0.8em 7em
+        color white
 
         &:hover
-            background #43673c
             cursor pointer
-    
-    &__checkbox
-        text-align center
-        display flex
-        padding-bottom 20px
 
-        label
-            margin-left 8px
+.color
+    background-color #167780
+    transition all .2s ease
 
-    .selector
-        margin-top 20px
-        border 1px solid #ccc
-        margin-bottom 20px
-        padding 10px
-        background-color white
+    &:hover
+        background-color #185e64
+        transition all .2s ease
 
-@media screen and (min-width: 1024px)
-    .form-register
-        width 400px
+.transparent
+    border 2px solid #0e4449
+    background-color transparent
+    transition all .2s ease
+
+
+    &:hover
+        background-color #0e4449
+        color white
+        transition all .2s ease
+
+
+
+// .form-wrapper
+//     background-color blue
+// .form-wrapper
+//     color #699361
+//     border 1px solid #ccc
+//     padding 20px
+//     background-color white
+//     max-width 400px
+//     width 80vw
+
+//     &__title
+//         text-align center
+
+//     &__label
+//         font-size 12px
+//         display block
+//         width 100%
+
+//     &__input
+//         margin-bottom 20px
+//         width 100%
+//         padding 10px
+//         box-sizing border-box
+//         border 1px solid #ccc
+
+//     &__btn
+//         width 100%
+//         padding 10px
+//         background #699361
+//         color #fff
+//         border none
+
+//         &:hover
+//             background #43673c
+//             cursor pointer
+
+//     &__checkbox
+//         text-align center
+//         display flex
+//         padding-bottom 20px
+
+//         label
+//             margin-left 8px
+
+//     .selector
+//         margin-top 20px
+//         border 1px solid #ccc
+//         margin-bottom 20px
+//         padding 10px
+//         background-color white
+
+// @media screen and (min-width: 1024px)
+//     .form-register
+//         width 400px
