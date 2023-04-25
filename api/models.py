@@ -12,6 +12,7 @@ class Mining(models.Model):
             'name': self.name
         }
 
+
 class CostCenter(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
@@ -25,6 +26,7 @@ class CostCenter(models.Model):
             'mining': self.mining.to_json()
         }
 
+
 class PersonType(models.Model):
     name = models.CharField(max_length=70)
 
@@ -36,6 +38,7 @@ class PersonType(models.Model):
             'id': self.id,
             'name': self.name
         }
+
 
 class Person(models.Model):
     username = models.CharField(max_length=50, unique=True)
@@ -53,6 +56,7 @@ class Person(models.Model):
             'mining': self.mining.to_json()
         }
 
+
 class CarType(models.Model):
     name = models.CharField(max_length=30)
 
@@ -61,6 +65,7 @@ class CarType(models.Model):
             'id': self.id,
             'name': self.name
         }
+
 
 class Car(models.Model):
     patent = models.CharField(max_length=6)
@@ -85,6 +90,7 @@ class Car(models.Model):
             'status': self.status
         }
 
+
 class DocumentType(models.Model):
     name = models.CharField(max_length=50)
 
@@ -96,6 +102,7 @@ class DocumentType(models.Model):
             'id': self.id,
             'name': self.name
         }
+
 
 class Document(models.Model):
     upload = models.FileField(upload_to=define_product_path)
@@ -115,9 +122,11 @@ class Document(models.Model):
             'hasExpired': self.has_expired
         }
 
+
 class CarDocument(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, null=False, blank=False)
     car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False, blank=False)
+
 
 def fetch_documents(car):
     document_list = []
@@ -125,3 +134,30 @@ def fetch_documents(car):
         document = Document.objects.get(pk=car_document.document.id)
         document_list.append(document.to_json())
     return document_list
+
+
+class ContractType(models.Model):
+    name = models.CharField(max_length=25)
+
+
+class Worker(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    sex = models.CharField(max_length=1)
+    job = models.CharField(max_length=100)
+    start_contract = models.DateField()
+    end_contract = models.DateField()
+    birthdate =models.DateField()
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    nationality = models.CharField(max_length=50)
+    rut = models.CharField(max_length=50)
+    cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
+
+
+class MiningDocumentTypeRequest(models.Model):
+    mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
+    document_type = models.ForeignKey(DocumentType, on_delete=models.CASCADE, null=False, blank=False)
+
