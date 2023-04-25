@@ -11,6 +11,8 @@ from .controllers.person_type import PersonTypeView
 from .controllers.car_type import CarTypeView
 from .controllers.car_document import CarDocumentView
 from .controllers.mining import MiningView
+from .controllers.worker import WorkerView
+
 
 class LogoutView(View):
     def get(self, request):
@@ -20,6 +22,7 @@ class LogoutView(View):
         return JsonResponse({
             'msg': 'sesion finalizada'
         })
+
 
 register = RegisterView.as_view()
 login = LoginView.as_view()
@@ -32,3 +35,4 @@ person_data = PersonDataView.as_view()
 person_type = PersonTypeView.as_view()
 car_type = CarTypeView.as_view()
 car_document = CarDocumentView.as_view()
+worker = WorkerView.as_view()

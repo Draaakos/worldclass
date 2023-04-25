@@ -20,4 +20,5 @@ urlpatterns = [
     path('person/type/<int:id>', views.person_type, name='person_type'),
     path('mining', views.mining, name='mining'),
     path('mining/<int:id>', views.mining, name='mining'),
+    path('worker', views.worker, name='worker'),
 ]
