@@ -12,6 +12,7 @@ from .controllers.car_type import CarTypeView
 from .controllers.car_document import CarDocumentView
 from .controllers.mining import MiningView
 from .controllers.worker import WorkerView
+from .controllers.rh_dashboard import RHDashboard
 
 
 class LogoutView(View):
@@ -28,6 +29,7 @@ register = RegisterView.as_view()
 login = LoginView.as_view()
 logout = LogoutView.as_view()
 dashboard = DashboardView.as_view()
+rh_dashboard = RHDashboard.as_view()
 car_data = CardDataView.as_view()
 cost_center = CostCenterView.as_view()
 mining = MiningView.as_view()

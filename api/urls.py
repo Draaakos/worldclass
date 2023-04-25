@@ -21,4 +21,6 @@ urlpatterns = [
     path('mining', views.mining, name='mining'),
     path('mining/<int:id>', views.mining, name='mining'),
     path('worker', views.worker, name='worker'),
+
+    path('rh/dashboard', views.rh_dashboard, name='rh_dashboard'),
 ]

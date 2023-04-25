@@ -147,14 +147,33 @@ class Worker(models.Model):
     phone = models.CharField(max_length=100)
     sex = models.CharField(max_length=1)
     job = models.CharField(max_length=100)
-    start_contract = models.DateField()
-    end_contract = models.DateField()
-    birthdate =models.DateField()
+    start_contract = models.DateField(blank=True, null=True)
+    end_contract = models.DateField(blank=True, null=True)
+    birthdate =models.DateField(blank=True, null=True)
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     nationality = models.CharField(max_length=50)
     rut = models.CharField(max_length=50)
     cost_center = models.ForeignKey(CostCenter, on_delete=models.CASCADE, null=False, blank=False)
+
+    def to_json(self):
+        return {
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'email': self.email,
+            'phone': self.phone,
+            'sex': self.sex,
+            'job': self.job,
+            'start_contract': self.start_contract,
+            'end_contract': self.end_contract,
+            'birthdate': self.birthdate,
+            'address': self.address,
+            'city': self.city,
+            'nationality': self.nationality,
+            'rut': self.rut,
+            'cost_center': self.cost_center.name,
+            'mining': self.cost_center.mining.name
+        }
 
 
 class MiningDocumentTypeRequest(models.Model):
