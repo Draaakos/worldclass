@@ -3,6 +3,7 @@ from api.models import Document
 from api.models import DocumentType
 from api.models import CarDocument
 from api.models import Person
+from api.models import CostCenter
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -27,4 +28,10 @@ class CarDocumentAdmin(admin.ModelAdmin):
     ordering = ['id',]
     list_display = ['id', 'car', 'document']
     list_editable = ['car', 'document']
+
+@admin.register(CostCenter)
+class CostCenterAdmin(admin.ModelAdmin):
+    ordering = ['id',]
+    list_display = ['id', 'name', 'code', 'mining',]
+    list_editable = ['name', 'code', 'mining',]
 

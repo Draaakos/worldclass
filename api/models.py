@@ -5,6 +5,9 @@ class Mining(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
     def to_json(self):
         return {
             'id': self.id,
@@ -17,6 +20,9 @@ class CostCenter(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
     mining = models.ForeignKey(Mining, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
 
     def to_json(self):
         return {
