@@ -19,9 +19,17 @@ const getJSConfig = (env = { mode: 'development' }) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js|jsx)/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          use: [{ loader: 'babel-loader' }]
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: [
+            { loader: 'style-loader' },
+            { loader: 'css-loader', options: { modules: true } },
+          ]
         }
       ]
     },

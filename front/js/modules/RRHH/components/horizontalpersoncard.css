@@ -1,0 +1,48 @@
+.horizontalPersonCard {
+    padding: 1em;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    color: #535A77;
+    background-color: white;
+    border: 1px solid transparent;
+    transition: all .2s ease-in-out;
+}
+
+.horizontalPersonCard:hover {
+    cursor: pointer;
+    border: 1px solid #535A77;
+    transition: all .2s ease-in-out;
+}
+
+.sectionWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    padding: .5em 0;
+}
+
+.informationWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.informationWrapper>div:first-child {
+    font-weight: bold;
+}
+
+.informationWrapperIcon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.informationWrapperIcon img {
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+    margin-bottom: -5px;
+}
+
+.secondSection .informationWrapper {
+    grid-template-columns: 1fr 2fr;
+}

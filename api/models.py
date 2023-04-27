@@ -164,14 +164,14 @@ class Worker(models.Model):
             'phone': self.phone,
             'sex': self.sex,
             'job': self.job,
-            'start_contract': self.start_contract,
-            'end_contract': self.end_contract,
+            'startContract': self.start_contract,
+            'endContract': self.end_contract,
             'birthdate': self.birthdate,
             'address': self.address,
             'city': self.city,
             'nationality': self.nationality,
             'rut': self.rut,
-            'cost_center': self.cost_center.name,
+            'costCenter': self.cost_center.name,
             'mining': self.cost_center.mining.name
         }
 

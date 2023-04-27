@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+.table {
+    border: 1px solid transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.costCenterBlock {
+    margin-bottom: 1em;
+    padding: 1em .5em;
+}
+
+.costCenterGrid {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    background-color: #C7CBE5;
+    padding: 1em;
+}
